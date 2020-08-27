@@ -54,7 +54,7 @@ export default function SignIn() {
         <div className="isoLoginContent">
           <div className="isoLogoWrapper">
             <Link to="/dashboard">
-              <IntlMessages id="page.signInTitle" />
+              <IntlMessages id="UIT RUN ADMIN" />
             </Link>
           </div>
           <div className="isoSignInForm">
