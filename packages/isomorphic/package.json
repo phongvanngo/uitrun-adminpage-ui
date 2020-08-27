@@ -91,7 +91,10 @@
     "rich-marker": "^0.0.1",
     "styled-components": "^4.4.0",
     "styled-theme": "^0.3.3",
-    "swiper": "^5.0.4"
+    "swiper": "^5.0.4",
+        "@ckeditor/ckeditor5-build-classic": "^16.0.0",
+    "@ckeditor/ckeditor5-react": "^2.0.0",
+        "ckeditor5-imgur-uploader": "^0.0.1"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.12.2",

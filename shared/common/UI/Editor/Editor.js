@@ -29,6 +29,7 @@ export default class Editor extends Component {
 
   handleChange(value) {
     this.setState({ value });
+    console.log(value);
   }
 
   render() {
@@ -42,6 +43,7 @@ export default class Editor extends Component {
     };
     return (
       <QuillEditor>
+        sfefsefesffs
         <ReactQuill {...options} />
       </QuillEditor>
     );

@@ -14,6 +14,7 @@ class Editor extends React.Component {
 
   handleChange(html) {
     this.setState({ editorHtml: html });
+    console.log(this.state.editorHtml);
   }
 
   handleThemeChange(newTheme) {
