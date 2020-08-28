@@ -45,6 +45,7 @@ export default function Contacts() {
         />
       </div>
       <Layout className="isoContactBoxWrapper">
+        {/* select contact ------------------------------------------*/}
         {selectedContact ? (
           <Content className="isoContactBox">
             <div className="isoContactControl">
@@ -90,6 +91,7 @@ export default function Contacts() {
             </Button>
           </div>
         )}
+        {/* select contact ------------------------------------------*/}
       </Layout>
     </ContactsWrapper>
   );

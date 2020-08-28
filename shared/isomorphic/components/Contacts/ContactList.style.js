@@ -138,6 +138,10 @@ const WDContactListWrapper = styled.div`
       .isoContactName {
         h3 {
           font-size: 15px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 200px;
         }
       }
 
