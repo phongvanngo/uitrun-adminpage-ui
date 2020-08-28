@@ -20,14 +20,14 @@ import './upload.css';
 //   notification('success', 'Image uploaded successfully!', '');
 //   return true;
 // }
-export default function({ contact, otherAttributes, editContact }) {
+export default function({ question, otherAttributes, editQuestion }) {
   useEffect(() => {
     return () => {
       console.log('heelllo');
     };
   });
 
-  console.log({ contact, otherAttributes, editContact });
+  // console.log({ contact, otherAttributes, editContact });
   const name = contact.name ? contact.name : 'No Name';
   const extraInfos = [];
   const names = [

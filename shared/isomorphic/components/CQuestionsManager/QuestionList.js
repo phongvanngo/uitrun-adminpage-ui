@@ -13,7 +13,7 @@ function filterContacts(contacts, search) {
     : contacts;
 }
 
-export default class ContactList extends Component {
+export default class QuestionList extends Component {
   constructor(props) {
     super(props);
     this.singleContact = this.singleContact.bind(this);

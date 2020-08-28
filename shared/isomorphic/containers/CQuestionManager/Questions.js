@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import questionAction from '@iso/redux/cquestionManager/actions';
 import { Layout, Icon } from 'antd';
 import Button from '@iso/components/uielements/button';
-import ContactList from '@iso/components/CQuestionsManager/QuestionList';
+import QuestionList from '@iso/components/CQuestionsManager/QuestionList';
 import SingleContactView from '@iso/components/CQuestionsManager/SingleView';
 import EditContactView from '@iso/components/CQuestionsManager/EditView';
 import DeleteButton from '@iso/components/CQuestionsManager/DeleteButton';
@@ -38,7 +38,7 @@ export default function Contacts() {
       style={{ background: 'none' }}
     >
       <div className="isoContactListBar">
-        <ContactList
+        <QuestionList
           contacts={contacts}
           seectedId={seectedId}
           changeQuestion={id => dispatch(changeQuestion(id))}
@@ -55,7 +55,7 @@ export default function Contacts() {
               </Button>
               <DeleteButton
                 deleteQuestion={id => dispatch(deleteContact(id))}
-                contact={selectedContact}
+                question={selectedContact}
               />
               <Button
                 type="primary"
@@ -70,13 +70,13 @@ export default function Contacts() {
             <Scrollbar className="contactBoxScrollbar">
               {editView ? (
                 <EditContactView
-                  contact={selectedContact}
-                  editContact={contact => dispatch(editContact(contact))}
+                  question={selectedContact}
+                  editQuestion={contact => dispatch(editContact(contact))}
                   otherAttributes={otherAttributes}
                 />
               ) : (
                 <SingleContactView
-                  contact={selectedContact}
+                  question={selectedContact}
                   otherAttributes={otherAttributes}
                 />
               )}
