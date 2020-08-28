@@ -104,6 +104,11 @@ const options = [
     leftIcon: 'ion-android-person-add',
   },
   {
+    key: 'questions',
+    label: 'sidebar.contacts',
+    leftIcon: 'ion-android-checkbox-outline',
+  },
+  {
     key: 'shuffle',
     label: 'sidebar.shuffle',
     leftIcon: 'ion-grid',

@@ -9,7 +9,7 @@ import EditContactView from '@iso/components/Contacts/EditView';
 import DeleteButton from '@iso/components/Contacts/DeleteButton';
 import { otherAttributes } from './data';
 import IntlMessages from '@iso/components/utility/intlMessages';
-import { ContactsWrapper } from './Contacts.styles';
+import { ContactsWrapper } from './Questions.styles';
 import Scrollbar from '@iso/components/utility/customScrollBar';
 
 const {

@@ -134,6 +134,11 @@ const routes = [
     component: lazy(() => import('@iso/containers/Contacts/Contacts')),
   },
   {
+    path: 'questions',
+    component: lazy(() => import('@iso/containers/CQuestions/Questions')),
+  },
+
+  {
     path: 'alert',
     component: lazy(() => import('@iso/containers/Feedback/Alert/Alert')),
   },
