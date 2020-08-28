@@ -25,6 +25,7 @@ export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
+
   const dispatch = useDispatch();
 
   const selectedContact = seectedId
