@@ -7,6 +7,7 @@ import Box from '@iso/redux/box/reducer';
 import Notes from '@iso/redux/notes/reducer';
 import Todos from '@iso/redux/todos/reducer';
 import Contacts from '@iso/redux/contacts/reducer';
+import Questions from '@iso/redux/cquestions/reducer';
 import Cards from '@iso/redux/card/reducer';
 import Chat from '@iso/redux/chat/reducers';
 import DynamicChartComponent from '@iso/redux/dynamicEchart/reducer';
@@ -34,6 +35,7 @@ export default combineReducers({
   Notes,
   Todos,
   Contacts,
+  Questions,
   Cards,
   Chat,
   DynamicChartComponent,
