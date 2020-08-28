@@ -7,7 +7,7 @@ import ContactList from '@iso/components/CQuestions/QuestionList';
 import SingleContactView from '@iso/components/CQuestions/SingleView';
 import EditContactView from '@iso/components/CQuestions/EditView';
 import DeleteButton from '@iso/components/CQuestions/DeleteButton';
-import { otherAttributes } from './data';
+import { otherAttributes } from './data2';
 import IntlMessages from '@iso/components/utility/intlMessages';
 import { ContactsWrapper } from './Questions.styles';
 import Scrollbar from '@iso/components/utility/customScrollBar';
@@ -25,7 +25,7 @@ export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
-
+  console.log(contacts);
   const dispatch = useDispatch();
 
   const selectedContact = seectedId
@@ -66,7 +66,10 @@ export default function Contacts() {
               </Button>
             </div>
 
-            <Scrollbar className="contactBoxScrollbar">
+            <Scrollbar
+              className="contactBoxScrollbar"
+              style={{ height: 'calc(100vh - 200px)' }}
+            >
               {editView ? (
                 <EditContactView
                   contact={selectedContact}

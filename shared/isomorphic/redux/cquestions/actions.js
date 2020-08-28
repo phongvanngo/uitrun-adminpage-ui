@@ -7,7 +7,7 @@ function ascendingSort(contact1, contact2) {
 }
 
 const contactActions = {
-  ADD_CONTACT: 'ADD_CONTACT',
+  ADD_QUESTION: 'ADD_QUESTION',
   EDIT_CONTACT: 'EDIT_CONTACT',
   DELETE__CONTACT: 'DELETE__CONTACT',
   CHANGE_CONTACT: 'CHANGE_CONTACT',
@@ -19,20 +19,29 @@ const contactActions = {
   addContact: () => {
     const newContact = {
       id: new Date(),
-      firstName: '',
-      avatar: contacts[new Date() % 10].avatar,
-      LastName: '',
-      mobile: '',
-      home: '',
-      name: '',
-      company: '',
-      work: '',
-      note: '',
+      // firstName: '',
+      // // avatar: contacts[new Date() % 10].avatar,
+      // LastName: '',
+      // mobile: '',
+      // home: '',
+      // name: '',
+      // company: '',
+      // work: '',
+      // note: '',
+
+      content: '',
+      image: '',
+      answerA: '',
+      answerB: '',
+      answerC: '',
+      answerD: '',
+      result: '',
+      description: '',
     };
     return (dispatch, getState) => {
       dispatch({
-        type: contactActions.ADD_CONTACT,
-        contacts: [...getState().Contacts.contacts, newContact],
+        type: contactActions.ADD_QUESTION,
+        contacts: [...getState().Questions.contacts, newContact],
         selectedId: newContact.id,
       });
     };

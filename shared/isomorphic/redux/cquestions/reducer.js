@@ -1,7 +1,7 @@
-import fakeData from './data';
+import fakeData from './data2';
 import contactActions from './actions';
 
-const contacts = new fakeData(10).getAll();
+const contacts = new fakeData(4).getAll();
 
 const initState = {
   contacts,
@@ -17,7 +17,8 @@ export default function questionReducer(state = initState, action) {
         seectedId: action.id,
         editView: false,
       };
-    case contactActions.ADD_CONTACT:
+    case contactActions.ADD_QUESTION:
+      console.log('dfd');
       return {
         ...state,
         contacts: action.contacts,

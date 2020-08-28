@@ -2,11 +2,25 @@ import React from 'react';
 import { ContactCardWrapper } from './QuestionCard.style';
 
 export default function({ contact, otherAttributes }) {
+  console.log(contact, otherAttributes);
   const name = contact.name ? contact.name : 'No Name';
   const extraInfos = [];
   otherAttributes.forEach(attribute => {
     const value = contact[attribute.value];
-    if (value) {
+    if (attribute.value === 'image') {
+      extraInfos.push(
+        <div className="isoContactCardInfos" key={attribute.value}>
+          <p className="isoInfoLabel">{`${attribute.title}`}</p>
+          <p className="isoInfoDetails">
+            <img
+              src={value}
+              style={{ maxWidth: '100vh', maxHeight: 'calc(100vh - 200px)' }}
+              alt=""
+            />
+          </p>
+        </div>
+      );
+    } else if (value) {
       extraInfos.push(
         <div className="isoContactCardInfos" key={attribute.value}>
           <p className="isoInfoLabel">{`${attribute.title}`}</p>
@@ -17,12 +31,12 @@ export default function({ contact, otherAttributes }) {
   });
   return (
     <ContactCardWrapper className="isoContactCard">
-      <div className="isoContactCardHead">
+      {/* <div className="isoContactCardHead">
         <div className="isoPersonImage">
           {contact.avatar ? <img alt="#" src={contact.avatar} /> : ''}
         </div>
         <h1 className="isoPersonName">{name}</h1>
-      </div>
+      </div> */}
       <div className="isoContactInfoWrapper">{extraInfos}</div>
     </ContactCardWrapper>
   );

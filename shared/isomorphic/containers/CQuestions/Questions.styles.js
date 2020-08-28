@@ -56,7 +56,7 @@ const WDContactsWrapper = styled.div`
     }
 
     .contactBoxScrollbar {
-      height: calc(100vh - 225px);
+      height: calc(100vh - 200px);
     }
 
     .isoContactControl {

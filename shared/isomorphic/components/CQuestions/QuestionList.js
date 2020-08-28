@@ -5,11 +5,16 @@ import DeleteButton from './DeleteButton';
 import { PropTypes } from 'prop-types';
 import { ContactListWrapper } from './QuestionList.style';
 import Scrollbar from '../utility/customScrollBar';
+import removeAccents from './removeAccents';
 
 function filterContacts(contacts, search) {
   search = search.toUpperCase();
   return search
-    ? contacts.filter(contact => contact.name.toUpperCase().includes(search))
+    ? contacts.filter(contact =>
+        removeAccents(contact.content)
+          .toUpperCase()
+          .includes(removeAccents(search))
+      )
     : contacts;
 }
 
@@ -32,11 +37,11 @@ export default class ContactList extends Component {
         className={`${activeClass} isoSingleContact`}
         onClick={onChange}
       >
-        <div className="isoAvatar">
+        {/* <div className="isoAvatar">
           {contact.avatar ? <img alt="#" src={contact.avatar} /> : ''}
-        </div>
+        </div> */}
         <div className="isoContactName">
-          <h3>{contact.name ? contact.name : 'No Name'}</h3>
+          <h3>{contact.content ? contact.content : 'No Name'}</h3>
         </div>
         <DeleteButton deleteContact={deleteContact} contact={contact} />
       </div>

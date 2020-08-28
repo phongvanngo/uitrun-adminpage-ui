@@ -65,7 +65,10 @@ export default function Contacts() {
               </Button>
             </div>
 
-            <Scrollbar className="contactBoxScrollbar">
+            <Scrollbar
+              className="contactBoxScrollbar"
+              style={{ height: 'calc(100vh - 200px)' }}
+            >
               {editView ? (
                 <EditContactView
                   contact={selectedContact}
