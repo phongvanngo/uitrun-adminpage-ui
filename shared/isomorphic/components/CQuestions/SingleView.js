@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactCardWrapper } from './ContactCard.style';
+import { ContactCardWrapper } from './QuestionCard.style';
 
 export default function({ contact, otherAttributes }) {
   const name = contact.name ? contact.name : 'No Name';

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import contactActions from '@iso/redux/contacts/actions';
+import contactActions from '@iso/redux/cquestions/actions';
 import { Layout, Icon } from 'antd';
 import Button from '@iso/components/uielements/button';
-import ContactList from '@iso/components/Contacts/ContactList';
-import SingleContactView from '@iso/components/Contacts/SingleView';
-import EditContactView from '@iso/components/Contacts/EditView';
-import DeleteButton from '@iso/components/Contacts/DeleteButton';
+import ContactList from '@iso/components/CQuestions/QuestionList';
+import SingleContactView from '@iso/components/CQuestions/SingleView';
+import EditContactView from '@iso/components/CQuestions/EditView';
+import DeleteButton from '@iso/components/CQuestions/DeleteButton';
 import { otherAttributes } from './data';
 import IntlMessages from '@iso/components/utility/intlMessages';
 import { ContactsWrapper } from './Questions.styles';
@@ -23,7 +23,7 @@ const {
 const { Content } = Layout;
 export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
-    state => state.Contacts
+    state => state.Questions
   );
   const dispatch = useDispatch();
 

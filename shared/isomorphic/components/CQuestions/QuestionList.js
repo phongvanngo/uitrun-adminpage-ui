@@ -3,7 +3,7 @@ import IntlMessages from '../utility/intlMessages';
 import { InputSearch } from '../uielements/input';
 import DeleteButton from './DeleteButton';
 import { PropTypes } from 'prop-types';
-import { ContactListWrapper } from './ContactList.style';
+import { ContactListWrapper } from './QuestionList.style';
 import Scrollbar from '../utility/customScrollBar';
 
 function filterContacts(contacts, search) {

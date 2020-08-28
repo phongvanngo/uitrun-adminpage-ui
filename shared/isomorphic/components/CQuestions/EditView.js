@@ -3,7 +3,7 @@ import { Icon } from 'antd';
 import Input, { Textarea } from '../uielements/input';
 import Upload from '../uielements/upload';
 import notification from '../Notification';
-import { ContactCardWrapper } from './ContactCard.style';
+import { ContactCardWrapper } from './QuestionCard.style';
 import './upload.css';
 
 function beforeUpload(file) {
