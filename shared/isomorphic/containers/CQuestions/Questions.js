@@ -33,6 +33,7 @@ export default function Contacts() {
     : null;
 
   const [questionOnChange, setquestionOnChange] = useState(selectedContact);
+  console.log(questionOnChange);
 
   const onVIewChange = () => dispatch(viewChange(!editView));
   return (
@@ -75,17 +76,16 @@ export default function Contacts() {
             >
               {editView ? (
                 <EditContactView
-                  contact={selectedContact}
+                  contact={questionOnChange}
                   editContact={() => {
                     // console.log({ done: questionOnChange });
-                    // dispatch(editContact(questionOnChange));
+                    dispatch(editContact(questionOnChange));
                   }}
                   otherAttributes={otherAttributes}
                   changeQuestion={question => {
                     // console.log(question);
                     setquestionOnChange(question);
                     // console.log(questionOnChange);
-                    dispatch(editContact(question));
                   }}
                 />
               ) : (

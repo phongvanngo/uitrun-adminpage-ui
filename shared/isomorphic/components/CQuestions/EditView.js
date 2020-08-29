@@ -27,31 +27,32 @@ export default function({
     result,
     description,
   } = contact;
+  console.log(contact);
+  // const [contentValue, setcontentValue] = useState(content);
+  // const [answerAValue, setanswerAValue] = useState(answerA);
+  // const [answerBValue, setanswerBValue] = useState(answerB);
+  // const [answerCValue, setanswerCValue] = useState(answerC);
+  // const [answerDValue, setanswerDValue] = useState(answerD);
+  // const [resultValue, setresultValue] = useState(TransferResultOption(result));
+  // const [descriptionValue, setdescriptionValue] = useState(description);
+  // const [imageValue, setimageValue] = useState(image);
+  // console.log(contentValue);
 
-  const [contentValue, setcontentValue] = useState(content);
-  const [answerAValue, setanswerAValue] = useState(answerA);
-  const [answerBValue, setanswerBValue] = useState(answerB);
-  const [answerCValue, setanswerCValue] = useState(answerC);
-  const [answerDValue, setanswerDValue] = useState(answerD);
-  const [resultValue, setresultValue] = useState(TransferResultOption(result));
-  const [descriptionValue, setdescriptionValue] = useState(description);
-  const [imageValue, setimageValue] = useState(image);
-  console.log(contentValue);
-
-  let newQuestion = {
-    id: contact.id,
-    content: contentValue,
-    image: imageValue,
-    answerA: answerAValue,
-    answerB: answerBValue,
-    answerC: answerCValue,
-    answerD: answerDValue,
-    result: resultValue,
-    description: descriptionValue,
-  };
-  console.log(newQuestion);
+  // let newQuestion = {
+  //   id: contact.id,
+  //   content: contentValue,
+  //   image: imageValue,
+  //   answerA: answerAValue,
+  //   answerB: answerBValue,
+  //   answerC: answerCValue,
+  //   answerD: answerDValue,
+  //   result: resultValue,
+  //   description: descriptionValue,
+  // };
+  // console.log(newQuestion);
 
   const handleChangeInput = (event, attribute) => {
+    console.log(event.target.value);
     contact[attribute] = event.target.value;
     // let newQuestion = {
     //   id: contact.id,
@@ -64,15 +65,16 @@ export default function({
     //   result: resultValue,
     //   description: descriptionValue,
     // };
-    console.log(contentValue);
+    // console.log(contentValue);
+
     console.log(contact);
     changeQuestion(contact);
   };
 
   useEffect(() => {
     return () => {
-      console.log(newQuestion);
-      //editContact();
+      // console.log(newQuestion);
+      editContact();
     };
   }, []);
 
@@ -180,11 +182,11 @@ export default function({
           <p className="isoInfoLabel">Câu hỏi</p>
           <Textarea
             placeholder="câu hỏi"
-            value={contentValue}
+            value={content}
             type="textarea"
             rows={5}
             onChange={(event, content) => {
-              handleChangeInput(event, content);
+              handleChangeInput(event, 'content');
             }}
           />
         </div>
@@ -193,9 +195,9 @@ export default function({
           <p className="isoInfoLabel">Hình ảnh</p>
           <Input
             placeholder=""
-            value={imageValue}
-            onChange={event => {
-              setimageValue(event.target.value);
+            value={image}
+            onChange={(event, image) => {
+              handleChangeInput(event, image);
             }}
           />
         </div>
@@ -204,7 +206,7 @@ export default function({
           <p className="isoInfoLabel"></p>
           <p className="isoInfoDetails">
             <img
-              src={imageValue}
+              src={image}
               style={{ maxWidth: '100%', maxHeight: '50vh' }}
               alt="No image"
             />
@@ -214,7 +216,7 @@ export default function({
         <div className="isoContactCardInfos" style={{ marginBottom: '0px' }}>
           <p className="isoInfoLabel">Đáp án đúng:</p>
           <p style={{ color: 'red', display: 'inline' }}>
-            {correctAnswer(resultValue)}
+            {/* {correctAnswer(result)} */}
           </p>
         </div>
 
@@ -223,49 +225,49 @@ export default function({
           <div className="isoInfoDetails">
             <ContentHolder style={{ marginTop: '0px', marginLeft: '0px' }}>
               <RadioGroup
-                onChange={event => {
-                  setresultValue(event.target.value);
-                }}
+                // onChange={(event, result) => {
+                //   handleChangeInput(event, result);
+                // }}
                 name="value"
-                value={resultValue}
+                value={TransferResultOption(result)}
               >
                 <Radio style={radioStyle} value={1}>
                   Option A
                   <Input
                     style={inputInRadioStyle}
-                    onChange={event => {
-                      setanswerAValue(event.target.value);
+                    onChange={(event, answerA) => {
+                      handleChangeInput(event, answerA);
                     }}
-                    value={answerAValue}
+                    value={answerA}
                   />
                 </Radio>
                 <Radio style={radioStyle} value={2}>
                   Option B
                   <Input
-                    value={answerBValue}
+                    value={answerB}
                     style={inputInRadioStyle}
-                    onChange={event => {
-                      setanswerBValue(event.target.value);
+                    onChange={(event, answerB) => {
+                      handleChangeInput(event, answerB);
                     }}
                   />
                 </Radio>
                 <Radio style={radioStyle} value={3}>
                   Option C
                   <Input
-                    value={answerCValue}
+                    value={answerC}
                     style={inputInRadioStyle}
-                    onChange={event => {
-                      setanswerCValue(event.target.value);
+                    onChange={(event, answerC) => {
+                      handleChangeInput(event, answerC);
                     }}
                   />
                 </Radio>
                 <Radio style={radioStyle} value={4}>
                   Option D
                   <Input
-                    value={answerDValue}
+                    value={answerD}
                     style={inputInRadioStyle}
-                    onChange={event => {
-                      setanswerDValue(event.target.value);
+                    onChange={(event, answerD) => {
+                      handleChangeInput(event, answerD);
                     }}
                   />
                 </Radio>
@@ -279,9 +281,9 @@ export default function({
           <p className="isoInfoLabel">Ghi chú</p>
           <Input
             placeholder=""
-            value={descriptionValue}
-            onChange={event => {
-              setdescriptionValue(event.target.value);
+            value={description}
+            onChange={(event, description) => {
+              handleChangeInput(event, description);
             }}
           />
         </div>

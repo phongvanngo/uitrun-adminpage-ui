@@ -52,7 +52,7 @@ const contactActions = {
       const contacts = getState().Questions.contacts;
       const newContacts = [];
       contacts.forEach(contact => {
-        console.log(contact.id, newContact.id);
+        // console.log(contact.id, (new answerA(): answerAValue), Contact.id);
         if (contact.id === newContact.id) {
           newContacts.push(newContact);
         } else {
