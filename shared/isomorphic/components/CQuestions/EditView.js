@@ -49,22 +49,24 @@ export default function({
     result: resultValue,
     description: descriptionValue,
   };
+  console.log(newQuestion);
 
-  const handleChangeInput = () => {
-    let newQuestion = {
-      id: contact.id,
-      content: contentValue,
-      image: imageValue,
-      answerA: answerAValue,
-      answerB: answerBValue,
-      answerC: answerCValue,
-      answerD: answerDValue,
-      result: resultValue,
-      description: descriptionValue,
-    };
+  const handleChangeInput = (event, attribute) => {
+    contact[attribute] = event.target.value;
+    // let newQuestion = {
+    //   id: contact.id,
+    //   content: contentValue,
+    //   image: imageValue,
+    //   answerA: answerAValue,
+    //   answerB: answerBValue,
+    //   answerC: answerCValue,
+    //   answerD: answerDValue,
+    //   result: resultValue,
+    //   description: descriptionValue,
+    // };
     console.log(contentValue);
-
-    changeQuestion(newQuestion);
+    console.log(contact);
+    changeQuestion(contact);
   };
 
   useEffect(() => {
@@ -181,9 +183,8 @@ export default function({
             value={contentValue}
             type="textarea"
             rows={5}
-            onChange={event => {
-              setcontentValue(event.target.value);
-              //handleChangeInput();
+            onChange={(event, content) => {
+              handleChangeInput(event, content);
             }}
           />
         </div>
