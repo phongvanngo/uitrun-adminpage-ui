@@ -2,7 +2,7 @@ import React from 'react';
 import { ContactCardWrapper } from './QuestionCard.style';
 
 export default function({ contact, otherAttributes }) {
-  console.log(contact, otherAttributes);
+  // console.log(contact, otherAttributes);
   const name = contact.name ? contact.name : 'No Name';
   const extraInfos = [];
   otherAttributes.forEach(attribute => {
@@ -14,8 +14,8 @@ export default function({ contact, otherAttributes }) {
           <p className="isoInfoDetails">
             <img
               src={value}
-              style={{ maxWidth: '100vh', maxHeight: 'calc(100vh - 200px)' }}
-              alt=""
+              style={{ maxWidth: '100%', maxHeight: '50vh' }}
+              alt="No image"
             />
           </p>
         </div>

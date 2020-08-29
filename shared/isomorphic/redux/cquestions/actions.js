@@ -48,9 +48,11 @@ const contactActions = {
   },
   editContact: newContact => {
     return (dispatch, getState) => {
-      const contacts = getState().Contacts.contacts;
+      console.log(newContact);
+      const contacts = getState().Questions.contacts;
       const newContacts = [];
       contacts.forEach(contact => {
+        console.log(contact.id, newContact.id);
         if (contact.id === newContact.id) {
           newContacts.push(newContact);
         } else {
@@ -65,8 +67,8 @@ const contactActions = {
   },
   deleteContact: id => {
     return (dispatch, getState) => {
-      const contacts = getState().Contacts.contacts;
-      const seectedId = getState().Contacts.seectedId;
+      const contacts = getState().Qustions.contacts;
+      const seectedId = getState().Questions.seectedId;
       const newContacts = [];
       contacts.forEach(contact => {
         if (contact.id === id) {

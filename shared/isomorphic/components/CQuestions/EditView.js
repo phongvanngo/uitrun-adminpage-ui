@@ -1,43 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Icon } from 'antd';
-import Input, { Textarea } from '../uielements/input';
-import Upload from '../uielements/upload';
+import Radio, { RadioGroup } from '@iso/components/uielements/radio';
+import ContentHolder from '@iso/components/utility/contentHolder';
+import React, { useEffect, useState } from 'react';
 import notification from '../Notification';
+import Input, { Textarea } from '../uielements/input';
 import { ContactCardWrapper } from './QuestionCard.style';
 import './upload.css';
-import ContentHolder from '@iso/components/utility/contentHolder';
-import Radio, { RadioGroup } from '@iso/components/uielements/radio';
-import { direction } from '@iso/lib/helpers/rtl';
-import Scrollbar from '../utility/customScrollBar';
-
-function beforeUpload(file) {
-  const isJPG = file.type === 'image/jpeg';
-  if (!isJPG) {
-    notification('error', 'You can only upload JPG file!', '');
-    return false;
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    notification('error', 'Image must smaller than 2MB!', '');
-    return false;
-  }
-  notification('success', 'Image uploaded successfully!', '');
-  return true;
-}
 
 function TransferResultOption(result) {
   const value = { A: 1, B: 2, C: 3, D: 4 };
   return value[result];
 }
 
-export default function({ contact, otherAttributes, editContact }) {
-  useEffect(() => {
-    return () => {
-      console.log('hello');
-    };
-  });
-
-  const {
+export default function({
+  contact,
+  otherAttributes,
+  editContact,
+  changeQuestion,
+}) {
+  let {
     content,
     image,
     answerA,
@@ -47,7 +27,7 @@ export default function({ contact, otherAttributes, editContact }) {
     result,
     description,
   } = contact;
-  console.log(contact);
+
   const [contentValue, setcontentValue] = useState(content);
   const [answerAValue, setanswerAValue] = useState(answerA);
   const [answerBValue, setanswerBValue] = useState(answerB);
@@ -56,6 +36,62 @@ export default function({ contact, otherAttributes, editContact }) {
   const [resultValue, setresultValue] = useState(TransferResultOption(result));
   const [descriptionValue, setdescriptionValue] = useState(description);
   const [imageValue, setimageValue] = useState(image);
+  console.log(contentValue);
+
+  let newQuestion = {
+    id: contact.id,
+    content: contentValue,
+    image: imageValue,
+    answerA: answerAValue,
+    answerB: answerBValue,
+    answerC: answerCValue,
+    answerD: answerDValue,
+    result: resultValue,
+    description: descriptionValue,
+  };
+
+  const handleChangeInput = () => {
+    let newQuestion = {
+      id: contact.id,
+      content: contentValue,
+      image: imageValue,
+      answerA: answerAValue,
+      answerB: answerBValue,
+      answerC: answerCValue,
+      answerD: answerDValue,
+      result: resultValue,
+      description: descriptionValue,
+    };
+    console.log(contentValue);
+
+    changeQuestion(newQuestion);
+  };
+
+  useEffect(() => {
+    return () => {
+      console.log(newQuestion);
+      //editContact();
+    };
+  }, []);
+
+  const correctAnswer = res => {
+    switch (res) {
+      case 1:
+        return 'A. ' + answerAValue;
+        break;
+      case 2:
+        return 'B. ' + answerBValue;
+        break;
+      case 3:
+        return 'C. ' + answerCValue;
+        break;
+      case 4:
+        return 'D. ' + answerDValue;
+        break;
+      default:
+        break;
+    }
+  };
 
   // const name = contact.name ? contact.name : "No Name";
   const extraInfos = [];
@@ -146,8 +182,8 @@ export default function({ contact, otherAttributes, editContact }) {
             type="textarea"
             rows={5}
             onChange={event => {
-              console.log(event);
               setcontentValue(event.target.value);
+              //handleChangeInput();
             }}
           />
         </div>
@@ -158,81 +194,92 @@ export default function({ contact, otherAttributes, editContact }) {
             placeholder=""
             value={imageValue}
             onChange={event => {
-              console.log(event);
               setimageValue(event.target.value);
             }}
           />
         </div>
+
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel"></p>
-          <img
-            src={imageValue}
-            style={{ maxWidth: '100vh', maxHeight: 'calc(100vh - 200px)' }}
-            alt=""
-          />
+          <p className="isoInfoDetails">
+            <img
+              src={imageValue}
+              style={{ maxWidth: '100%', maxHeight: '50vh' }}
+              alt="No image"
+            />
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos" style={{ marginBottom: '0px' }}>
+          <p className="isoInfoLabel">Đáp án đúng:</p>
+          <p style={{ color: 'red', display: 'inline' }}>
+            {correctAnswer(resultValue)}
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos" style={{ marginTop: '0px' }}>
+          <p className="isoInfoLabel"></p>
+          <div className="isoInfoDetails">
+            <ContentHolder style={{ marginTop: '0px', marginLeft: '0px' }}>
+              <RadioGroup
+                onChange={event => {
+                  setresultValue(event.target.value);
+                }}
+                name="value"
+                value={resultValue}
+              >
+                <Radio style={radioStyle} value={1}>
+                  Option A
+                  <Input
+                    style={inputInRadioStyle}
+                    onChange={event => {
+                      setanswerAValue(event.target.value);
+                    }}
+                    value={answerAValue}
+                  />
+                </Radio>
+                <Radio style={radioStyle} value={2}>
+                  Option B
+                  <Input
+                    value={answerBValue}
+                    style={inputInRadioStyle}
+                    onChange={event => {
+                      setanswerBValue(event.target.value);
+                    }}
+                  />
+                </Radio>
+                <Radio style={radioStyle} value={3}>
+                  Option C
+                  <Input
+                    value={answerCValue}
+                    style={inputInRadioStyle}
+                    onChange={event => {
+                      setanswerCValue(event.target.value);
+                    }}
+                  />
+                </Radio>
+                <Radio style={radioStyle} value={4}>
+                  Option D
+                  <Input
+                    value={answerDValue}
+                    style={inputInRadioStyle}
+                    onChange={event => {
+                      setanswerDValue(event.target.value);
+                    }}
+                  />
+                </Radio>
+              </RadioGroup>
+            </ContentHolder>
+          </div>
+          d
         </div>
 
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Đáp án</p>
-          <ContentHolder>
-            <RadioGroup
-              onChange={event => {
-                setresultValue(event.target.value);
-              }}
-              name="value"
-              value={resultValue}
-            >
-              <Radio style={radioStyle} value={1}>
-                Option A
-                <Input
-                  style={inputInRadioStyle}
-                  onChange={event => {
-                    setanswerAValue(event.target.value);
-                  }}
-                  value={answerAValue}
-                />
-              </Radio>
-              <Radio style={radioStyle} value={2}>
-                Option B
-                <Input
-                  value={answerBValue}
-                  style={inputInRadioStyle}
-                  onChange={event => {
-                    setanswerBValue(event.target.value);
-                  }}
-                />
-              </Radio>
-              <Radio style={radioStyle} value={3}>
-                Option C
-                <Input
-                  value={answerCValue}
-                  style={inputInRadioStyle}
-                  onChange={event => {
-                    setanswerCValue(event.target.value);
-                  }}
-                />
-              </Radio>
-              <Radio style={radioStyle} value={4}>
-                Option D
-                <Input
-                  value={answerDValue}
-                  style={inputInRadioStyle}
-                  onChange={event => {
-                    setanswerDValue(event.target.value);
-                  }}
-                />
-              </Radio>
-            </RadioGroup>
-          </ContentHolder>
-        </div>
-
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Mô tả</p>
+          <p className="isoInfoLabel">Ghi chú</p>
           <Input
             placeholder=""
-            value={description}
+            value={descriptionValue}
             onChange={event => {
-              console.log(event);
               setdescriptionValue(event.target.value);
             }}
           />

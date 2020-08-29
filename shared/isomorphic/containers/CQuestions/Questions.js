@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import contactActions from '@iso/redux/cquestions/actions';
 import { Layout, Icon } from 'antd';
@@ -25,12 +25,15 @@ export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
-  console.log(contacts);
+  // console.log(contacts);
   const dispatch = useDispatch();
 
   const selectedContact = seectedId
     ? contacts.filter(contact => contact.id === seectedId)[0]
     : null;
+
+  const [questionOnChange, setquestionOnChange] = useState(selectedContact);
+
   const onVIewChange = () => dispatch(viewChange(!editView));
   return (
     <ContactsWrapper
@@ -73,8 +76,17 @@ export default function Contacts() {
               {editView ? (
                 <EditContactView
                   contact={selectedContact}
-                  editContact={contact => dispatch(editContact(contact))}
+                  editContact={() => {
+                    // console.log({ done: questionOnChange });
+                    // dispatch(editContact(questionOnChange));
+                  }}
                   otherAttributes={otherAttributes}
+                  changeQuestion={question => {
+                    // console.log(question);
+                    setquestionOnChange(question);
+                    // console.log(questionOnChange);
+                    dispatch(editContact(question));
+                  }}
                 />
               ) : (
                 <SingleContactView
