@@ -48,10 +48,11 @@ export default function questionReducer(state = initState, action) {
         const editQuestion = state.contacts.filter(
           contact => contact.id === state.seectedId
         );
+        console.log(editQuestion);
         return {
           ...state,
           editView: action.view,
-          editingQuestion: editQuestion,
+          editingQuestion: editQuestion[0],
         };
       }
 

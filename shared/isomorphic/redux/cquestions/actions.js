@@ -78,7 +78,40 @@ const contactActions = {
   onEditQuestion: (atribute, value) => {
     return (dispatch, getState) => {
       const question = getState().Questions.editingQuestion;
-      let newQuestion = { ...question, atribute: value };
+
+      let newQuestion = { ...question };
+      switch (atribute) {
+        case 'content':
+          newQuestion = { ...question, content: value };
+          break;
+        case 'image':
+          newQuestion = { ...question, image: value };
+          break;
+        case 'description':
+          newQuestion = { ...question, description: value };
+          break;
+        case 'result':
+          newQuestion = { ...question, result: value };
+          break;
+        case 'description':
+          newQuestion = { ...question, description: value };
+          break;
+        case 'answerA':
+          newQuestion = { ...question, answerA: value };
+          break;
+        case 'answerB':
+          newQuestion = { ...question, answerB: value };
+          break;
+        case 'answerC':
+          newQuestion = { ...question, answerC: value };
+          break;
+        case 'answerD':
+          newQuestion = { ...question, answerD: value };
+          break;
+        default:
+          break;
+      }
+
       dispatch({
         type: contactActions.EDITING_QUESTION,
         question: newQuestion,
