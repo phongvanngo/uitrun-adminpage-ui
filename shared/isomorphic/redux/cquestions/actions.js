@@ -47,11 +47,12 @@ const contactActions = {
         type: contactActions.ADD_QUESTION,
         contacts: [...getState().Questions.contacts, newContact],
         selectedId: newContact.id,
+        editQuestion: newContact,
       });
-      dispatch({
-        type: contactActions.EDIT_VIEW,
-        view: true,
-      });
+      // dispatch({
+      //   type: contactActions.EDIT_VIEW,
+      //   view: true,
+      // });
     };
   },
   editContact: newContact => {

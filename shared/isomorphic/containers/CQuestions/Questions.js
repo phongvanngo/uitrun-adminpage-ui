@@ -23,7 +23,7 @@ const {
 const { Content } = Layout;
 
 export default function Contacts() {
-  const { contacts, seectedId, editView } = useSelector(
+  const { contacts, seectedId, editView, editingQuestion } = useSelector(
     state => state.Questions
   );
   // console.log(contacts);
@@ -78,7 +78,7 @@ export default function Contacts() {
             >
               {editView ? (
                 <EditContactView
-                  contact={selectedContact}
+                  //contact={editingQuestion}
                   editContact={question => {
                     // dispatch(editContact(question));
                   }}

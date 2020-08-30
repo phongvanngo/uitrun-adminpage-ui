@@ -21,6 +21,7 @@ export default function({
   editContact,
   changeQuestion,
 }) {
+  console.log(contact);
   let {
     content,
     image,
@@ -42,6 +43,8 @@ export default function({
   const [descriptionValue, setdescriptionValue] = useState(description);
   const [imageValue, setimageValue] = useState(image);
   console.log(2, contentValue);
+
+  console.log(contact);
 
   let newQuestion = {
     id: contact.id,
@@ -71,12 +74,6 @@ export default function({
     console.log(newQuestion);
     //changeQuestion(newQuestion);
   };
-
-  useEffect(() => {
-    return () => {
-      changeQuestion(newQuestion);
-    };
-  }, [newQuestion]);
 
   const correctAnswer = res => {
     switch (res) {

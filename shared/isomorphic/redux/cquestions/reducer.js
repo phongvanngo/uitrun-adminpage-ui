@@ -24,7 +24,8 @@ export default function questionReducer(state = initState, action) {
         ...state,
         contacts: action.contacts,
         seectedId: action.selectedId,
-        //editView: true,
+        editingQuestion: action.editQuestion,
+        view: true,
       };
     case contactActions.EDIT_CONTACT:
       return {
