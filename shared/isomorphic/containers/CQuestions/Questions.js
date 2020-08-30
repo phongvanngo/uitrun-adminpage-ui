@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import contactActions from '@iso/redux/cquestions/actions';
-import { Layout, Icon } from 'antd';
-import Button from '@iso/components/uielements/button';
+import DeleteButton from '@iso/components/CQuestions/DeleteButton';
+import EditContactView from '@iso/components/CQuestions/EditView';
 import ContactList from '@iso/components/CQuestions/QuestionList';
 import SingleContactView from '@iso/components/CQuestions/SingleView';
-import EditContactView from '@iso/components/CQuestions/EditView';
-import DeleteButton from '@iso/components/CQuestions/DeleteButton';
-import { otherAttributes } from './data2';
-import IntlMessages from '@iso/components/utility/intlMessages';
-import { ContactsWrapper } from './Questions.styles';
+import Button from '@iso/components/uielements/button';
 import Scrollbar from '@iso/components/utility/customScrollBar';
+import IntlMessages from '@iso/components/utility/intlMessages';
+import contactActions from '@iso/redux/cquestions/actions';
+import { Icon, Layout } from 'antd';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { otherAttributes } from './data2';
+import { ContactsWrapper } from './Questions.styles';
 
 const {
   changeContact,

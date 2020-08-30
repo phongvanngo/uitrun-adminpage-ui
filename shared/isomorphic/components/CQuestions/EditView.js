@@ -1,14 +1,13 @@
 import Radio, { RadioGroup } from '@iso/components/uielements/radio';
 import ContentHolder from '@iso/components/utility/contentHolder';
-import React, { useEffect, useState } from 'react';
-import notification from '../Notification';
+import contactActions from '@iso/redux/cquestions/actions';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Input, { Textarea } from '../uielements/input';
 import { ContactCardWrapper } from './QuestionCard.style';
-import contactActions from '@iso/redux/cquestions/actions';
 import './upload.css';
-import { useDispatch, useSelector } from 'react-redux';
 
-const { onEditQuestion, addEditQuestion } = contactActions;
+const { onEditQuestion } = contactActions;
 
 function TransferResultOption(result) {
   const value = { A: 1, B: 2, C: 3, D: 4 };
@@ -75,7 +74,7 @@ export default function({ onUpdateQuestion }) {
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel">Câu hỏi</p>
           <Textarea
-            placeholder="câu hỏi"
+            placeholder="Question"
             value={content}
             type="textarea"
             rows={5}
@@ -88,7 +87,7 @@ export default function({ onUpdateQuestion }) {
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel">Hình ảnh</p>
           <Input
-            placeholder=""
+            placeholder="Image Link URL"
             value={image}
             onChange={event => {
               dispatch(onEditQuestion('image', event.target.value));
@@ -134,6 +133,7 @@ export default function({ onUpdateQuestion }) {
                 <Radio style={radioStyle} value={1}>
                   Option A
                   <Input
+                    placeholder="Option A"
                     style={inputInRadioStyle}
                     onChange={event => {
                       dispatch(onEditQuestion('answerA', event.target.value));
@@ -144,6 +144,7 @@ export default function({ onUpdateQuestion }) {
                 <Radio style={radioStyle} value={2}>
                   Option B
                   <Input
+                    placeholder="Option B"
                     value={answerB}
                     style={inputInRadioStyle}
                     onChange={event => {
@@ -154,6 +155,7 @@ export default function({ onUpdateQuestion }) {
                 <Radio style={radioStyle} value={3}>
                   Option C
                   <Input
+                    placeholder="Option C"
                     value={answerC}
                     style={inputInRadioStyle}
                     onChange={event => {
@@ -164,6 +166,7 @@ export default function({ onUpdateQuestion }) {
                 <Radio style={radioStyle} value={4}>
                   Option D
                   <Input
+                    placeholder="Option D"
                     value={answerD}
                     style={inputInRadioStyle}
                     onChange={event => {
@@ -179,7 +182,7 @@ export default function({ onUpdateQuestion }) {
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel">Ghi chú</p>
           <Input
-            placeholder=""
+            placeholder="Description"
             value={description}
             onChange={event => {
               dispatch(onEditQuestion('description', event.target.value));

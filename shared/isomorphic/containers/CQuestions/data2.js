@@ -7,7 +7,7 @@ export const otherAttributes = [
   { title: 'Answer C', value: 'answerC', type: 'boolean' },
   { title: 'Answer D', value: 'answerD', type: 'boolean' },
   { title: 'Result', value: 'result', type: 'string' },
-  { title: 'description', value: 'description', type: 'string' },
+  { title: 'Description', value: 'description', type: 'string' },
 ];
 
 const contactList = JSON.parse(
