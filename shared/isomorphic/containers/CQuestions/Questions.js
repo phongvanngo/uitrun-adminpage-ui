@@ -66,7 +66,7 @@ export default function Contacts() {
                 }}
                 className="isoAddContactBtn"
               >
-                <IntlMessages id="contactlist.addNewContact" />
+                <IntlMessages id="questionlist.addNewQuestion" />
               </Button>
             </div>
 
@@ -95,7 +95,7 @@ export default function Contacts() {
               onClick={() => dispatch(addContact())}
               className="isoAddContactBtn"
             >
-              <IntlMessages id="contactlist.addNewContact" />
+              <IntlMessages id="questionlist.addNewQuestion" />
             </Button>
           </div>
         )}

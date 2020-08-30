@@ -105,7 +105,7 @@ const options = [
   },
   {
     key: 'questions',
-    label: 'sidebar.contacts',
+    label: 'sidebar.questions',
     leftIcon: 'ion-android-checkbox-outline',
   },
   // {

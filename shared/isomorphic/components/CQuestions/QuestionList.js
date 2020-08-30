@@ -57,7 +57,7 @@ export default class ContactList extends Component {
       <ContactListWrapper className="isoContactListWrapper">
         <InputSearch
           placeholder={this.context.intl.formatMessage({
-            id: 'contactlist.searchContacts',
+            id: 'questionlist.searchQuestions',
           })}
           value={search}
           onChange={this.onChange}
@@ -74,7 +74,7 @@ export default class ContactList extends Component {
           </div>
         ) : (
           <span className="isoNoResultMsg">
-            {<IntlMessages id="Component.contacts.noOption" />}
+            {<IntlMessages id="Component.questions.noOption" />}
           </span>
         )}
       </ContactListWrapper>
