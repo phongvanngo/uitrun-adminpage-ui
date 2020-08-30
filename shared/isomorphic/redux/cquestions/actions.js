@@ -1,5 +1,5 @@
 import { contacts } from './reducer';
-
+import api from './../../../../packages/isomorphic/src/Api/AxiosClient';
 function ascendingSort(contact1, contact2) {
   const name1 = contact1.name ? contact1.name.toUpperCase() : '~';
   const name2 = contact2.name ? contact2.name.toUpperCase() : '~';
@@ -14,11 +14,31 @@ const contactActions = {
   EDIT_VIEW: 'EDIT_VIEW',
   EDITING_QUESTION: 'EDITING_QUESTION',
   UPDATE_QUESTION: 'UPDATE_QUESTION',
+  FETCH_QUESTION: 'FETCH_QUESTION',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
     id,
   }),
+
+  fetchQuestionList: () => {
+    return dispatch => {
+      return api
+        .get(`question/`)
+        .then(response => {
+          if (response.status === 200) {
+            dispatch({
+              type: contactActions.FETCH_QUESTION,
+              questions: response.data,
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          alert('Không thể thực hiện');
+        });
+    };
+  },
 
   addContact: () => {
     const newContact = {

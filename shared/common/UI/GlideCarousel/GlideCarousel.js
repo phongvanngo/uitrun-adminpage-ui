@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Glide from '@glidejs/glide';
-import '@glidejs/glide/dist/css/glide.core.min.css';
+// import Glide from "@glidejs/glide";
+//import "@glidejs/glide/dist/css/glide.core.min.css";
 import GlideWrapper, {
   GlideSlideWrapper,
   ButtonControlWrapper,

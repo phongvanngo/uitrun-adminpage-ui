@@ -7,7 +7,7 @@ import Scrollbar from '@iso/components/utility/customScrollBar';
 import IntlMessages from '@iso/components/utility/intlMessages';
 import contactActions from '@iso/redux/cquestions/actions';
 import { Icon, Layout } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { otherAttributes } from './data2';
 import { ContactsWrapper } from './Questions.styles';
@@ -18,16 +18,23 @@ const {
   deleteContact,
   viewChange,
   updateQuestion,
+  fetchQuestionList,
 } = contactActions;
 
 const { Content } = Layout;
 
 export default function Contacts() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchQuestionList());
+    return () => {};
+  });
+
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
   // console.log(contacts);
-  const dispatch = useDispatch();
 
   const selectedContact = seectedId
     ? contacts.filter(contact => contact.id === seectedId)[0]

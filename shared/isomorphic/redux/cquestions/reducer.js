@@ -1,17 +1,22 @@
 import fakeData from './data2';
 import contactActions from './actions';
 
-const contacts = new fakeData(4).getAll();
+// const contacts = new fakeData(4).getAll();
 
 const initState = {
-  contacts,
-  seectedId: contacts[0].id,
+  contacts: [],
+  seectedId: null,
   editView: false,
   editingQuestion: {},
 };
 
 export default function questionReducer(state = initState, action) {
   switch (action.type) {
+    case contactActions.FETCH_QUESTION:
+      return {
+        ...state,
+        contacts: action.questions,
+      };
     case contactActions.CHANGE_CONTACT:
       return {
         ...state,
@@ -75,4 +80,4 @@ export default function questionReducer(state = initState, action) {
   }
 }
 
-export { contacts };
+// export { contacts };

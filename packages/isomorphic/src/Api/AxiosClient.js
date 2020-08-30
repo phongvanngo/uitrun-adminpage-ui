@@ -1,18 +1,25 @@
 import axios from 'axios';
 import { get, save } from './localStorage';
+import queryString from 'query-string';
 
 const instance = axios.create({
   //baseURL: 'http://ttcong2301.southeastasia.cloudapp.azure.com:3000',
   baseURL: 'http://localhost:3000/api/v1',
+  headers: {
+    'content-type': 'application/json',
+  },
+  paramsSerializer: params => queryString.stringify(params),
 });
 
 // ADD Token into Headers
 instance.interceptors.request.use(
   config => {
     const token = localStorage.getItem('id_token');
+    console.log(token);
     console.log('hello from interceptors');
     if (token) {
-      config.headers['Authorization'] = `${token}`;
+      // config.headers["Authorization"] = `${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -29,7 +36,8 @@ const getNewTokenAndReattemptRequest = async (config, refToken) => {
     const { token, refreshtoken } = getNewToken.data;
     save('accessToken', token);
     save('refreshToken', refreshtoken);
-    config.headers['Authorization'] = `${token}`;
+    // config.headers["Authorization"] = `${token}`;
+    config.headers.Authorization = `${token}`;
     return await axios(config);
   } catch (err) {
     window.location.reload();
