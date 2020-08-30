@@ -21,6 +21,7 @@ const {
 } = contactActions;
 
 const { Content } = Layout;
+
 export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
@@ -62,7 +63,9 @@ export default function Contacts() {
               />
               <Button
                 type="primary"
-                onClick={() => dispatch(addContact())}
+                onClick={() => {
+                  dispatch(addContact());
+                }}
                 className="isoAddContactBtn"
               >
                 <IntlMessages id="contactlist.addNewContact" />
@@ -76,16 +79,13 @@ export default function Contacts() {
               {editView ? (
                 <EditContactView
                   contact={selectedContact}
-                  editContact={() => {
-                    // console.log({ done: questionOnChange });
-                    // dispatch(editContact(questionOnChange));
+                  editContact={question => {
+                    // dispatch(editContact(question));
                   }}
                   otherAttributes={otherAttributes}
                   changeQuestion={question => {
-                    // console.log(question);
                     setquestionOnChange(question);
-                    // console.log(questionOnChange);
-                    dispatch(editContact(question));
+                    // dispatch(editContact(question));
                   }}
                 />
               ) : (

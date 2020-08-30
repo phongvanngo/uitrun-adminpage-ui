@@ -7,6 +7,7 @@ const initState = {
   contacts,
   seectedId: contacts[0].id,
   editView: false,
+  editingQuestion: {},
 };
 
 export default function questionReducer(state = initState, action) {
@@ -23,7 +24,7 @@ export default function questionReducer(state = initState, action) {
         ...state,
         contacts: action.contacts,
         seectedId: action.selectedId,
-        editView: true,
+        //editView: true,
       };
     case contactActions.EDIT_CONTACT:
       return {
@@ -37,9 +38,37 @@ export default function questionReducer(state = initState, action) {
         seectedId: action.seectedId,
       };
     case contactActions.EDIT_VIEW:
+      if (action.view === false) {
+        return {
+          ...state,
+          editView: action.view,
+        };
+      } else {
+        const editQuestion = state.contacts.filter(
+          contact => contact.id === state.seectedId
+        );
+        return {
+          ...state,
+          editView: action.view,
+          editingQuestion: editQuestion,
+        };
+      }
+
+      const editQuestion = question.filter();
       return {
         ...state,
         editView: action.view,
+      };
+    case contactActions.EDITING_QUESTION:
+      return {
+        ...state,
+        editingQuestion: action.question,
+      };
+    case contactActions.ADD_EDIT_QUESTION:
+      console.log(action.question);
+      return {
+        ...state,
+        editingQuestion: action.question,
       };
     default:
       return state;

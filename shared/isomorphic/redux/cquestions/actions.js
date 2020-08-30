@@ -12,10 +12,14 @@ const contactActions = {
   DELETE__CONTACT: 'DELETE__CONTACT',
   CHANGE_CONTACT: 'CHANGE_CONTACT',
   EDIT_VIEW: 'EDIT_VIEW',
+  EDITING_QUESTION: 'EDITING_QUESTION',
+  ADD_EDIT_QUESTION: 'ADD_EDIT_QUESTION',
+
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
     id,
   }),
+
   addContact: () => {
     const newContact = {
       id: new Date(),
@@ -44,6 +48,10 @@ const contactActions = {
         contacts: [...getState().Questions.contacts, newContact],
         selectedId: newContact.id,
       });
+      dispatch({
+        type: contactActions.EDIT_VIEW,
+        view: true,
+      });
     };
   },
   editContact: newContact => {
@@ -65,9 +73,30 @@ const contactActions = {
       });
     };
   },
+
+  onEditQuestion: (atribute, value) => {
+    return (dispatch, getState) => {
+      const question = getState().Questions.editingQuestion;
+      let newQuestion = { ...question, atribute: value };
+      dispatch({
+        type: contactActions.EDITING_QUESTION,
+        question: newQuestion,
+      });
+    };
+  },
+
+  addEditQuestion: editQuestion => {
+    return (dispatch, getState) => {
+      dispatch({
+        type: contactActions.ADD_EDIT_QUESTION,
+        question: editQuestion,
+      });
+    };
+  },
+
   deleteContact: id => {
     return (dispatch, getState) => {
-      const contacts = getState().Qustions.contacts;
+      const contacts = getState().Questions.contacts;
       const seectedId = getState().Questions.seectedId;
       const newContacts = [];
       contacts.forEach(contact => {
