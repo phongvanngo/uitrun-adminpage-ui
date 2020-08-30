@@ -15,15 +15,15 @@ import Scrollbar from '@iso/components/utility/customScrollBar';
 const {
   changeContact,
   addContact,
-  editContact,
   deleteContact,
   viewChange,
+  updateQuestion,
 } = contactActions;
 
 const { Content } = Layout;
 
 export default function Contacts() {
-  const { contacts, seectedId, editView, editingQuestion } = useSelector(
+  const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
   // console.log(contacts);
@@ -32,8 +32,6 @@ export default function Contacts() {
   const selectedContact = seectedId
     ? contacts.filter(contact => contact.id === seectedId)[0]
     : null;
-
-  const [questionOnChange, setquestionOnChange] = useState(selectedContact);
 
   const onVIewChange = () => dispatch(viewChange(!editView));
   return (
@@ -78,14 +76,8 @@ export default function Contacts() {
             >
               {editView ? (
                 <EditContactView
-                  //contact={editingQuestion}
-                  editContact={question => {
-                    // dispatch(editContact(question));
-                  }}
-                  otherAttributes={otherAttributes}
-                  changeQuestion={question => {
-                    setquestionOnChange(question);
-                    // dispatch(editContact(question));
+                  onUpdateQuestion={() => {
+                    dispatch(updateQuestion());
                   }}
                 />
               ) : (

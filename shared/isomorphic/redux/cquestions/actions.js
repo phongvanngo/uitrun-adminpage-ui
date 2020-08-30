@@ -13,7 +13,7 @@ const contactActions = {
   CHANGE_CONTACT: 'CHANGE_CONTACT',
   EDIT_VIEW: 'EDIT_VIEW',
   EDITING_QUESTION: 'EDITING_QUESTION',
-  ADD_EDIT_QUESTION: 'ADD_EDIT_QUESTION',
+  UPDATE_QUESTION: 'UPDATE_QUESTION',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
@@ -57,11 +57,9 @@ const contactActions = {
   },
   editContact: newContact => {
     return (dispatch, getState) => {
-      console.log(newContact);
       const contacts = getState().Questions.contacts;
       const newContacts = [];
       contacts.forEach(contact => {
-        console.log(contact.id, newContact.id);
         if (contact.id === newContact.id) {
           newContacts.push(newContact);
         } else {
@@ -71,6 +69,25 @@ const contactActions = {
       dispatch({
         type: contactActions.EDIT_CONTACT,
         contacts: newContacts.sort(ascendingSort),
+      });
+    };
+  },
+
+  updateQuestion: () => {
+    return (dispatch, getState) => {
+      const questions = getState().Questions.contacts;
+      const newQuestion = getState().Questions.editingQuestion;
+      const newQuestions = [];
+      questions.forEach(question => {
+        if (question.id === newQuestion.id) {
+          newQuestions.push(newQuestion);
+        } else {
+          newQuestions.push(question);
+        }
+      });
+      dispatch({
+        type: contactActions.UPDATE_QUESTION,
+        questions: newQuestions.sort(ascendingSort),
       });
     };
   },
@@ -115,15 +132,6 @@ const contactActions = {
       dispatch({
         type: contactActions.EDITING_QUESTION,
         question: newQuestion,
-      });
-    };
-  },
-
-  addEditQuestion: editQuestion => {
-    return (dispatch, getState) => {
-      dispatch({
-        type: contactActions.ADD_EDIT_QUESTION,
-        question: editQuestion,
       });
     };
   },

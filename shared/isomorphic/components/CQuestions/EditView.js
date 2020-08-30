@@ -15,7 +15,7 @@ function TransferResultOption(result) {
   return value[result];
 }
 
-export default function({ otherAttributes, editContact, changeQuestion }) {
+export default function({ onUpdateQuestion }) {
   const dispatch = useDispatch();
   const { editingQuestion } = useSelector(state => state.Questions);
 
@@ -30,25 +30,13 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
     description,
   } = editingQuestion;
 
-  console.log(editingQuestion);
-  console.log(answerA);
-
-  const handleChangeInput = () => {
-    let newQuestion = {
-      id: contact.id,
-      content: contentValue,
-      image: imageValue,
-      answerA: answerAValue,
-      answerB: answerBValue,
-      answerC: answerCValue,
-      answerD: answerDValue,
-      result: resultValue,
-      description: descriptionValue,
+  useEffect(() => {
+    return () => {
+      onUpdateQuestion();
     };
-    console.log(1, contentValue);
-    console.log(newQuestion);
-    //changeQuestion(newQuestion);
-  };
+  }, []);
+
+  console.log(editingQuestion);
 
   const correctAnswer = res => {
     switch (res) {
@@ -83,26 +71,6 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
 
   return (
     <ContactCardWrapper className="isoContactCard">
-      {/* <div className="isoContactCardHead">
-        <div className="isoPersonImage">
-          <Upload
-            className="avatar-uploader"
-            name="avatar"
-            showUploadList={false}
-            beforeUpload={beforeUpload}
-            action=""
-          >
-            {contact.avatar ? (
-              <img src={contact.avatar} alt="" className="avatar" />
-            ) : (
-              ''
-            )}
-            <Icon type="plus" className="avatar-uploader-trigger" />
-          </Upload>
-        </div>
-        <h1 className="isoPersonName">{name}</h1>
-      </div> */}
-      {/* <div className="isoContactInfoWrapper">{extraInfos}</div> */}
       <div className="isoContactInfoWrapper" style={{ marginRight: '10px' }}>
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel">Câu hỏi</p>
@@ -112,7 +80,6 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
             type="textarea"
             rows={5}
             onChange={event => {
-              //handleChangeInput();
               dispatch(onEditQuestion('content', event.target.value));
             }}
           />
@@ -124,7 +91,7 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
             placeholder=""
             value={image}
             onChange={event => {
-              setimageValue(event.target.value);
+              dispatch(onEditQuestion('image', event.target.value));
             }}
           />
         </div>
@@ -151,12 +118,26 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
           <p className="isoInfoLabel"></p>
           <div className="isoInfoDetails">
             <ContentHolder style={{ marginTop: '0px', marginLeft: '0px' }}>
-              <RadioGroup onChange={event => {}} name="value" value={result}>
+              <RadioGroup
+                onChange={event => {
+                  const valueOption = ['A', 'B', 'C', 'D'];
+                  dispatch(
+                    onEditQuestion(
+                      'result',
+                      valueOption[event.target.value - 1]
+                    )
+                  );
+                }}
+                name="value"
+                value={TransferResultOption(result)}
+              >
                 <Radio style={radioStyle} value={1}>
                   Option A
                   <Input
                     style={inputInRadioStyle}
-                    onChange={event => {}}
+                    onChange={event => {
+                      dispatch(onEditQuestion('answerA', event.target.value));
+                    }}
                     value={answerA}
                   />
                 </Radio>
@@ -165,7 +146,9 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
                   <Input
                     value={answerB}
                     style={inputInRadioStyle}
-                    onChange={event => {}}
+                    onChange={event => {
+                      dispatch(onEditQuestion('answerB', event.target.value));
+                    }}
                   />
                 </Radio>
                 <Radio style={radioStyle} value={3}>
@@ -173,7 +156,9 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
                   <Input
                     value={answerC}
                     style={inputInRadioStyle}
-                    onChange={event => {}}
+                    onChange={event => {
+                      dispatch(onEditQuestion('answerC', event.target.value));
+                    }}
                   />
                 </Radio>
                 <Radio style={radioStyle} value={4}>
@@ -181,18 +166,25 @@ export default function({ otherAttributes, editContact, changeQuestion }) {
                   <Input
                     value={answerD}
                     style={inputInRadioStyle}
-                    onChange={event => {}}
+                    onChange={event => {
+                      dispatch(onEditQuestion('answerD', event.target.value));
+                    }}
                   />
                 </Radio>
               </RadioGroup>
             </ContentHolder>
           </div>
-          d
         </div>
 
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel">Ghi chú</p>
-          <Input placeholder="" value={description} onChange={event => {}} />
+          <Input
+            placeholder=""
+            value={description}
+            onChange={event => {
+              dispatch(onEditQuestion('description', event.target.value));
+            }}
+          />
         </div>
       </div>
     </ContactCardWrapper>

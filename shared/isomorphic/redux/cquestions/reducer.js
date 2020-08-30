@@ -19,13 +19,12 @@ export default function questionReducer(state = initState, action) {
         editView: false,
       };
     case contactActions.ADD_QUESTION:
-      console.log('dfd');
       return {
         ...state,
         contacts: action.contacts,
         seectedId: action.selectedId,
         editingQuestion: action.editQuestion,
-        view: true,
+        editView: true,
       };
     case contactActions.EDIT_CONTACT:
       return {
@@ -48,7 +47,6 @@ export default function questionReducer(state = initState, action) {
         const editQuestion = state.contacts.filter(
           contact => contact.id === state.seectedId
         );
-        console.log(editQuestion);
         return {
           ...state,
           editView: action.view,
@@ -66,12 +64,12 @@ export default function questionReducer(state = initState, action) {
         ...state,
         editingQuestion: action.question,
       };
-    case contactActions.ADD_EDIT_QUESTION:
-      console.log(action.question);
+    case contactActions.UPDATE_QUESTION:
       return {
         ...state,
-        editingQuestion: action.question,
+        contacts: action.questions,
       };
+
     default:
       return state;
   }
