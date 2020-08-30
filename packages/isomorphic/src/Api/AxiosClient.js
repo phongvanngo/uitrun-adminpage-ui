@@ -2,14 +2,14 @@ import axios from 'axios';
 import { get, save } from './localStorage';
 
 const instance = axios.create({
-  baseURL: 'http://ttcong2301.southeastasia.cloudapp.azure.com:3000',
-  //baseURL: "http://localhost:3000"
+  //baseURL: 'http://ttcong2301.southeastasia.cloudapp.azure.com:3000',
+  baseURL: 'http://localhost:3000/api/v1',
 });
 
 // ADD Token into Headers
 instance.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('id_token');
     console.log('hello from interceptors');
     if (token) {
       config.headers['Authorization'] = `${token}`;
