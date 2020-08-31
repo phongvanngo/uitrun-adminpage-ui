@@ -2,8 +2,8 @@ import axiosClient from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import queryString from 'query-string';
 import questionAction from './actions';
 
-function solveError(dispatch) {
-  if (window.confirm('Reload')) {
+function solveError(mess, dispatch) {
+  if (window.confirm(mess + ', reload ?')) {
     dispatch(questionAction.fetchQuestionList());
   }
 }
@@ -21,14 +21,13 @@ const questionApi = {
             break;
 
           default:
-            solveError(dispatch);
+            solveError(response.status, dispatch);
             return [];
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
-        console.log(error);
+        solveError('connection failed', dispatch);
         return [];
       });
     return questionList;
@@ -51,13 +50,13 @@ const questionApi = {
 
           default:
             console.log(newQuestion);
-            solveError(dispatch);
+            solveError(response.status, dispatch);
             return null;
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError('connection failed', dispatch);
         return null;
       });
     return newId;
@@ -73,13 +72,13 @@ const questionApi = {
             return response.data;
             break;
           default:
-            solveError(dispatch);
+            solveError(response.status, dispatch);
             return newQuestion;
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError('connection failed', dispatch);
         return newQuestion;
       });
     return updatedtQuestion;
@@ -96,12 +95,13 @@ const questionApi = {
             break;
 
           default:
+            solveError(response.status, dispatch);
             return response.status;
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError('connection failed', dispatch);
         return {};
       });
 
@@ -118,12 +118,13 @@ const questionApi = {
             break;
 
           default:
+            solveError(response.status, dispatch);
             return [];
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError('connection failed', dispatch);
         return {};
       });
 

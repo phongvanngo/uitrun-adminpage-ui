@@ -90,7 +90,7 @@ const contactActions = {
       const newContacts = [];
       contacts.forEach(contact => {
         if (contact.id === id) {
-          questionApi.deleteQuestion(id);
+          questionApi.deleteQuestion(id, dispatch);
           // dispatch(contactActions.fetchQuestionList());
         } else {
           newContacts.push(contact);
