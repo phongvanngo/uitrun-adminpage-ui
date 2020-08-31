@@ -33,6 +33,7 @@ const contactActions = {
 
   fetchQuestionList: () => {
     return async dispatch => {
+      console.log('2.5');
       const params = { pageSize: 500, page: 0 };
       const questionList = await questionApi.getQuestionList(params);
       console.log(questionList);
@@ -109,12 +110,13 @@ const contactActions = {
 
       questions.forEach(async question => {
         if (question.id === newQuestion.id) {
-          newQuestionList.push(newQuestion);
+          // newQuestionList.push(newQuestion);
           const updatedQuestion = await questionApi.editQuestion(
             newQuestion.id,
             newQuestion
           );
-          // contactActions.fetchQuestionList();
+          console.log('2. update');
+          dispatch(contactActions.fetchQuestionList());
         } else {
           newQuestionList.push(question);
         }

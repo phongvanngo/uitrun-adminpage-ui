@@ -3,6 +3,7 @@ import queryString from 'query-string';
 
 const questionApi = {
   getQuestionList: async _params => {
+    console.log('3. get');
     const url = '/question';
     const params = queryString.stringify(_params);
     const questionList = await axiosClient
@@ -58,6 +59,7 @@ const questionApi = {
 
   editQuestion: async (id, newQuestion) => {
     const url = '/question';
+    console.log('1. edit');
     const updatedtQuestion = await axiosClient
       .patch(`${url}/${id}`, newQuestion)
       .then(response => {
