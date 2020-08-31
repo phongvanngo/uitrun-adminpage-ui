@@ -14,7 +14,7 @@ import { ContactsWrapper } from './Questions.styles';
 
 const {
   changeContact,
-  addContact,
+  onAddQuestion,
   deleteContact,
   viewChange,
   updateQuestion,
@@ -29,7 +29,7 @@ export default function Contacts() {
   useEffect(() => {
     dispatch(fetchQuestionList());
     return () => {};
-  });
+  }, []);
 
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
@@ -69,7 +69,8 @@ export default function Contacts() {
               <Button
                 type="primary"
                 onClick={() => {
-                  dispatch(addContact());
+                  console.log('hell');
+                  dispatch(onAddQuestion());
                 }}
                 className="isoAddContactBtn"
               >
@@ -99,7 +100,7 @@ export default function Contacts() {
           <div className="isoContactControl">
             <Button
               type="primary"
-              onClick={() => dispatch(addContact())}
+              onClick={() => dispatch(onAddQuestion())}
               className="isoAddContactBtn"
             >
               <IntlMessages id="questionlist.addNewQuestion" />

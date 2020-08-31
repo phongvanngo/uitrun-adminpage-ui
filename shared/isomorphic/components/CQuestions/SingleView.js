@@ -3,7 +3,7 @@ import { ContactCardWrapper } from './QuestionCard.style';
 
 export default function({ contact, otherAttributes }) {
   // console.log(contact, otherAttributes);
-  const name = contact.name ? contact.name : 'No Name';
+  // const name = contact.name ? contact.name : 'No Name';
   const extraInfos = [];
   otherAttributes.forEach(attribute => {
     const value = contact[attribute.value];

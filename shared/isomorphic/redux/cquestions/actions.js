@@ -1,9 +1,20 @@
-import { contacts } from './reducer';
+// import { contacts } from "./reducer";
+
 import api from './../../../../packages/isomorphic/src/Api/AxiosClient';
+import questionApi from './questionApi';
 function ascendingSort(contact1, contact2) {
   const name1 = contact1.name ? contact1.name.toUpperCase() : '~';
   const name2 = contact2.name ? contact2.name.toUpperCase() : '~';
   return name1 > name2 ? 1 : name1 === name2 ? 0 : -1;
+}
+
+function validPayload(data) {
+  // let data = { ..._data };
+  for (let atribute in data) {
+    if (data[atribute] === '') data[atribute] = '_';
+  }
+  console.log(data);
+  // return data;
 }
 
 const contactActions = {
@@ -22,14 +33,43 @@ const contactActions = {
   }),
 
   fetchQuestionList: () => {
-    return dispatch => {
+    return async dispatch => {
+      const params = { limit: 5, page: 0 };
+      const questionList = await questionApi.getQuestionList(params);
+      console.log(questionList);
+      dispatch({
+        type: contactActions.FETCH_QUESTION,
+        questions: questionList,
+      });
+    };
+  },
+
+  onAddQuestion: () => {
+    const newQuestion = {
+      content: '_',
+      answerA: '_',
+      answerB: '_',
+      answerC: '_',
+      answerD: '_',
+      result: 'A',
+      image: '_',
+      description: '_',
+      isShuffle: 0,
+    };
+    return (dispatch, getState) => {
+      validPayload(newQuestion);
+      console.log(newQuestion);
       return api
-        .get(`question/`)
+        .post(`question/`, newQuestion)
         .then(response => {
+          const question = response.data;
           if (response.status === 200) {
+            console.log(response.data);
             dispatch({
-              type: contactActions.FETCH_QUESTION,
-              questions: response.data,
+              type: contactActions.ADD_QUESTION,
+              contacts: [...getState().Questions.contacts, question],
+              selectedId: question.id,
+              editQuestion: question,
             });
           }
         })
@@ -40,34 +80,13 @@ const contactActions = {
     };
   },
 
-  addContact: () => {
-    const newContact = {
-      id: new Date(),
-      // firstName: '',
-      // // avatar: contacts[new Date() % 10].avatar,
-      // LastName: '',
-      // mobile: '',
-      // home: '',
-      // name: '',
-      // company: '',
-      // work: '',
-      // note: '',
-
-      content: '',
-      image: '',
-      answerA: '',
-      answerB: '',
-      answerC: '',
-      answerD: '',
-      result: '',
-      description: '',
-    };
+  addQuestion: newQuestion => {
     return (dispatch, getState) => {
       dispatch({
         type: contactActions.ADD_QUESTION,
-        contacts: [...getState().Questions.contacts, newContact],
-        selectedId: newContact.id,
-        editQuestion: newContact,
+        contacts: [...getState().Questions.contacts, newQuestion],
+        selectedId: newQuestion.id,
+        editQuestion: newQuestion,
       });
       // dispatch({
       //   type: contactActions.EDIT_VIEW,

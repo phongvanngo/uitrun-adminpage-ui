@@ -1,4 +1,4 @@
-import fakeData from './data2';
+// import fakeData from './data2';
 import contactActions from './actions';
 
 // const contacts = new fakeData(4).getAll();
