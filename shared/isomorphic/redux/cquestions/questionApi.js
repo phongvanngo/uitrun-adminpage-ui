@@ -8,6 +8,7 @@ const questionApi = {
     const questionList = await axiosClient
       .get(url + '?' + params)
       .then(response => {
+        console.log('response', response);
         switch (response.status) {
           case 200:
             return response.data;
@@ -20,7 +21,7 @@ const questionApi = {
         }
       })
       .catch(error => {
-        window.alert('connection fail');
+        window.alert('connection failed');
         console.log(error);
         return [];
       });
@@ -30,6 +31,73 @@ const questionApi = {
   get: id => {
     const url = `/products/${id}`;
     return axiosClient.get(url);
+  },
+
+  addQuestion: async newQuestion => {
+    const url = '/question';
+    const questionWithId = await axiosClient
+      .post(url, newQuestion)
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return response.data;
+            break;
+
+          default:
+            window.alert(response.status);
+            return {};
+            break;
+        }
+      })
+      .catch(error => {
+        window.alert('connection failed');
+        return {};
+      });
+    return questionWithId;
+  },
+
+  editQuestion: async (id, newQuestion) => {
+    const url = '/question';
+    const updatedtQuestion = await axiosClient
+      .patch(`${url}/${id}`, newQuestion)
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return response.data;
+            break;
+          default:
+            window.alert(response.status);
+            return newQuestion;
+            break;
+        }
+      })
+      .catch(error => {
+        window.alert('connection failed');
+        return newQuestion;
+      });
+    return updatedtQuestion;
+  },
+  apii: async () => {
+    const url = '';
+    const data = await axiosClient
+      .get(url)
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return [];
+            break;
+
+          default:
+            return [];
+            break;
+        }
+      })
+      .catch(error => {
+        window.alert('connection failed');
+        return {};
+      });
+
+    return data;
   },
 };
 

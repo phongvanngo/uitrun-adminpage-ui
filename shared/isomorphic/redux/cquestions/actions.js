@@ -13,7 +13,6 @@ function validPayload(data) {
   for (let atribute in data) {
     if (data[atribute] === '') data[atribute] = '_';
   }
-  console.log(data);
   // return data;
 }
 
@@ -34,7 +33,7 @@ const contactActions = {
 
   fetchQuestionList: () => {
     return async dispatch => {
-      const params = { limit: 5, page: 0 };
+      const params = { pageSize: 500, page: 0 };
       const questionList = await questionApi.getQuestionList(params);
       console.log(questionList);
       dispatch({
@@ -56,27 +55,17 @@ const contactActions = {
       description: '_',
       isShuffle: 0,
     };
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
       validPayload(newQuestion);
       console.log(newQuestion);
-      return api
-        .post(`question/`, newQuestion)
-        .then(response => {
-          const question = response.data;
-          if (response.status === 200) {
-            console.log(response.data);
-            dispatch({
-              type: contactActions.ADD_QUESTION,
-              contacts: [...getState().Questions.contacts, question],
-              selectedId: question.id,
-              editQuestion: question,
-            });
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          alert('Không thể thực hiện');
-        });
+      const newQuestionWithId = await questionApi.addQuestion(newQuestion);
+      console.log(newQuestionWithId);
+      dispatch({
+        type: contactActions.ADD_QUESTION,
+        contacts: [...getState().Questions.contacts, newQuestionWithId],
+        selectedId: newQuestionWithId.id,
+        editQuestion: newQuestionWithId,
+      });
     };
   },
 
@@ -116,17 +105,24 @@ const contactActions = {
     return (dispatch, getState) => {
       const questions = getState().Questions.contacts;
       const newQuestion = getState().Questions.editingQuestion;
-      const newQuestions = [];
-      questions.forEach(question => {
+      const newQuestionList = [];
+
+      questions.forEach(async question => {
         if (question.id === newQuestion.id) {
-          newQuestions.push(newQuestion);
+          newQuestionList.push(newQuestion);
+          const updatedQuestion = await questionApi.editQuestion(
+            newQuestion.id,
+            newQuestion
+          );
+          // contactActions.fetchQuestionList();
         } else {
-          newQuestions.push(question);
+          newQuestionList.push(question);
         }
       });
+
       dispatch({
         type: contactActions.UPDATE_QUESTION,
-        questions: newQuestions.sort(ascendingSort),
+        questions: newQuestionList.sort(ascendingSort),
       });
     };
   },
