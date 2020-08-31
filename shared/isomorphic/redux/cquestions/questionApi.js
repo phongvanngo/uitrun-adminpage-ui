@@ -3,13 +3,11 @@ import queryString from 'query-string';
 
 const questionApi = {
   getQuestionList: async _params => {
-    console.log('3. get');
     const url = '/question';
     const params = queryString.stringify(_params);
     const questionList = await axiosClient
       .get(url + '?' + params)
       .then(response => {
-        console.log('response', response);
         switch (response.status) {
           case 200:
             return response.data;
@@ -59,7 +57,6 @@ const questionApi = {
 
   editQuestion: async (id, newQuestion) => {
     const url = '/question';
-    console.log('1. edit');
     const updatedtQuestion = await axiosClient
       .patch(`${url}/${id}`, newQuestion)
       .then(response => {
@@ -79,6 +76,29 @@ const questionApi = {
       });
     return updatedtQuestion;
   },
+
+  deleteQuestion: async id => {
+    const url = '/question';
+    const response = await axiosClient
+      .delete(`${url}/${id}`)
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return response.status;
+            break;
+
+          default:
+            return response.status;
+            break;
+        }
+      })
+      .catch(error => {
+        window.alert('connection failed');
+        return {};
+      });
+
+    return response;
+  },
   apii: async () => {
     const url = '';
     const data = await axiosClient
@@ -86,7 +106,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
-            return [];
+            return response;
             break;
 
           default:

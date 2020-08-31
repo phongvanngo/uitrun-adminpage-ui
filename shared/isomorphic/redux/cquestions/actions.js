@@ -33,7 +33,6 @@ const contactActions = {
 
   fetchQuestionList: () => {
     return async dispatch => {
-      console.log('2.5');
       const params = { pageSize: 500, page: 0 };
       const questionList = await questionApi.getQuestionList(params);
       console.log(questionList);
@@ -66,6 +65,27 @@ const contactActions = {
         contacts: [...getState().Questions.contacts, newQuestionWithId],
         selectedId: newQuestionWithId.id,
         editQuestion: newQuestionWithId,
+      });
+    };
+  },
+
+  onDeleteQuestion: id => {
+    return (dispatch, getState) => {
+      const contacts = getState().Questions.contacts;
+      const seectedId = getState().Questions.seectedId;
+      const newContacts = [];
+      contacts.forEach(contact => {
+        if (contact.id === id) {
+          questionApi.deleteQuestion(id);
+          dispatch(contactActions.fetchQuestionList());
+        } else {
+          newContacts.push(contact);
+        }
+      });
+      dispatch({
+        type: contactActions.DELETE__CONTACT,
+        contacts: newContacts,
+        seectedId: id === seectedId ? undefined : seectedId,
       });
     };
   },
@@ -110,13 +130,13 @@ const contactActions = {
 
       questions.forEach(async question => {
         if (question.id === newQuestion.id) {
-          // newQuestionList.push(newQuestion);
+          // newQuestionList.push(newQuestion); //--> han che get
           const updatedQuestion = await questionApi.editQuestion(
             newQuestion.id,
             newQuestion
           );
-          console.log('2. update');
-          dispatch(contactActions.fetchQuestionList());
+
+          dispatch(contactActions.fetchQuestionList()); // --> get nhieu lan
         } else {
           newQuestionList.push(question);
         }

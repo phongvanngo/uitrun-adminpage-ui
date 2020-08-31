@@ -19,6 +19,7 @@ const {
   viewChange,
   updateQuestion,
   fetchQuestionList,
+  onDeleteQuestion,
 } = contactActions;
 
 const { Content } = Layout;
@@ -51,7 +52,7 @@ export default function Contacts() {
           contacts={contacts}
           seectedId={seectedId}
           changeContact={id => dispatch(changeContact(id))}
-          deleteContact={e => dispatch(deleteContact(e))}
+          deleteContact={e => dispatch(onDeleteQuestion(e))}
         />
       </div>
       <Layout className="isoContactBoxWrapper">
