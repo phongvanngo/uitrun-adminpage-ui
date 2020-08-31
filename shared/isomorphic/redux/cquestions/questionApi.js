@@ -1,6 +1,12 @@
 import axiosClient from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import queryString from 'query-string';
 
+function solveError() {
+  if (window.confirm('Reload website')) {
+    questionApi.getQuestionList();
+  }
+}
+
 const questionApi = {
   getQuestionList: async _params => {
     const url = '/question';
@@ -14,13 +20,13 @@ const questionApi = {
             break;
 
           default:
-            window.alert(response.status);
+            solveError();
             return [];
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError();
         console.log(error);
         return [];
       });
@@ -34,25 +40,25 @@ const questionApi = {
 
   addQuestion: async newQuestion => {
     const url = '/question';
-    const questionWithId = await axiosClient
+    const newId = await axiosClient
       .post(url, newQuestion)
       .then(response => {
         switch (response.status) {
           case 200:
-            return response.data;
+            return response.data.id;
             break;
 
           default:
-            window.alert(response.status);
-            return {};
+            solveError();
+            return null;
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
-        return {};
+        solveError();
+        return null;
       });
-    return questionWithId;
+    return newId;
   },
 
   editQuestion: async (id, newQuestion) => {
@@ -65,13 +71,13 @@ const questionApi = {
             return response.data;
             break;
           default:
-            window.alert(response.status);
+            solveError();
             return newQuestion;
             break;
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError();
         return newQuestion;
       });
     return updatedtQuestion;
@@ -93,7 +99,7 @@ const questionApi = {
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError();
         return {};
       });
 
@@ -115,7 +121,7 @@ const questionApi = {
         }
       })
       .catch(error => {
-        window.alert('connection failed');
+        solveError();
         return {};
       });
 

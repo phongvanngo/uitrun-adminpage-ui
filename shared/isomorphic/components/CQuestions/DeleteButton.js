@@ -4,23 +4,13 @@ import Button from '../uielements/button';
 import notification from '../Notification';
 
 export default function({ contact, deleteContact }) {
-  let name = '';
-  if (contact.firstName) {
-    name = `${contact.firstName} `;
-  }
-  if (contact.lastName) {
-    name = `${name}${contact.lastName}`;
-  }
-  if (!name) {
-    name = 'No Name';
-  }
   return (
     <Popconfirm
-      title={`Sure to delete ${name}?`}
+      title={`Sure to delete ${contact.content}?`}
       okText="DELETE"
       cancelText="No"
       onConfirm={() => {
-        notification('error', `${name} Deleted`, '');
+        notification('error', `${contact.content} Deleted`, '');
         deleteContact(contact.id);
       }}
     >
