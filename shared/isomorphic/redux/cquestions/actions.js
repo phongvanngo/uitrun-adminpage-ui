@@ -77,7 +77,7 @@ const contactActions = {
       contacts.forEach(contact => {
         if (contact.id === id) {
           questionApi.deleteQuestion(id);
-          dispatch(contactActions.fetchQuestionList());
+          // dispatch(contactActions.fetchQuestionList());
         } else {
           newContacts.push(contact);
         }
@@ -130,13 +130,13 @@ const contactActions = {
 
       questions.forEach(async question => {
         if (question.id === newQuestion.id) {
-          // newQuestionList.push(newQuestion); //--> han che get
+          newQuestionList.push(newQuestion); //--> han che get
           const updatedQuestion = await questionApi.editQuestion(
             newQuestion.id,
             newQuestion
           );
 
-          dispatch(contactActions.fetchQuestionList()); // --> get nhieu lan
+          // dispatch(contactActions.fetchQuestionList()); // --> get nhieu lan
         } else {
           newQuestionList.push(question);
         }
