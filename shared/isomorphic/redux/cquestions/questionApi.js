@@ -34,25 +34,26 @@ const questionApi = {
 
   addQuestion: async newQuestion => {
     const url = '/question';
-    const questionWithId = await axiosClient
+    const newId = await axiosClient
       .post(url, newQuestion)
       .then(response => {
         switch (response.status) {
           case 200:
-            return response.data;
+            return response.data.id;
             break;
 
           default:
+            console.log(newQuestion);
             window.alert(response.status);
-            return {};
+            return null;
             break;
         }
       })
       .catch(error => {
         window.alert('connection failed');
-        return {};
+        return null;
       });
-    return questionWithId;
+    return newId;
   },
 
   editQuestion: async (id, newQuestion) => {

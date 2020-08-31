@@ -8,12 +8,12 @@ function ascendingSort(contact1, contact2) {
   return name1 > name2 ? 1 : name1 === name2 ? 0 : -1;
 }
 
-function validPayload(data) {
+function makePayloadValid({ ...data }) {
   // let data = { ..._data };
   for (let atribute in data) {
     if (data[atribute] === '') data[atribute] = '_';
   }
-  // return data;
+  return data;
 }
 
 const contactActions = {
@@ -45,21 +45,21 @@ const contactActions = {
 
   onAddQuestion: () => {
     const newQuestion = {
-      content: '_',
-      answerA: '_',
-      answerB: '_',
-      answerC: '_',
-      answerD: '_',
+      content: '',
+      answerA: '',
+      answerB: '',
+      answerC: '',
+      answerD: '',
       result: 'A',
-      image: '_',
-      description: '_',
+      image: '',
+      description: ' ',
       isShuffle: 0,
     };
     return async (dispatch, getState) => {
-      validPayload(newQuestion);
-      console.log(newQuestion);
-      const newQuestionWithId = await questionApi.addQuestion(newQuestion);
-      console.log(newQuestionWithId);
+      const validQuestion = makePayloadValid(newQuestion);
+      console.log(validQuestion, newQuestion);
+      const newId = await questionApi.addQuestion(validQuestion);
+      const newQuestionWithId = { ...newQuestion, id: newId };
       dispatch({
         type: contactActions.ADD_QUESTION,
         contacts: [...getState().Questions.contacts, newQuestionWithId],
