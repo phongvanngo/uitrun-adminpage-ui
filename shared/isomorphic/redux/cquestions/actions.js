@@ -1,4 +1,5 @@
 // import { contacts } from "./reducer";
+import notification from '@iso/components/Notification';
 
 import api from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import questionApi from './questionApi';
@@ -16,6 +17,17 @@ function makePayloadValid({ ...data }) {
   return data;
 }
 
+function validQuestion(question) {
+  if (question.content.replace(/\s+/g, '') === '') return false;
+  if (question.answerA.replace(/\s+/g, '') === '') return false;
+  if (question.answerB.replace(/\s+/g, '') === '') return false;
+  if (question.answerC.replace(/\s+/g, '') === '') return false;
+  if (question.answerD.replace(/\s+/g, '') === '') return false;
+  // if (question.image !== undefined || question.image !== null)
+  if (question.image.replace(/\s+/g, '') === '') question.image = 'no image';
+  return true;
+}
+
 const contactActions = {
   ADD_QUESTION: 'ADD_QUESTION',
   EDIT_CONTACT: 'EDIT_CONTACT',
@@ -25,6 +37,7 @@ const contactActions = {
   EDITING_QUESTION: 'EDITING_QUESTION',
   UPDATE_QUESTION: 'UPDATE_QUESTION',
   FETCH_QUESTION: 'FETCH_QUESTION',
+  UNVALID_PAYLOAD: 'UNVALID_PAYLOAD',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
@@ -32,9 +45,10 @@ const contactActions = {
   }),
 
   fetchQuestionList: () => {
+    console.log('hell');
     return async dispatch => {
       const params = { pageSize: 500, page: 0 };
-      const questionList = await questionApi.getQuestionList(params);
+      const questionList = await questionApi.getQuestionList(params, dispatch);
       console.log(questionList);
       dispatch({
         type: contactActions.FETCH_QUESTION,
@@ -58,7 +72,7 @@ const contactActions = {
     return async (dispatch, getState) => {
       const validQuestion = makePayloadValid(newQuestion);
       console.log(validQuestion, newQuestion);
-      const newId = await questionApi.addQuestion(validQuestion);
+      const newId = await questionApi.addQuestion(validQuestion, dispatch);
       const newQuestionWithId = { ...newQuestion, id: newId };
       dispatch({
         type: contactActions.ADD_QUESTION,
@@ -128,24 +142,34 @@ const contactActions = {
       const newQuestion = getState().Questions.editingQuestion;
       const newQuestionList = [];
 
-      questions.forEach(async question => {
-        if (question.id === newQuestion.id) {
-          newQuestionList.push(newQuestion); //--> han che get
-          const updatedQuestion = await questionApi.editQuestion(
-            newQuestion.id,
-            newQuestion
-          );
+      const valid = validQuestion(newQuestion); //questions will change;
+      if (valid) {
+        questions.forEach(async question => {
+          if (question.id === newQuestion.id) {
+            newQuestionList.push(newQuestion); //--> han che get
+            const updatedQuestion = await questionApi.editQuestion(
+              newQuestion.id,
+              newQuestion,
+              dispatch
+            );
+            // dispatch(contactActions.fetchQuestionList()); // --> get nhieu lan
+          } else {
+            newQuestionList.push(question);
+          }
+        });
 
-          // dispatch(contactActions.fetchQuestionList()); // --> get nhieu lan
-        } else {
-          newQuestionList.push(question);
-        }
-      });
-
-      dispatch({
-        type: contactActions.UPDATE_QUESTION,
-        questions: newQuestionList.sort(ascendingSort),
-      });
+        dispatch({
+          type: contactActions.UPDATE_QUESTION,
+          questions: newQuestionList.sort(ascendingSort),
+        });
+      } else {
+        dispatch(contactActions.unvalidPayload());
+        notification(
+          'error',
+          `Câu hỏi không hợp lệ`,
+          'Kiểm tra lại các trường dữ liệu bắt buộc'
+        );
+      }
     };
   },
 
@@ -214,6 +238,10 @@ const contactActions = {
   viewChange: view => ({
     type: contactActions.EDIT_VIEW,
     view,
+  }),
+
+  unvalidPayload: () => ({
+    type: contactActions.UNVALID_PAYLOAD,
   }),
 };
 export default contactActions;

@@ -1,8 +1,15 @@
 import axiosClient from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import queryString from 'query-string';
+import questionAction from './actions';
+
+function solveError(dispatch) {
+  if (window.confirm('Reload')) {
+    dispatch(questionAction.fetchQuestionList());
+  }
+}
 
 const questionApi = {
-  getQuestionList: async _params => {
+  getQuestionList: async (_params, dispatch) => {
     const url = '/question';
     const params = queryString.stringify(_params);
     const questionList = await axiosClient
@@ -14,7 +21,7 @@ const questionApi = {
             break;
 
           default:
-            window.alert(response.status);
+            solveError(dispatch);
             return [];
             break;
         }
@@ -32,7 +39,7 @@ const questionApi = {
     return axiosClient.get(url);
   },
 
-  addQuestion: async newQuestion => {
+  addQuestion: async (newQuestion, dispatch) => {
     const url = '/question';
     const newId = await axiosClient
       .post(url, newQuestion)
@@ -44,7 +51,7 @@ const questionApi = {
 
           default:
             console.log(newQuestion);
-            window.alert(response.status);
+            solveError(dispatch);
             return null;
             break;
         }
@@ -56,7 +63,7 @@ const questionApi = {
     return newId;
   },
 
-  editQuestion: async (id, newQuestion) => {
+  editQuestion: async (id, newQuestion, dispatch) => {
     const url = '/question';
     const updatedtQuestion = await axiosClient
       .patch(`${url}/${id}`, newQuestion)
@@ -66,7 +73,7 @@ const questionApi = {
             return response.data;
             break;
           default:
-            window.alert(response.status);
+            solveError(dispatch);
             return newQuestion;
             break;
         }
@@ -78,7 +85,7 @@ const questionApi = {
     return updatedtQuestion;
   },
 
-  deleteQuestion: async id => {
+  deleteQuestion: async (id, dispatch) => {
     const url = '/question';
     const response = await axiosClient
       .delete(`${url}/${id}`)

@@ -59,11 +59,6 @@ export default function questionReducer(state = initState, action) {
         };
       }
 
-      const editQuestion = question.filter();
-      return {
-        ...state,
-        editView: action.view,
-      };
     case contactActions.EDITING_QUESTION:
       return {
         ...state,
@@ -73,6 +68,12 @@ export default function questionReducer(state = initState, action) {
       return {
         ...state,
         contacts: action.questions,
+      };
+
+    case contactActions.UNVALID_PAYLOAD:
+      return {
+        ...state,
+        editView: true,
       };
 
     default:
