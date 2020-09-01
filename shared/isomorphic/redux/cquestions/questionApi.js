@@ -18,7 +18,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
-            notification('success', 'Get question list success');
+            notification('success', 'Get question list successfully');
             return response.data;
             break;
 
