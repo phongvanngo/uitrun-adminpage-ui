@@ -64,7 +64,7 @@ export default function Contacts() {
                 {editView ? <Icon type="check" /> : <Icon type="edit" />}
               </Button>
               <DeleteButton
-                deleteContact={id => dispatch(deleteContact(id))}
+                deleteContact={id => dispatch(onDeleteQuestion(id))}
                 contact={selectedContact}
               />
               <Button
