@@ -1,6 +1,7 @@
 import axiosClient from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import queryString from 'query-string';
 import questionAction from './actions';
+import notification from '@iso/components/Notification';
 
 function solveError(mess, dispatch) {
   if (window.confirm(mess + ', reload ?')) {
@@ -17,6 +18,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
+            notification('success', 'Get question list success');
             return response.data;
             break;
 
@@ -45,6 +47,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
+            notification('success', 'Add question successfully');
             return response.data.id;
             break;
 
@@ -69,6 +72,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
+            notification('success', 'Update question successfully');
             return response.data;
             break;
           default:
@@ -91,6 +95,7 @@ const questionApi = {
       .then(response => {
         switch (response.status) {
           case 200:
+            notification('success', 'Delete question successfully');
             return response.status;
             break;
 

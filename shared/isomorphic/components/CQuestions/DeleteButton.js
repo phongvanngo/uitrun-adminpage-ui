@@ -10,7 +10,7 @@ export default function({ contact, deleteContact }) {
       okText="DELETE"
       cancelText="No"
       onConfirm={() => {
-        notification('error', `${contact.content} Deleted`, '');
+        //notification('error', `${contact.content} Deleted`, '');
         deleteContact(contact.id);
       }}
     >
