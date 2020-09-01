@@ -4,6 +4,20 @@ import Loader from '@iso/components/utility/loader';
 
 const routes = [
   {
+    path: 'questions',
+    component: lazy(() => import('@iso/containers/CQuestions/Questions')),
+  },
+  {
+    path: 'table_ant',
+    component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
+  },
+  {
+    path: 'board',
+    component: lazy(() =>
+      import('@iso/containers/Ta_Board/AntTables/AntTables')
+    ),
+  },
+  {
     path: '',
     component: lazy(() => import('@iso/containers/Widgets/Widgets')),
     exact: true,
@@ -46,6 +60,12 @@ const routes = [
   {
     path: 'table_ant',
     component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
+  },
+  {
+    path: 'user_manager',
+    component: lazy(() =>
+      import('@iso/containers/Ta_UserManager/AntTables/AntTables')
+    ),
   },
   {
     path: 'allFormComponent',
@@ -132,10 +152,6 @@ const routes = [
   {
     path: 'contacts',
     component: lazy(() => import('@iso/containers/Contacts/Contacts')),
-  },
-  {
-    path: 'questions',
-    component: lazy(() => import('@iso/containers/CQuestions/Questions')),
   },
 
   {

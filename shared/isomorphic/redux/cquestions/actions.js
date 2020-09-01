@@ -1,7 +1,5 @@
 // import { contacts } from "./reducer";
 import notification from '@iso/components/Notification';
-
-import api from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import questionApi from './questionApi';
 function ascendingSort(contact1, contact2) {
   const name1 = contact1.name ? contact1.name.toUpperCase() : '~';

@@ -1,113 +1,137 @@
 const options = [
-  // {
-  //   key: 'mailbox',
-  //   label: 'sidebar.email',
-  //   leftIcon: 'ion-android-mail',
-  // },
-  // {
-  //   key: 'chat',
-  //   label: 'sidebar.chat',
-  //   leftIcon: 'ion-chatbubbles',
-  // },
-  // {
-  //   key: 'ecommerce',
-  //   label: 'sidebar.ecommerce',
-  //   leftIcon: 'ion-bag',
-  //   children: [
-  //     {
-  //       key: 'shop',
-  //       label: 'sidebar.shop',
-  //     },
-  //     {
-  //       key: 'cart',
-  //       label: 'sidebar.cart',
-  //     },
-  //     {
-  //       key: 'checkout',
-  //       label: 'sidebar.checkout',
-  //     },
-  //     {
-  //       key: 'card',
-  //       label: 'sidebar.cards',
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: 'maps',
-  //   label: 'sidebar.maps',
-  //   leftIcon: 'ion-map',
-  //   children: [
-  //     {
-  //       key: 'googlemap',
-  //       label: 'sidebar.googleMap',
-  //     },
-  //     {
-  //       key: 'leafletmap',
-  //       label: 'sidebar.leafletMap',
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: 'my-profile',
-  //   label: 'sidebar.profile',
-  //   leftIcon: 'ion-person',
-  // },
-  // {
-  //   key: 'scrum-board',
-  //   label: 'sidebar.scrumboard',
-  //   leftIcon: 'ion-android-checkbox-outline',
-  // },
-  // {
-  //   key: 'invoice',
-  //   label: 'sidebar.invoice',
-  //   leftIcon: 'ion-clipboard',
-  // },
-  // {
-  //   key: 'youtubeSearch',
-  //   label: 'sidebar.youtubeSearch',
-  //   leftIcon: 'ion-social-youtube',
-  // },
-  // {
-  //   key: 'calendar',
-  //   label: 'sidebar.calendar',
-  //   leftIcon: 'ion-calendar',
-  // },
-  // {
-  //   key: 'notes',
-  //   label: 'sidebar.notes',
-  //   leftIcon: 'ion-ios-paper',
-  // },
-  // {
-  //   key: 'todo',
-  //   label: 'sidebar.todos',
-  //   leftIcon: 'ion-android-checkbox-outline',
-  // },
-  // {
-  //   key: 'firestorecrud',
-  //   label: 'sidebar.firestorecrud',
-  //   leftIcon: 'ion-fireball',
-
-  //   children: [
-  //     {
-  //       key: 'articles',
-  //       label: 'sidebar.firestorecrudarticle',
-  //     },
-  //     {
-  //       key: 'investors',
-  //       label: 'sidebar.firestorecrudinvestor',
-  //     },
-  //   ],
-  // },
-  {
-    key: 'contacts',
-    label: 'sidebar.contacts',
-    leftIcon: 'ion-android-person-add',
-  },
   {
     key: 'questions',
     label: 'sidebar.questions',
     leftIcon: 'ion-android-checkbox-outline',
   },
+  {
+    key: 'user_manager',
+    label: 'sidebar.user_manager',
+    leftIcon: 'ion-person',
+  },
+  {
+    key: 'board',
+    label: 'sidebar.board',
+    leftIcon: 'ion-android-menu',
+  },
+  {
+    key: 'table',
+    label: 'sidebar.tables',
+    leftIcon: 'ion-android-menu',
+    children: [
+      {
+        key: 'table_ant',
+        label: 'sidebar.antTables',
+      },
+    ],
+  },
+
+  {
+    key: 'contacts',
+    label: 'sidebar.contacts',
+    leftIcon: 'ion-android-person-add',
+  },
+
+  {
+    key: 'mailbox',
+    label: 'sidebar.email',
+    leftIcon: 'ion-android-mail',
+  },
+  {
+    key: 'chat',
+    label: 'sidebar.chat',
+    leftIcon: 'ion-chatbubbles',
+  },
+  {
+    key: 'ecommerce',
+    label: 'sidebar.ecommerce',
+    leftIcon: 'ion-bag',
+    children: [
+      {
+        key: 'shop',
+        label: 'sidebar.shop',
+      },
+      {
+        key: 'cart',
+        label: 'sidebar.cart',
+      },
+      {
+        key: 'checkout',
+        label: 'sidebar.checkout',
+      },
+      {
+        key: 'card',
+        label: 'sidebar.cards',
+      },
+    ],
+  },
+  {
+    key: 'maps',
+    label: 'sidebar.maps',
+    leftIcon: 'ion-map',
+    children: [
+      {
+        key: 'googlemap',
+        label: 'sidebar.googleMap',
+      },
+      {
+        key: 'leafletmap',
+        label: 'sidebar.leafletMap',
+      },
+    ],
+  },
+  {
+    key: 'my-profile',
+    label: 'sidebar.profile',
+    leftIcon: 'ion-person',
+  },
+  {
+    key: 'scrum-board',
+    label: 'sidebar.scrumboard',
+    leftIcon: 'ion-android-checkbox-outline',
+  },
+  {
+    key: 'invoice',
+    label: 'sidebar.invoice',
+    leftIcon: 'ion-clipboard',
+  },
+  {
+    key: 'youtubeSearch',
+    label: 'sidebar.youtubeSearch',
+    leftIcon: 'ion-social-youtube',
+  },
+  {
+    key: 'calendar',
+    label: 'sidebar.calendar',
+    leftIcon: 'ion-calendar',
+  },
+  {
+    key: 'notes',
+    label: 'sidebar.notes',
+    leftIcon: 'ion-ios-paper',
+  },
+  {
+    key: 'todo',
+    label: 'sidebar.todos',
+    leftIcon: 'ion-android-checkbox-outline',
+  },
+  {
+    key: 'firestorecrud',
+    label: 'sidebar.firestorecrud',
+    leftIcon: 'ion-fireball',
+
+    children: [
+      {
+        key: 'articles',
+        label: 'sidebar.firestorecrudarticle',
+      },
+      {
+        key: 'investors',
+        label: 'sidebar.firestorecrudinvestor',
+      },
+    ],
+  },
+
   // {
   //   key: 'shuffle',
   //   label: 'sidebar.shuffle',
@@ -300,17 +324,7 @@ const options = [
       },
     ],
   },
-  {
-    key: 'table',
-    label: 'sidebar.tables',
-    leftIcon: 'ion-android-menu',
-    children: [
-      {
-        key: 'table_ant',
-        label: 'sidebar.antTables',
-      },
-    ],
-  },
+
   {
     key: 'pages',
     label: 'sidebar.pages',

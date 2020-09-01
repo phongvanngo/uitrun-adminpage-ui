@@ -15,7 +15,6 @@ import { ContactsWrapper } from './Questions.styles';
 const {
   changeContact,
   onAddQuestion,
-  deleteContact,
   viewChange,
   updateQuestion,
   fetchQuestionList,
