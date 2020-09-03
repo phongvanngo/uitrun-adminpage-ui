@@ -12,6 +12,7 @@ import Cards from '@iso/redux/card/reducer';
 import Chat from '@iso/redux/chat/reducers';
 import DynamicChartComponent from '@iso/redux/dynamicEchart/reducer';
 import Ecommerce from '@iso/redux/ecommerce/reducer';
+import UserManager from '@iso/redux/userManager/reducer';
 import ThemeSwitcher from '@iso/redux/themeSwitcher/reducer';
 import Invoices from '@iso/redux/invoice/reducer';
 import LanguageSwitcher from '@iso/redux/languageSwitcher/reducer';
@@ -49,4 +50,5 @@ export default combineReducers({
   drawer,
   profile,
   githubSearch,
+  UserManager,
 });

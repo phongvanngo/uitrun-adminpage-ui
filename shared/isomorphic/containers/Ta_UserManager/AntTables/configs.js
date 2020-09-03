@@ -24,11 +24,12 @@ const renderCell = (object, type, key) => {
 
 const columnss = [
   {
-    title: <IntlMessages id="antTable.title.id" />,
-    key: 'id',
-    width: 100,
-    render: object => renderCell(object, 'TextCell', 'id'), //(text,record,index)
+    title: <IntlMessages id="antTable.title.NumericalOrder" />,
+    key: 'key',
+    width: 50,
+    render: object => renderCell(object, 'TextCell', 'key'), //(text,record,index)
   },
+
   {
     title: <IntlMessages id="antTable.title.fullName" />,
     key: 'fullName',
@@ -46,6 +47,12 @@ const columnss = [
     key: 'userCode',
     width: 150,
     render: object => renderCell(object, 'TextCell', 'userCode'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.id" />,
+    key: 'id',
+    width: 50,
+    render: object => renderCell(object, 'TextCell', 'id'), //(text,record,index)
   },
 ];
 

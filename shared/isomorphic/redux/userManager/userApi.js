@@ -1,24 +1,25 @@
-import axiosClient from './../../../../packages/isomorphic/src/Api/AxiosClient';
+import axiosClient from '../../../../packages/isomorphic/src/Api/AxiosClient';
 import queryString from 'query-string';
-import questionAction from './actions';
 import notification from '@iso/components/Notification';
+import userAction from './actions';
 
 function solveError(mess, dispatch) {
   if (window.confirm(mess + ', reload ?')) {
-    dispatch(questionAction.fetchQuestionList());
+    dispatch(userAction.fetchuserList());
   }
 }
 
-const questionApi = {
-  getQuestionList: async (_params, dispatch) => {
-    const url = '/question';
+const userApi = {
+  getUserList: async (_params, dispatch) => {
+    console.log('hel');
+    const url = '/user';
     const params = queryString.stringify(_params);
-    const questionList = await axiosClient
+    const userList = await axiosClient
       .get(url + '?' + params)
       .then(response => {
         switch (response.status) {
           case 200:
-            notification('success', 'Get question list successfully');
+            notification('success', 'Get user list successfully');
             return response.data;
             break;
 
@@ -32,27 +33,21 @@ const questionApi = {
         solveError('connection failed', dispatch);
         return [];
       });
-    return questionList;
+    return userList;
   },
 
-  get: id => {
-    const url = `/products/${id}`;
-    return axiosClient.get(url);
-  },
-
-  addQuestion: async (newQuestion, dispatch) => {
-    const url = '/question';
-    const newId = await axiosClient
-      .post(url, newQuestion)
+  updateUserCode: async (id, newUserCode, dispatch) => {
+    const url = '/user/';
+    console.log(id, newUserCode);
+    const data = await axiosClient
+      .patch(url + `${id}`, newUserCode)
       .then(response => {
         switch (response.status) {
           case 200:
-            notification('success', 'Add question successfully');
-            return response.data.id;
+            return response;
             break;
 
           default:
-            console.log(newQuestion);
             solveError(response.status, dispatch);
             return null;
             break;
@@ -62,55 +57,8 @@ const questionApi = {
         solveError('connection failed', dispatch);
         return null;
       });
-    return newId;
-  },
 
-  editQuestion: async (id, newQuestion, dispatch) => {
-    const url = '/question';
-    const updatedtQuestion = await axiosClient
-      .patch(`${url}/${id}`, newQuestion)
-      .then(response => {
-        switch (response.status) {
-          case 200:
-            notification('success', 'Update question successfully');
-            return response.data;
-            break;
-          default:
-            solveError(response.status, dispatch);
-            return newQuestion;
-            break;
-        }
-      })
-      .catch(error => {
-        solveError('connection failed', dispatch);
-        return newQuestion;
-      });
-    return updatedtQuestion;
-  },
-
-  deleteQuestion: async (id, dispatch) => {
-    const url = '/question';
-    const response = await axiosClient
-      .delete(`${url}/${id}`)
-      .then(response => {
-        switch (response.status) {
-          case 200:
-            notification('success', 'Delete question successfully');
-            return response.status;
-            break;
-
-          default:
-            solveError(response.status, dispatch);
-            return response.status;
-            break;
-        }
-      })
-      .catch(error => {
-        solveError('connection failed', dispatch);
-        return {};
-      });
-
-    return response;
+    return data;
   },
   apii: async () => {
     const url = '';
@@ -124,17 +72,17 @@ const questionApi = {
 
           default:
             solveError(response.status, dispatch);
-            return [];
+            return null;
             break;
         }
       })
       .catch(error => {
         solveError('connection failed', dispatch);
-        return {};
+        return null;
       });
 
     return data;
   },
 };
 
-export default questionApi;
+export default userApi;

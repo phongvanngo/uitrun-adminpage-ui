@@ -560,6 +560,7 @@
   "antTable.title.fullName": "Họ Tên",
   "antTable.title.stdId": "Mã số sinh viên",
   "antTable.title.id": "ID",
+  "antTable.title.NumericalOrder": "STT",
 
   "Map.leaflet.basicTitle": "Basic Map",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",

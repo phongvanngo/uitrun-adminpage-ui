@@ -1,19 +1,28 @@
 import { EditableCell } from '@iso/components/Ta_UserManager/HelperCells';
 import { InputSearch } from '@iso/components/uielements/input';
+import userAction from '@iso/redux/userManager/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import removeAccents from './removeAccents';
 import clone from 'clone';
 import React from 'react';
 import TableWrapper from '../AntTables.styles';
 
+const { fetchUserList, updateUser } = userAction;
+
 export default function(props) {
+  const { userList } = useSelector(state => state.UserManager);
+  console.log(userList);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchUserList());
+  }, []);
+
   const [state, setState] = React.useState({
     columns: createcolumns(clone(props.tableInfo.columns)),
-    dataList: props.dataList.getAll(),
   });
-  const { columns, dataList } = state;
+  const { columns } = state;
   const [searchKeyword, setSearchKeyword] = React.useState('');
-
-  console.log(dataList);
 
   function filterData(keyword, data) {
     keyword = keyword.trim();
@@ -45,8 +54,8 @@ export default function(props) {
     return columns;
   }
   function onCellChange(value, columnsKey, index) {
-    dataList[index][columnsKey] = value;
-    setState({ ...state, dataList });
+    dispatch(updateUser(index, columnsKey, value));
+    console.log(columnsKey);
   }
   function onDeleteCell(index) {
     dataList.splice(index, 1);
@@ -72,7 +81,7 @@ export default function(props) {
 
       <TableWrapper
         columns={columns}
-        dataSource={filterData(searchKeyword, dataList)}
+        dataSource={filterData(searchKeyword, userList)}
         // pagination={{ pageSize: 5 }}
         className="isoEditableTable"
       />
