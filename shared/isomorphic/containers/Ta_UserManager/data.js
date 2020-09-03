@@ -138,9 +138,12 @@ class fakeData {
       return undefined;
     }
     if (this.datas[index] === undefined) {
-      this.datas[index] = this.dataModel(index);
+      this.datas[index] = {
+        ...this.dataModel(index),
+        key: this.dataModel(index).id,
+      };
     }
-    return this.datas[index];
+    return { ...this.datas[index], key: this.datas[index].id };
   }
   getAll() {
     if (this.datas.length < this.size) {

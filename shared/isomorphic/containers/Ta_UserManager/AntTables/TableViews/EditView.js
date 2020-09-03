@@ -1,10 +1,9 @@
-import React from 'react';
+import { EditableCell } from '@iso/components/Ta_UserManager/HelperCells';
+import { InputSearch } from '@iso/components/uielements/input';
+import removeAccents from './removeAccents';
 import clone from 'clone';
+import React from 'react';
 import TableWrapper from '../AntTables.styles';
-import {
-  EditableCell,
-  DeleteCell,
-} from '@iso/components/Ta_UserManager/HelperCells';
 
 export default function(props) {
   const [state, setState] = React.useState({
@@ -12,6 +11,25 @@ export default function(props) {
     dataList: props.dataList.getAll(),
   });
   const { columns, dataList } = state;
+  const [searchKeyword, setSearchKeyword] = React.useState('');
+
+  console.log(dataList);
+
+  function filterData(keyword, data) {
+    keyword = keyword.trim();
+    let newData = data.filter(data => {
+      for (let atribute in data) {
+        if (!data[atribute] || typeof data[atribute] === 'boolean') continue;
+        if (
+          removeAccents(data[atribute].toString())
+            .toUpperCase()
+            .includes(removeAccents(keyword.toUpperCase()))
+        )
+          return data;
+      }
+    });
+    return newData;
+  }
 
   function createcolumns(columns) {
     const editColumnRender = col => (text, record, index) => (
@@ -24,15 +42,6 @@ export default function(props) {
     );
     columns[1].render = editColumnRender(1);
     columns[2].render = editColumnRender(2);
-
-    // const deleteColumn = {
-    //   title: "operation",
-    //   dataIndex: "operation",
-    //   render: (text, record, index) => (
-    //     <DeleteCell index={index} onDeleteCell={onDeleteCell} />
-    //   ),
-    // };
-    // columns.push(deleteColumn);
     return columns;
   }
   function onCellChange(value, columnsKey, index) {
@@ -45,11 +54,28 @@ export default function(props) {
   }
 
   return (
-    <TableWrapper
-      columns={columns}
-      dataSource={dataList}
-      // pagination={{ pageSize: 5 }}
-      className="isoEditableTable"
-    />
+    //search
+    <React.Fragment>
+      <div
+        style={{
+          marginBottom: '10px',
+          width: '40vh',
+        }}
+      >
+        <InputSearch
+          placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
+          onChange={e => {
+            setSearchKeyword(e.target.value);
+          }}
+        />
+      </div>
+
+      <TableWrapper
+        columns={columns}
+        dataSource={filterData(searchKeyword, dataList)}
+        // pagination={{ pageSize: 5 }}
+        className="isoEditableTable"
+      />
+    </React.Fragment>
   );
 }

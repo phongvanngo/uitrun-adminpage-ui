@@ -160,57 +160,57 @@ const options = [
   //     },
   //   ],
   // },
-  // {
-  //   key: 'Forms',
-  //   label: 'sidebar.forms',
-  //   leftIcon: 'ion-android-mail',
-  //   children: [
-  //     {
-  //       key: 'InputField',
-  //       label: 'sidebar.input',
-  //     },
-  //     {
-  //       key: 'editor',
-  //       label: 'sidebar.editor',
-  //     },
-  //     {
-  //       key: 'FormsWithValidation',
-  //       label: 'sidebar.formsWithValidation',
-  //     },
-  //     {
-  //       key: 'progress',
-  //       label: 'sidebar.progress',
-  //     },
-  //     {
-  //       key: 'button',
-  //       label: 'sidebar.button',
-  //     },
-  //     {
-  //       key: 'tab',
-  //       label: 'sidebar.tab',
-  //     },
-  //     {
-  //       key: 'checkbox',
-  //       label: 'sidebar.checkbox',
-  //     },
-  //     {
-  //       key: 'radiobox',
-  //       label: 'sidebar.radiobox',
-  //     },
-  //     {
-  //       key: 'selectbox',
-  //       label: 'sidebar.selectbox',
-  //     },
-  //     {
-  //       key: 'transfer',
-  //       label: 'sidebar.transfer',
-  //     },
-  //     {
-  //       key: 'autocomplete',
-  //       label: 'sidebar.autocomplete',
-  //     },
-  //   ],
-  // },
+  {
+    key: 'Forms',
+    label: 'sidebar.forms',
+    leftIcon: 'ion-android-mail',
+    children: [
+      {
+        key: 'InputField',
+        label: 'sidebar.input',
+      },
+      {
+        key: 'editor',
+        label: 'sidebar.editor',
+      },
+      {
+        key: 'FormsWithValidation',
+        label: 'sidebar.formsWithValidation',
+      },
+      {
+        key: 'progress',
+        label: 'sidebar.progress',
+      },
+      {
+        key: 'button',
+        label: 'sidebar.button',
+      },
+      {
+        key: 'tab',
+        label: 'sidebar.tab',
+      },
+      {
+        key: 'checkbox',
+        label: 'sidebar.checkbox',
+      },
+      {
+        key: 'radiobox',
+        label: 'sidebar.radiobox',
+      },
+      {
+        key: 'selectbox',
+        label: 'sidebar.selectbox',
+      },
+      {
+        key: 'transfer',
+        label: 'sidebar.transfer',
+      },
+      {
+        key: 'autocomplete',
+        label: 'sidebar.autocomplete',
+      },
+    ],
+  },
   // {
   //   key: 'uielements',
   //   label: 'sidebar.uiElements',
