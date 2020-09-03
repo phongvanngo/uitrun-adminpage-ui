@@ -22,7 +22,7 @@ function validQuestion(question) {
   if (question.answerC.replace(/\s+/g, '') === '') return false;
   if (question.answerD.replace(/\s+/g, '') === '') return false;
   // if (question.image !== undefined || question.image !== null)
-  if (question.image.replace(/\s+/g, '') === '') question.image = 'no image';
+  // if (question.image.replace(/\s+/g, '') === '') question.image = 'no image';
   return true;
 }
 

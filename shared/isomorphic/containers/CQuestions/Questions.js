@@ -69,7 +69,6 @@ export default function Contacts() {
               <Button
                 type="primary"
                 onClick={() => {
-                  console.log('hell');
                   dispatch(onAddQuestion());
                 }}
                 className="isoAddContactBtn"

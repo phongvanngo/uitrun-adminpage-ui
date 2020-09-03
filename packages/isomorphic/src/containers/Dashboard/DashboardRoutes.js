@@ -8,6 +8,12 @@ const routes = [
     component: lazy(() => import('@iso/containers/CQuestions/Questions')),
   },
   {
+    path: 'user_manager',
+    component: lazy(() =>
+      import('@iso/containers/Ta_UserManager/AntTables/AntTables')
+    ),
+  },
+  {
     path: 'table_ant',
     component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
   },
@@ -61,12 +67,7 @@ const routes = [
     path: 'table_ant',
     component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
   },
-  {
-    path: 'user_manager',
-    component: lazy(() =>
-      import('@iso/containers/Ta_UserManager/AntTables/AntTables')
-    ),
-  },
+
   {
     path: 'allFormComponent',
     component: lazy(() => import('@iso/containers/Forms/Forms')),

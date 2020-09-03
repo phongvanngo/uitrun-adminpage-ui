@@ -12,11 +12,18 @@ export default function({ contact, otherAttributes }) {
         <div className="isoContactCardInfos" key={attribute.value}>
           <p className="isoInfoLabel">{`${attribute.title}`}</p>
           <p className="isoInfoDetails">
-            <img
+            {/* <img
               src={value}
-              style={{ maxWidth: '100%', maxHeight: '50vh' }}
-              alt="No image"
-            />
+              style={{ maxWidth: "100%", maxHeight: "50vh" }}
+              alt=""
+            /> */}
+            <iframe
+              src={value}
+              width="560"
+              height="315"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </p>
         </div>
       );

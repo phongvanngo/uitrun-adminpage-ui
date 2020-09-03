@@ -85,9 +85,9 @@ export default function({ onUpdateQuestion }) {
         </div>
 
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Hình ảnh</p>
+          <p className="isoInfoLabel">Hình ảnh & Video</p>
           <Input
-            placeholder="Image Link URL"
+            placeholder="Link URL"
             value={image}
             onChange={event => {
               dispatch(onEditQuestion('image', event.target.value));
@@ -98,11 +98,19 @@ export default function({ onUpdateQuestion }) {
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel"></p>
           <p className="isoInfoDetails">
-            <img
+            {/* <img
               src={image}
-              style={{ maxWidth: '100%', maxHeight: '50vh' }}
+              style={{ maxWidth: "100%", maxHeight: "50vh" }}
               alt="No image"
-            />
+            /> */}
+
+            <iframe
+              src={image}
+              width="560"
+              height="315"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </p>
         </div>
 
