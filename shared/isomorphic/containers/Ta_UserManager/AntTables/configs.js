@@ -22,6 +22,33 @@ const renderCell = (object, type, key) => {
   }
 };
 
+const columnss = [
+  {
+    title: <IntlMessages id="antTable.title.id" />,
+    key: 'id',
+    width: 100,
+    render: object => renderCell(object, 'TextCell', 'id'), //(text,record,index)
+  },
+  {
+    title: <IntlMessages id="antTable.title.fullName" />,
+    key: 'fullName',
+    width: 200,
+    render: object => renderCell(object, 'TextCell', 'fullName'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.stdId" />,
+    key: 'stdId',
+    width: 200,
+    render: object => renderCell(object, 'TextCell', 'stdId'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.userCode" />,
+    key: 'userCode',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'userCode'),
+  },
+];
+
 const columns = [
   {
     title: <IntlMessages id="antTable.title.image" />,
@@ -93,34 +120,10 @@ const groupColumns = [
 ];
 const tableinfos = [
   {
-    title: 'Simple Table',
-    value: 'simple',
-    columns: clone(smallColumns),
-  },
-  {
-    title: 'Sortable Table',
-    value: 'sortView',
-    columns: clone(sortColumns),
-  },
-  {
-    title: 'Search Text',
-    value: 'filterView',
-    columns: clone(smallColumns),
-  },
-  {
     title: 'Editable View',
     value: 'editView',
-    columns: clone(editColumns),
-  },
-  {
-    title: 'Grouping View',
-    value: 'groupView',
-    columns: clone(groupColumns),
-  },
-  {
-    title: 'Customized View',
-    value: 'customizedView',
-    columns: clone(columns),
+    // columns: clone(editColumns),
+    columns: clone(columnss),
   },
 ];
 export { columns, tableinfos };

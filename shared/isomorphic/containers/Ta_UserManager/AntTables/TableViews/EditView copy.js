@@ -1,10 +1,7 @@
 import React from 'react';
 import clone from 'clone';
 import TableWrapper from '../AntTables.styles';
-import {
-  EditableCell,
-  DeleteCell,
-} from '@iso/components/Ta_UserManager/HelperCells';
+import { EditableCell, DeleteCell } from '@iso/components/Tables/HelperCells';
 
 export default function(props) {
   const [state, setState] = React.useState({
@@ -14,25 +11,23 @@ export default function(props) {
   const { columns, dataList } = state;
 
   function createcolumns(columns) {
-    const editColumnRender = col => (text, record, index) => (
+    const editColumnRender = (text, record, index) => (
       <EditableCell
         index={index}
-        columnsKey={columns[col].key}
-        value={text[columns[col].key]}
+        columnsKey={columns[1].key}
+        value={text[columns[1].key]}
         onChange={onCellChange}
       />
     );
-    columns[1].render = editColumnRender(1);
-    columns[2].render = editColumnRender(2);
-
-    // const deleteColumn = {
-    //   title: "operation",
-    //   dataIndex: "operation",
-    //   render: (text, record, index) => (
-    //     <DeleteCell index={index} onDeleteCell={onDeleteCell} />
-    //   ),
-    // };
-    // columns.push(deleteColumn);
+    columns[1].render = editColumnRender;
+    const deleteColumn = {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (text, record, index) => (
+        <DeleteCell index={index} onDeleteCell={onDeleteCell} />
+      ),
+    };
+    columns.push(deleteColumn);
     return columns;
   }
   function onCellChange(value, columnsKey, index) {
@@ -48,7 +43,7 @@ export default function(props) {
     <TableWrapper
       columns={columns}
       dataSource={dataList}
-      // pagination={{ pageSize: 5 }}
+      pagination={{ pageSize: 5 }}
       className="isoEditableTable"
     />
   );

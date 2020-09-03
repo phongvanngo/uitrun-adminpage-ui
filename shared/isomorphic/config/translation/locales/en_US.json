@@ -7,7 +7,7 @@
   "sidebar.checkout": "Checkout",
   "sidebar.cards": "Cards",
   "sidebar.maps": "Maps",
-  "sidebar.firestorecrud": "Firestore CRUD",
+  "sidebar.irestorecrud": "Firestore CRUD",
   "sidebar.firestorecrudarticle": "Articles",
   "sidebar.firestorecrudinvestor": "Investors",
   "sidebar.googleMap": "Google Map",
@@ -559,7 +559,7 @@
   "antTable.title.userCode": "Mã dự thi",
   "antTable.title.fullName": "Họ Tên",
   "antTable.title.stdId": "Mã số sinh viên",
-  "antTable.title.status": "Tình trạng thi",
+  "antTable.title.id": "ID",
 
   "Map.leaflet.basicTitle": "Basic Map",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",
