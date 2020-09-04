@@ -41,14 +41,17 @@ export default function(props) {
   }
 
   function createcolumns(columns) {
-    const editColumnRender = col => (text, record, index) => (
-      <EditableCell
-        index={index}
-        columnsKey={columns[col].key}
-        value={text[columns[col].key]}
-        onChange={onCellChange}
-      />
-    );
+    const editColumnRender = col => (text, record, index) => {
+      console.log({ record: record });
+      return (
+        <EditableCell
+          index={record.id}
+          columnsKey={columns[col].key}
+          value={text[columns[col].key]}
+          onChange={onCellChange}
+        />
+      );
+    };
     columns[1].render = editColumnRender(1);
     columns[2].render = editColumnRender(2);
     return columns;
@@ -82,7 +85,7 @@ export default function(props) {
       <TableWrapper
         columns={columns}
         dataSource={filterData(searchKeyword, userList)}
-        // pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 20 }}
         className="isoEditableTable"
       />
     </React.Fragment>

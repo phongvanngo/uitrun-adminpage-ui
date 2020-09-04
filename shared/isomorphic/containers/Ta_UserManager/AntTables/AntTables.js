@@ -9,9 +9,6 @@ import * as TableViews from './TableViews/TableViews';
 
 const dataList = new fakeData(10);
 const dataList2 = new fakeData2(10);
-console.log(dataList);
-console.log(dataList2);
-console.log(tableinfos);
 
 export default function AntTable() {
   function renderTable(tableInfo) {

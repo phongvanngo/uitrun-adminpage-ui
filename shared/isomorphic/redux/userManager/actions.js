@@ -24,11 +24,12 @@ const userAction = {
     };
   },
 
-  updateUser: (index, atribute, value) => {
-    return async (dispatch, getState) => {
-      const id = getState().UserManager.userList[index].id;
+  updateUser: (id, atribute, value) => {
+    return async dispatch => {
+      // const id = getState().UserManager.userList[index].id;
+      // const id = index;
       console.log(id);
-      const response = await userApi.updateUserCode(
+      const response = await userApi.updateUser(
         id,
         { [atribute]: value },
         dispatch

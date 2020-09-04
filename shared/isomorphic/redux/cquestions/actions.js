@@ -47,10 +47,11 @@ const contactActions = {
     return async dispatch => {
       const params = { pageSize: 500, page: 0 };
       const questionList = await questionApi.getQuestionList(params, dispatch);
-      console.log(questionList);
+      // console.log(questionList);
       dispatch({
         type: contactActions.FETCH_QUESTION,
         questions: questionList,
+        seectedId: questionList[0].id,
       });
     };
   },

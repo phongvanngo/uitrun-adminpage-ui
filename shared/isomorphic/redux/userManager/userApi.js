@@ -36,7 +36,7 @@ const userApi = {
     return userList;
   },
 
-  updateUserCode: async (id, newUserCode, dispatch) => {
+  updateUser: async (id, newUserCode, dispatch) => {
     const url = '/user/';
     console.log(id, newUserCode);
     const data = await axiosClient
@@ -44,6 +44,7 @@ const userApi = {
       .then(response => {
         switch (response.status) {
           case 200:
+            notification('success', 'Update user successfully', '');
             return response;
             break;
 
