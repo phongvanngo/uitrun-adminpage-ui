@@ -5,13 +5,12 @@ import userAction from './actions';
 
 function solveError(mess, dispatch) {
   if (window.confirm(mess + ', reload ?')) {
-    dispatch(userAction.fetchuserList());
+    dispatch(userAction.fetchUserList());
   }
 }
 
 const userApi = {
   getUserList: async (_params, dispatch) => {
-    console.log('hel');
     const url = '/user';
     const params = queryString.stringify(_params);
     const userList = await axiosClient
@@ -21,6 +20,7 @@ const userApi = {
           case 200:
             notification('success', 'Get user list successfully');
             return response.data;
+            // return null;
             break;
 
           default:

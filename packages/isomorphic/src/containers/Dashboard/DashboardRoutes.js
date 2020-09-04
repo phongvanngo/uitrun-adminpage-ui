@@ -14,15 +14,21 @@ const routes = [
     ),
   },
   {
-    path: 'table_ant',
-    component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
-  },
-  {
     path: 'board',
     component: lazy(() =>
       import('@iso/containers/Ta_Board/AntTables/AntTables')
     ),
   },
+  {
+    path: 'table_ant',
+    component: lazy(() => import('@iso/containers/Tables/AntTables/AntTables')),
+  },
+  // {
+  //   path: 'board',
+  //   component: lazy(() =>
+  //     import('@iso/containers/Ta_Board/AntTables/AntTables')
+  //   ),
+  // },
   {
     path: '',
     component: lazy(() => import('@iso/containers/Widgets/Widgets')),

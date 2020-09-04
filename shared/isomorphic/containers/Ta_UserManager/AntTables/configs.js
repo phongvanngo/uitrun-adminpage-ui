@@ -125,12 +125,7 @@ const groupColumns = [
     children: [columns[3], columns[4]],
   },
 ];
-const tableinfos = [
-  {
-    title: 'Editable View',
-    value: 'editView',
-    // columns: clone(editColumns),
-    columns: clone(columnss),
-  },
-];
+const tableinfos = {
+  columns: clone(columnss),
+};
 export { columns, tableinfos };

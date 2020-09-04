@@ -1,50 +1,81 @@
-import React from 'react';
+import { InputSearch } from '@iso/components/uielements/input';
+import Button from '@iso/components/uielements/button';
+import scoreBoardAction from '@iso/redux/ScoreBoard/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import removeAccents from './removeAccents';
 import clone from 'clone';
+import React from 'react';
 import TableWrapper from '../AntTables.styles';
-import { EditableCell, DeleteCell } from '@iso/components/Tables/HelperCells';
+import { Row, Col } from 'antd';
+
+const { fetchScoreBoard } = scoreBoardAction;
 
 export default function(props) {
-  const [state, setState] = React.useState({
-    columns: createcolumns(clone(props.tableInfo.columns)),
-    dataList: props.dataList.getAll(),
-  });
-  const { columns, dataList } = state;
+  const dispatch = useDispatch();
 
-  function createcolumns(columns) {
-    const editColumnRender = (text, record, index) => (
-      <EditableCell
-        index={index}
-        columnsKey={columns[1].key}
-        value={text[columns[1].key]}
-        onChange={onCellChange}
-      />
-    );
-    columns[1].render = editColumnRender;
-    const deleteColumn = {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (text, record, index) => (
-        <DeleteCell index={index} onDeleteCell={onDeleteCell} />
-      ),
-    };
-    columns.push(deleteColumn);
-    return columns;
+  const { scoreBoard } = useSelector(state => state.ScoreBoard);
+  const columns = clone(props.tableInfo.columns);
+
+  const [searchKeyword, setSearchKeyword] = React.useState('');
+
+  function filterData(keyword, data) {
+    keyword = keyword.trim();
+    let newData = data.filter(data => {
+      for (let atribute in data) {
+        if (!data[atribute] || typeof data[atribute] === 'boolean') continue;
+        if (
+          removeAccents(data[atribute].toString())
+            .toUpperCase()
+            .includes(removeAccents(keyword.toUpperCase()))
+        )
+          return data;
+      }
+    });
+    return newData;
   }
+
   function onCellChange(value, columnsKey, index) {
-    dataList[index][columnsKey] = value;
-    setState({ ...state, dataList });
-  }
-  function onDeleteCell(index) {
-    dataList.splice(index, 1);
-    setState({ ...state, dataList });
+    dispatch(updateUser(index, columnsKey, value));
   }
 
   return (
-    <TableWrapper
-      columns={columns}
-      dataSource={dataList}
-      pagination={{ pageSize: 5 }}
-      className="isoEditableTable"
-    />
+    //search
+    <React.Fragment>
+      <Row>
+        <Col span={24} style={{ marginBottom: '10px' }}>
+          <div style={{ float: 'left' }}>
+            <InputSearch
+              style={{ width: '50vh' }}
+              placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
+              onChange={e => {
+                setSearchKeyword(e.target.value);
+              }}
+            />
+          </div>
+          <div style={{ float: 'right' }}>
+            <Button
+              type="primary"
+              icon="cloud-download"
+              onClick={() => {
+                dispatch(fetchScoreBoard());
+              }}
+            >
+              Cập nhật
+            </Button>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col span={24}>
+          <TableWrapper
+            columns={columns}
+            dataSource={filterData(searchKeyword, scoreBoard)}
+            pagination={{ pageSize: 50 }}
+            className="isoEditableTable"
+          />
+        </Col>
+      </Row>
+    </React.Fragment>
   );
 }

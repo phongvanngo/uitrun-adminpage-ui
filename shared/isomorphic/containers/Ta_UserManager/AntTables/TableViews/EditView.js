@@ -6,22 +6,21 @@ import removeAccents from './removeAccents';
 import clone from 'clone';
 import React from 'react';
 import TableWrapper from '../AntTables.styles';
+import { Row, Col } from 'antd';
+import Button from '@iso/components/uielements/button';
 
 const { fetchUserList, updateUser } = userAction;
 
 export default function(props) {
-  const { userList } = useSelector(state => state.UserManager);
-  console.log(userList);
-  const dispatch = useDispatch();
-
   React.useEffect(() => {
-    dispatch(fetchUserList());
+    // dispatch(fetchUserList());
   }, []);
 
-  const [state, setState] = React.useState({
-    columns: createcolumns(clone(props.tableInfo.columns)),
-  });
-  const { columns } = state;
+  const dispatch = useDispatch();
+
+  const { userList } = useSelector(state => state.UserManager);
+  const columns = createcolumns(clone(props.tableInfo.columns));
+
   const [searchKeyword, setSearchKeyword] = React.useState('');
 
   function filterData(keyword, data) {
@@ -42,7 +41,6 @@ export default function(props) {
 
   function createcolumns(columns) {
     const editColumnRender = col => (text, record, index) => {
-      console.log({ record: record });
       return (
         <EditableCell
           index={record.id}
@@ -58,36 +56,46 @@ export default function(props) {
   }
   function onCellChange(value, columnsKey, index) {
     dispatch(updateUser(index, columnsKey, value));
-    console.log(columnsKey);
-  }
-  function onDeleteCell(index) {
-    dataList.splice(index, 1);
-    setState({ ...state, dataList });
   }
 
   return (
     //search
     <React.Fragment>
-      <div
-        style={{
-          marginBottom: '10px',
-          width: '40vh',
-        }}
-      >
-        <InputSearch
-          placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
-          onChange={e => {
-            setSearchKeyword(e.target.value);
-          }}
-        />
-      </div>
+      <Row>
+        <Col span={24} style={{ marginBottom: '10px' }}>
+          <div style={{ float: 'left' }}>
+            <InputSearch
+              style={{ width: '50vh' }}
+              placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
+              onChange={e => {
+                setSearchKeyword(e.target.value);
+              }}
+            />
+          </div>
+          <div style={{ float: 'right' }}>
+            <Button
+              type="primary"
+              icon="cloud-download"
+              onClick={() => {
+                dispatch(fetchUserList());
+              }}
+            >
+              Cập nhật
+            </Button>
+          </div>
+        </Col>
+      </Row>
 
-      <TableWrapper
-        columns={columns}
-        dataSource={filterData(searchKeyword, userList)}
-        pagination={{ pageSize: 20 }}
-        className="isoEditableTable"
-      />
+      <Row>
+        <Col span={24}>
+          <TableWrapper
+            columns={columns}
+            dataSource={filterData(searchKeyword, userList)}
+            pagination={{ pageSize: 50 }}
+            className="isoEditableTable"
+          />
+        </Col>
+      </Row>
     </React.Fragment>
   );
 }

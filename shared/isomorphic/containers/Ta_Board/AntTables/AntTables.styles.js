@@ -21,7 +21,7 @@ const TableWrapper = styled(Table)`
     color: ${palette('secondary', 2)};
     font-size: 13px;
     background-color: ${palette('secondary', 1)};
-    border-bottom: 0;
+    border-bottom: 1;
 
     &.ant-table-column-sort {
       background: ${palette('secondary', 1)};

@@ -561,6 +561,8 @@
   "antTable.title.stdId": "Mã số sinh viên",
   "antTable.title.id": "ID",
   "antTable.title.NumericalOrder": "STT",
+  "antTable.title.timeFinish": "Thời gian hoàn thành",
+  "antTable.title.score": "Điểm bài thi",
 
   "Map.leaflet.basicTitle": "Basic Map",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",

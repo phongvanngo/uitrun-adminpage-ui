@@ -22,6 +22,46 @@ const renderCell = (object, type, key) => {
   }
 };
 
+const columnss = [
+  {
+    title: <IntlMessages id="antTable.title.NumericalOrder" />,
+    key: 'key',
+    width: 50,
+    render: object => renderCell(object, 'TextCell', 'key'), //(text,record,index)
+  },
+
+  {
+    title: <IntlMessages id="antTable.title.fullName" />,
+    key: 'fullName',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'fullName'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.stdId" />,
+    key: 'stdId',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'stdId'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.score" />,
+    key: 'score',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'score'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.timeFinish" />,
+    key: 'timeFinish',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'time'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.id" />,
+    key: 'userId',
+    width: 50,
+    render: object => renderCell(object, 'TextCell', 'userId'), //(text,record,index)
+  },
+];
+
 const columns = [
   {
     title: <IntlMessages id="antTable.title.image" />,
@@ -91,36 +131,7 @@ const groupColumns = [
     children: [columns[3], columns[4]],
   },
 ];
-const tableinfos = [
-  {
-    title: 'Simple Table',
-    value: 'simple',
-    columns: clone(smallColumns),
-  },
-  {
-    title: 'Sortable Table',
-    value: 'sortView',
-    columns: clone(sortColumns),
-  },
-  {
-    title: 'Search Text',
-    value: 'filterView',
-    columns: clone(smallColumns),
-  },
-  {
-    title: 'Editable View',
-    value: 'editView',
-    columns: clone(editColumns),
-  },
-  {
-    title: 'Grouping View',
-    value: 'groupView',
-    columns: clone(groupColumns),
-  },
-  {
-    title: 'Customized View',
-    value: 'customizedView',
-    columns: clone(columns),
-  },
-];
+const tableinfos = {
+  columns: clone(columnss),
+};
 export { columns, tableinfos };

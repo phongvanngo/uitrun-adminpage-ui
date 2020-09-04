@@ -9,14 +9,14 @@ const userAction = {
 
   fetchUserList: () => {
     return async dispatch => {
-      console.log('hello');
       const params = { pageSize: 500, page: 0 };
       const userList = await userApi.getUserList(params, dispatch);
-      const userListWithKey = userList.map((user, index) => ({
-        ...user,
-        key: index + 1,
-      }));
-      console.log(userList);
+      const userListWithKey = userList
+        ? userList.map((user, index) => ({
+            ...user,
+            key: index + 1,
+          }))
+        : [];
       dispatch({
         type: userAction.FETCH_USER_LIST,
         userList: userListWithKey,
@@ -26,9 +26,6 @@ const userAction = {
 
   updateUser: (id, atribute, value) => {
     return async dispatch => {
-      // const id = getState().UserManager.userList[index].id;
-      // const id = index;
-      console.log(id);
       const response = await userApi.updateUser(
         id,
         { [atribute]: value },
