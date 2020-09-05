@@ -7,33 +7,45 @@ export default function({ contact, otherAttributes }) {
   const extraInfos = [];
   otherAttributes.forEach(attribute => {
     const value = contact[attribute.value];
-    if (attribute.value === 'image') {
-      extraInfos.push(
-        <div className="isoContactCardInfos" key={attribute.value}>
-          <p className="isoInfoLabel">{`${attribute.title}`}</p>
-          <p className="isoInfoDetails">
-            {/* <img
-              src={value}
-              style={{ maxWidth: "100%", maxHeight: "50vh" }}
-              alt=""
-            /> */}
-            <iframe
-              src={value}
-              width="560"
-              height="315"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </p>
-        </div>
-      );
-    } else if (value) {
-      extraInfos.push(
-        <div className="isoContactCardInfos" key={attribute.value}>
-          <p className="isoInfoLabel">{`${attribute.title}`}</p>
-          <p className="isoInfoDetails">{value}</p>
-        </div>
-      );
+
+    switch (attribute.value) {
+      case 'image':
+        if (value.trim())
+          extraInfos.push(
+            <div className="isoContactCardInfos" key={attribute.value}>
+              <p className="isoInfoLabel">{`${attribute.title}`}</p>
+              <p className="isoInfoDetails">
+                <img
+                  src={value}
+                  style={{ maxWidth: '100%', maxHeight: '50vh' }}
+                  alt=""
+                />
+              </p>
+            </div>
+          );
+        break;
+      case 'description':
+        if (value.trim())
+          extraInfos.push(
+            <div className="isoContactCardInfos" key={attribute.value}>
+              <p className="isoInfoLabel">{`${attribute.title}`}</p>
+              <p className="isoInfoDetails">
+                <iframe src={value} width="560" height="315"></iframe>
+              </p>
+            </div>
+          );
+        break;
+
+      default:
+        if (value) {
+          extraInfos.push(
+            <div className="isoContactCardInfos" key={attribute.value}>
+              <p className="isoInfoLabel">{`${attribute.title}`}</p>
+              <p className="isoInfoDetails">{value}</p>
+            </div>
+          );
+        }
+        break;
     }
   });
   return (

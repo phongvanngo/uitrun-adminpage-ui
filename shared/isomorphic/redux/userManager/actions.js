@@ -17,10 +17,12 @@ const userAction = {
             key: index + 1,
           }))
         : [];
-      dispatch({
-        type: userAction.FETCH_USER_LIST,
-        userList: userListWithKey,
-      });
+      if (userListWithKey.length > 0) {
+        dispatch({
+          type: userAction.FETCH_USER_LIST,
+          userList: userListWithKey,
+        });
+      }
     };
   },
 

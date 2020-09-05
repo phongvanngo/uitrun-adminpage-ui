@@ -35,6 +35,21 @@ export default function({ onUpdateQuestion }) {
     };
   }, []);
 
+  const renderIframe = url => {
+    if (url.trim()) return <iframe src={url} width="560" height="315"></iframe>;
+  };
+
+  const renderImage = url => {
+    if (url.trim())
+      return (
+        <img
+          src={url}
+          style={{ maxWidth: '100%', maxHeight: '50vh' }}
+          alt="No image"
+        />
+      );
+  };
+
   console.log(editingQuestion);
 
   const correctAnswer = res => {
@@ -77,7 +92,7 @@ export default function({ onUpdateQuestion }) {
             placeholder="Question"
             value={content}
             type="textarea"
-            rows={5}
+            rows="100"
             onChange={event => {
               dispatch(onEditQuestion('content', event.target.value));
             }}
@@ -85,7 +100,7 @@ export default function({ onUpdateQuestion }) {
         </div>
 
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Hình ảnh & Video</p>
+          <p className="isoInfoLabel">Hình ảnh</p>
           <Input
             placeholder="Link URL"
             value={image}
@@ -94,24 +109,24 @@ export default function({ onUpdateQuestion }) {
             }}
           />
         </div>
-
         <div className="isoContactCardInfos">
           <p className="isoInfoLabel"></p>
-          <p className="isoInfoDetails">
-            {/* <img
-              src={image}
-              style={{ maxWidth: "100%", maxHeight: "50vh" }}
-              alt="No image"
-            /> */}
+          <p className="isoInfoDetails">{renderImage(image)}</p>
+        </div>
 
-            <iframe
-              src={image}
-              width="560"
-              height="315"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </p>
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel">Video</p>
+          <Input
+            placeholder="Link URL"
+            value={description}
+            onChange={event => {
+              dispatch(onEditQuestion('description', event.target.value));
+            }}
+          />
+        </div>
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel"></p>
+          <p className="isoInfoDetails">{renderIframe(description)}</p>
         </div>
 
         <div className="isoContactCardInfos" style={{ marginBottom: '0px' }}>
@@ -123,79 +138,66 @@ export default function({ onUpdateQuestion }) {
 
         <div className="isoContactCardInfos" style={{ marginTop: '0px' }}>
           <p className="isoInfoLabel"></p>
-          <div className="isoInfoDetails">
-            <ContentHolder style={{ marginTop: '0px', marginLeft: '0px' }}>
-              <RadioGroup
-                onChange={event => {
-                  const valueOption = ['A', 'B', 'C', 'D'];
-                  dispatch(
-                    onEditQuestion(
-                      'result',
-                      valueOption[event.target.value - 1]
-                    )
-                  );
-                }}
-                name="value"
-                value={TransferResultOption(result)}
-              >
-                <Radio style={radioStyle} value={1}>
-                  Option A
-                  <Input
-                    placeholder="Option A"
-                    style={inputInRadioStyle}
-                    onChange={event => {
-                      dispatch(onEditQuestion('answerA', event.target.value));
-                    }}
-                    value={answerA}
-                  />
-                </Radio>
-                <Radio style={radioStyle} value={2}>
-                  Option B
-                  <Input
-                    placeholder="Option B"
-                    value={answerB}
-                    style={inputInRadioStyle}
-                    onChange={event => {
-                      dispatch(onEditQuestion('answerB', event.target.value));
-                    }}
-                  />
-                </Radio>
-                <Radio style={radioStyle} value={3}>
-                  Option C
-                  <Input
-                    placeholder="Option C"
-                    value={answerC}
-                    style={inputInRadioStyle}
-                    onChange={event => {
-                      dispatch(onEditQuestion('answerC', event.target.value));
-                    }}
-                  />
-                </Radio>
-                <Radio style={radioStyle} value={4}>
-                  Option D
-                  <Input
-                    placeholder="Option D"
-                    value={answerD}
-                    style={inputInRadioStyle}
-                    onChange={event => {
-                      dispatch(onEditQuestion('answerD', event.target.value));
-                    }}
-                  />
-                </Radio>
-              </RadioGroup>
-            </ContentHolder>
-          </div>
-        </div>
-
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Ghi chú</p>
-          <Input
-            placeholder="Description"
-            value={description}
+          {/* <p className="isoInfoDetails"> */}
+          {/* <ContentHolder style={{ marginTop: "0px", marginLeft: "0px" }}> */}
+          <RadioGroup
             onChange={event => {
-              dispatch(onEditQuestion('description', event.target.value));
+              const valueOption = ['A', 'B', 'C', 'D'];
+              dispatch(
+                onEditQuestion('result', valueOption[event.target.value - 1])
+              );
             }}
-          />
+            name="value"
+            value={TransferResultOption(result)}
+            style={{ width: '70%' }}
+          >
+            <Radio style={radioStyle} value={1}>
+              Câu A
+              <Input
+                placeholder="Option A"
+                style={inputInRadioStyle}
+                onChange={event => {
+                  dispatch(onEditQuestion('answerA', event.target.value));
+                }}
+                value={answerA}
+              />
+            </Radio>
+            <Radio style={radioStyle} value={2}>
+              Câu B
+              <Input
+                placeholder="Option B"
+                value={answerB}
+                style={inputInRadioStyle}
+                onChange={event => {
+                  dispatch(onEditQuestion('answerB', event.target.value));
+                }}
+              />
+            </Radio>
+            <Radio style={radioStyle} value={3}>
+              Câu C
+              <Input
+                placeholder="Option C"
+                value={answerC}
+                style={inputInRadioStyle}
+                onChange={event => {
+                  dispatch(onEditQuestion('answerC', event.target.value));
+                }}
+              />
+            </Radio>
+            <Radio style={radioStyle} value={4}>
+              Câu D
+              <Input
+                placeholder="Option D"
+                value={answerD}
+                style={inputInRadioStyle}
+                onChange={event => {
+                  dispatch(onEditQuestion('answerD', event.target.value));
+                }}
+              />
+            </Radio>
+          </RadioGroup>
+          {/* </ContentHolder> */}
+          {/* </p> */}
         </div>
       </div>
     </ContactCardWrapper>
