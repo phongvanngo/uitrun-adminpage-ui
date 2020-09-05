@@ -19,6 +19,7 @@ export default function(props) {
     const { selectedId, deleteNote, changeNote, colors } = props;
 
     const activeClass = selectedId === note.id ? 'active' : '';
+
     const onChange = () => changeNote(note.id);
     const onDelete = () => deleteNote(note.id);
     return (

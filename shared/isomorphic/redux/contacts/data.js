@@ -9,10 +9,10 @@ export const otherAttributes = [
 const contactList = JSON.parse(
   `[{
   "id": 22143,
-  "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg",
-  "firstName": "Benjamin",
+  "avatar": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg",
+  "firstName": "Benjamin fsdfse fsdf sef sefse fse fse fsefse fssef ",
   "lastName": "Jacobi",
-  "name": "Benjamin Jacobi",
+  "name": "Benjamin Jacobi fsef sf awfse sf efsfe sf aef sef fse fse fsf sf sf sef sfs fsf se sf sefsefs fs fsf efesse fse fsesfsaef sef esf sfsfse sef sef sefes sf sfse",
   "mobile": "(023) 302-3161 x60451",
   "home": "(136) 403-0476 x8388",
   "company": "Casper Inc",

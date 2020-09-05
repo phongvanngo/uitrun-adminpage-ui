@@ -64,6 +64,7 @@ export default function() {
             subtitle={<IntlMessages id="forms.input.basicSubTitle" />}
           >
             <ContentHolder>
+              hello
               <Input placeholder="Basic usage" />
             </ContentHolder>
           </Box>
@@ -253,7 +254,12 @@ export default function() {
             subtitle={<IntlMessages id="forms.input.searchSubTitle" />}
           >
             <ContentHolder>
-              <InputSearch placeholder="input search text" />
+              <InputSearch
+                placeholder="input search text"
+                onChange={e => {
+                  console.log(e.target.value);
+                }}
+              />
             </ContentHolder>
           </Box>
         </Col>

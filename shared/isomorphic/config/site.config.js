@@ -1,7 +1,7 @@
 export default {
-  siteName: 'ISOMORPHIC',
+  siteName: 'UITRUN ADMIN',
   siteIcon: 'ion-flash',
-  footerText: `Isomorphic @ ${new Date().getFullYear()} Created by RedQ, Inc`,
+  footerText: `UITRUN @ ${new Date().getFullYear()} Created by WebDev Studio, Inc`,
   enableAnimatedRoute: false,
   apiUrl: 'http://yoursite.com/api/',
   google: {

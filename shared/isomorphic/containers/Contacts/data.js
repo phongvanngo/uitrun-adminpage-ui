@@ -4,6 +4,9 @@ export const otherAttributes = [
   { title: 'Company', value: 'company', type: 'company' },
   { title: 'Work', value: 'work', type: 'phoneNumber' },
   { title: 'Notes', value: 'note', type: 'paragraph' },
+  { title: 'Notes', value: 'notefs', type: 'paragraph' },
+  { title: 'Notes', value: 'notfde', type: 'paragraph' },
+  { title: 'Notes', value: 'notfe', type: 'paragraph' },
 ];
 
 const contactList = JSON.parse(

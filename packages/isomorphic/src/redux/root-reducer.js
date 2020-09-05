@@ -7,10 +7,13 @@ import Box from '@iso/redux/box/reducer';
 import Notes from '@iso/redux/notes/reducer';
 import Todos from '@iso/redux/todos/reducer';
 import Contacts from '@iso/redux/contacts/reducer';
+import Questions from '@iso/redux/cquestions/reducer';
 import Cards from '@iso/redux/card/reducer';
 import Chat from '@iso/redux/chat/reducers';
 import DynamicChartComponent from '@iso/redux/dynamicEchart/reducer';
 import Ecommerce from '@iso/redux/ecommerce/reducer';
+import UserManager from '@iso/redux/userManager/reducer';
+import ScoreBoard from '@iso/redux/ScoreBoard/reducer';
 import ThemeSwitcher from '@iso/redux/themeSwitcher/reducer';
 import Invoices from '@iso/redux/invoice/reducer';
 import LanguageSwitcher from '@iso/redux/languageSwitcher/reducer';
@@ -34,6 +37,7 @@ export default combineReducers({
   Notes,
   Todos,
   Contacts,
+  Questions,
   Cards,
   Chat,
   DynamicChartComponent,
@@ -47,4 +51,6 @@ export default combineReducers({
   drawer,
   profile,
   githubSearch,
+  UserManager,
+  ScoreBoard,
 });

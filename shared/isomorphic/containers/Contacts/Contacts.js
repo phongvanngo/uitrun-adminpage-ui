@@ -45,6 +45,7 @@ export default function Contacts() {
         />
       </div>
       <Layout className="isoContactBoxWrapper">
+        {/* select contact ------------------------------------------*/}
         {selectedContact ? (
           <Content className="isoContactBox">
             <div className="isoContactControl">
@@ -64,7 +65,10 @@ export default function Contacts() {
               </Button>
             </div>
 
-            <Scrollbar className="contactBoxScrollbar">
+            <Scrollbar
+              className="contactBoxScrollbar"
+              style={{ height: 'calc(100vh - 200px)' }}
+            >
               {editView ? (
                 <EditContactView
                   contact={selectedContact}
@@ -90,6 +94,7 @@ export default function Contacts() {
             </Button>
           </div>
         )}
+        {/* select contact ------------------------------------------*/}
       </Layout>
     </ContactsWrapper>
   );

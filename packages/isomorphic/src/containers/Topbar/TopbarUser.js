@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import userpic from '@iso/assets/images/user1.png';
 import Popover from '@iso/components/uielements/popover';
 import IntlMessages from '@iso/components/utility/intlMessages';
-import userpic from '@iso/assets/images/user1.png';
 import authAction from '@iso/redux/auth/actions';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import TopbarDropdownWrapper from './TopbarDropdown.styles';
 
 const { logout } = authAction;
@@ -18,18 +17,6 @@ export default function TopbarUser() {
 
   const content = (
     <TopbarDropdownWrapper className="isoUserDropdown">
-      <Link className="isoDropdownLink" to={'/dashboard/my-profile'}>
-        <IntlMessages id="topbar.myprofile" />
-      </Link>
-      <a className="isoDropdownLink" href="# ">
-        <IntlMessages id="themeSwitcher.settings" />
-      </a>
-      <a className="isoDropdownLink" href="# ">
-        <IntlMessages id="sidebar.feedback" />
-      </a>
-      <a className="isoDropdownLink" href="# ">
-        <IntlMessages id="topbar.help" />
-      </a>
       <div className="isoDropdownLink" onClick={() => dispatch(logout())}>
         <IntlMessages id="topbar.logout" />
       </div>

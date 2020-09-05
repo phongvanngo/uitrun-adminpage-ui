@@ -6,9 +6,9 @@ export default class extends Component {
   render() {
     return (
       <LayoutContentWrapper style={{ height: '100vh' }}>
-        <LayoutContent>
-          <h1>Blank Page</h1>
-        </LayoutContent>
+        {/* <LayoutContent>
+          <h1>UITRUN ADMIN PAGE</h1>
+        </LayoutContent> */}
       </LayoutContentWrapper>
     );
   }

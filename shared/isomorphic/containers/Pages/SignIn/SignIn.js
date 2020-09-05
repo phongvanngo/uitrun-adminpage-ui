@@ -1,23 +1,15 @@
-import React from 'react';
-import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import Input from '@iso/components/uielements/input';
-import Checkbox from '@iso/components/uielements/checkbox';
 import Button from '@iso/components/uielements/button';
+import Checkbox from '@iso/components/uielements/checkbox';
+import Input from '@iso/components/uielements/input';
 import IntlMessages from '@iso/components/utility/intlMessages';
-import FirebaseLoginForm from '../../FirebaseForm/FirebaseForm';
-import authAction from '@iso/redux/auth/actions';
 import appAction from '@iso/redux/app/actions';
-import Auth0 from '../../Authentication/Auth0/Auth0';
-import {
-  signInWithGoogle,
-  signInWithFacebook,
-  signInWithGithub,
-  signInWithTwitter,
-} from '@iso/lib/firebase/firebase.authentication.util';
+import authAction from '@iso/redux/auth/actions';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import SignInStyleWrapper from './SignIn.styles';
 
-const { login } = authAction;
+const { login, editPassword, editUsername } = authAction;
 const { clearMenu } = appAction;
 
 export default function SignIn() {
@@ -25,6 +17,8 @@ export default function SignIn() {
   let location = useLocation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.Auth.idToken);
+  const password = useSelector(state => state.Auth.password);
+  const username = useSelector(state => state.Auth.username);
 
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
   React.useEffect(() => {
@@ -35,15 +29,14 @@ export default function SignIn() {
 
   function handleLogin(e, token = false) {
     e.preventDefault();
-    if (token) {
-      dispatch(login(token));
-    } else {
-      dispatch(login());
-    }
+    const user = { username: username, password: password };
+    dispatch(login(user));
     dispatch(clearMenu());
-    history.push('/dashboard');
+    history.push('/dashboard/questions');
   }
-  let { from } = location.state || { from: { pathname: '/dashboard' } };
+  let { from } = location.state || {
+    from: { pathname: '/dashboard/questions' },
+  };
 
   if (redirectToReferrer) {
     return <Redirect to={from} />;
@@ -64,6 +57,8 @@ export default function SignIn() {
                   size="large"
                   placeholder="Username"
                   autoComplete="true"
+                  value={username}
+                  onChange={e => dispatch(editUsername(e.target.value))}
                 />
               </div>
 
@@ -73,6 +68,8 @@ export default function SignIn() {
                   type="password"
                   placeholder="Password"
                   autoComplete="false"
+                  value={password}
+                  onChange={e => dispatch(editPassword(e.target.value))}
                 />
               </div>
 
@@ -85,49 +82,19 @@ export default function SignIn() {
                 </Button>
               </div>
 
-              <p className="isoHelperText">
+              {/* <p className="isoHelperText">
                 <IntlMessages id="page.signInPreview" />
-              </p>
+              </p> */}
             </form>
-            <div className="isoInputWrapper isoOtherLogin">
-              <Button
-                onClick={signInWithFacebook}
-                type="primary"
-                className="btnFacebook"
-              >
-                <IntlMessages id="page.signInFacebook" />
-              </Button>
-              <Button
-                onClick={signInWithGoogle}
-                type="primary"
-                className="btnGooglePlus"
-              >
-                <IntlMessages id="page.signInGooglePlus" />
-              </Button>
 
-              <Button
-                onClick={() => {
-                  Auth0.login();
-                }}
-                type="primary"
-                className="btnAuthZero"
-              >
-                <IntlMessages id="page.signInAuth0" />
-              </Button>
-
-              <FirebaseLoginForm
-                history={history}
-                login={token => dispatch(login(token))}
-              />
-            </div>
-            <div className="isoCenterComponent isoHelperWrapper">
+            {/* <div className="isoCenterComponent isoHelperWrapper">
               <Link to="/forgotpassword" className="isoForgotPass">
                 <IntlMessages id="page.signInForgotPass" />
               </Link>
               <Link to="/signup">
                 <IntlMessages id="page.signInCreateAccount" />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

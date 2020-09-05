@@ -10,23 +10,25 @@ const fakeApiCall = true; // auth0 or express JWT
 export function* loginRequest() {
   yield takeEvery('LOGIN_REQUEST', function*({ payload }) {
     const { token } = payload;
+    console.log(payload);
     if (token) {
       yield put({
         type: actions.LOGIN_SUCCESS,
         token: token,
         profile: 'Profile',
       });
-    } else {
-      if (fakeApiCall) {
-        yield put({
-          type: actions.LOGIN_SUCCESS,
-          token: 'secret token',
-          profile: 'Profile',
-        });
-      } else {
-        yield put({ type: actions.LOGIN_ERROR });
-      }
     }
+    // else {
+    //   if (fakeApiCall) {
+    //     yield put({
+    //       type: actions.LOGIN_SUCCESS,
+    //       token: 'secret token',
+    //       profile: 'Profile',
+    //     });
+    //   } else {
+    //     yield put({ type: actions.LOGIN_ERROR });
+    //   }
+    // }
   });
 }
 
