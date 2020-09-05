@@ -32,9 +32,11 @@ export default function SignIn() {
     const user = { username: username, password: password };
     dispatch(login(user));
     dispatch(clearMenu());
-    history.push('/dashboard');
+    history.push('/dashboard/questions');
   }
-  let { from } = location.state || { from: { pathname: '/dashboard' } };
+  let { from } = location.state || {
+    from: { pathname: '/dashboard/questions' },
+  };
 
   if (redirectToReferrer) {
     return <Redirect to={from} />;
