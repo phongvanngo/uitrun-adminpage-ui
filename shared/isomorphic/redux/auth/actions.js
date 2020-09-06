@@ -1,6 +1,15 @@
 import api from './../../../../packages/isomorphic/src/Api/AxiosClient';
 import notification from '@iso/components/Notification';
 
+const fakeResponse = {
+  user: {
+    username: 'admin',
+  },
+  token:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMzLCJpYXQiOjE1OTkwMzA3OTcyMDgsImV4cCI6MTU5OTAzMTQwMjAwOH0.A8AzXldExU0cpkXlpr9_DTFgTjdhajSy4QEUEK3cvDw',
+  expires: '7d',
+};
+
 const actions = {
   CHECK_AUTHORIZATION: 'CHECK_AUTHORIZATION',
   LOGIN_REQUEST: 'LOGIN_REQUEST',
@@ -17,19 +26,13 @@ const actions = {
   // }),
   login: user => {
     return dispatch => {
+      // dispatch({
+      //   type: actions.LOGIN_REQUEST,
+      //   payload: fakeResponse,
+      // });
       return api
         .post('auth/login/admin', user)
         .then(response => {
-          // if (response.status === 200) {
-          //   // dispatch(isAuthenticated());
-          //   // localStorage.setItem("accessToken", response.data.token);
-          //   // localStorage.setItem("authenticated", "true");
-          //   // localStorage.setItem("username", user.username);
-          //   dispatch({
-          //     type: actions.LOGIN_REQUEST,
-          //     payload: response.data,
-          //   });
-          // }
           console.log(response);
           switch (response.status) {
             case 200:

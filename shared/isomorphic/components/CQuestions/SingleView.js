@@ -8,7 +8,7 @@ export default function({ contact, otherAttributes }) {
 
   if (contact.image.trim())
     extraInfos.push(
-      <div className="isoContactCardInfos">
+      <div className="isoContactCardInfos" key="0">
         <p className="isoInfoLabel">Hình ảnh</p>
         <p className="isoInfoDetails">
           <img
@@ -22,7 +22,7 @@ export default function({ contact, otherAttributes }) {
 
   if (contact.description.trim())
     extraInfos.push(
-      <div className="isoContactCardInfos">
+      <div className="isoContactCardInfos" key="1">
         <p className="isoInfoLabel">Video</p>
         <p className="isoInfoDetails">
           <iframe src={contact.description} width="560" height="315"></iframe>

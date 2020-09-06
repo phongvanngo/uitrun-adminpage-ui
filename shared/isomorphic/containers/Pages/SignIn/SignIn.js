@@ -8,6 +8,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import SignInStyleWrapper from './SignIn.styles';
+import logo from '@iso/assets/images/user1.png';
 
 const { login, editPassword, editUsername } = authAction;
 const { clearMenu } = appAction;
@@ -41,13 +42,19 @@ export default function SignIn() {
   if (redirectToReferrer) {
     return <Redirect to={from} />;
   }
+
+  const logoStyle = {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+  };
   return (
     <SignInStyleWrapper className="isoSignInPage">
       <div className="isoLoginContentWrapper">
         <div className="isoLoginContent">
           <div className="isoLogoWrapper">
             <Link to="/dashboard">
-              <IntlMessages id="UIT RUN ADMIN" />
+              <IntlMessages id="page.signInTitle" />
             </Link>
           </div>
           <div className="isoSignInForm">
@@ -95,6 +102,9 @@ export default function SignIn() {
                 <IntlMessages id="page.signInCreateAccount" />
               </Link>
             </div> */}
+          </div>
+          <div>
+            <img style={logoStyle} src={logo} alt="" />
           </div>
         </div>
       </div>
