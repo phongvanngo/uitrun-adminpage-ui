@@ -1,604 +1,404 @@
 const tableData = JSON.parse(
   `[{
-  "userId": 1,
-  "fullName": "Miriam Rosin",
-  "stdId": "52685-334",
-  "score": 90,
-  "time": "5:56 AM"
-}, {
-  "userId": 2,
-  "fullName": "Emmaline Durning",
-  "stdId": "67151-404",
-  "score": 10,
-  "time": "2:01 AM"
-}, {
-  "userId": 3,
-  "fullName": "Daffi Kenworthey",
-  "stdId": "11673-335",
-  "score": 72,
-  "time": "11:47 AM"
-}, {
-  "userId": 4,
-  "fullName": "Jo ann Bennington",
-  "stdId": "68788-9750",
-  "score": 92,
-  "time": "7:54 AM"
-}, {
-  "userId": 5,
-  "fullName": "Thatch Garza",
-  "stdId": "45865-412",
+  "std_id": "41163-008",
   "score": 97,
-  "time": "5:31 AM"
+  "time": "16:49"
 }, {
-  "userId": 6,
-  "fullName": "Dean Hawthorn",
-  "stdId": "57520-0067",
-  "score": 94,
-  "time": "4:23 AM"
-}, {
-  "userId": 7,
-  "fullName": "Rycca Lucius",
-  "stdId": "27808-029",
-  "score": 26,
-  "time": "2:33 AM"
-}, {
-  "userId": 8,
-  "fullName": "Yetta Oakshott",
-  "stdId": "58593-827",
-  "score": 47,
-  "time": "3:31 AM"
-}, {
-  "userId": 9,
-  "fullName": "Sascha Baulcombe",
-  "stdId": "10019-638",
-  "score": 80,
-  "time": "9:52 PM"
-}, {
-  "userId": 10,
-  "fullName": "Kimberlee Worpole",
-  "stdId": "72036-069",
-  "score": 80,
-  "time": "2:45 PM"
-}, {
-  "userId": 11,
-  "fullName": "Charla Beavors",
-  "stdId": "51991-759",
-  "score": 25,
-  "time": "10:28 AM"
-}, {
-  "userId": 12,
-  "fullName": "Ferdie Shearston",
-  "stdId": "42254-095",
-  "score": 40,
-  "time": "5:37 AM"
-}, {
-  "userId": 13,
-  "fullName": "Rosy Waters",
-  "stdId": "67345-0011",
-  "score": 27,
-  "time": "5:19 AM"
-}, {
-  "userId": 14,
-  "fullName": "Grayce Royce",
-  "stdId": "68084-722",
-  "score": 66,
-  "time": "1:07 PM"
-}, {
-  "userId": 15,
-  "fullName": "Marietta Cutcliffe",
-  "stdId": "10755-006",
-  "score": 26,
-  "time": "3:31 AM"
-}, {
-  "userId": 16,
-  "fullName": "Nichole Desmond",
-  "stdId": "44924-009",
-  "score": 67,
-  "time": "5:34 AM"
-}, {
-  "userId": 17,
-  "fullName": "Nolana Bottrill",
-  "stdId": "59262-356",
-  "score": 98,
-  "time": "9:13 AM"
-}, {
-  "userId": 18,
-  "fullName": "Adora Zanini",
-  "stdId": "21695-594",
-  "score": 26,
-  "time": "7:15 AM"
-}, {
-  "userId": 19,
-  "fullName": "Kirbie Waith",
-  "stdId": "63354-315",
-  "score": 43,
-  "time": "2:57 PM"
-}, {
-  "userId": 20,
-  "fullName": "Nikaniki Thunnerclef",
-  "stdId": "47682-110",
-  "score": 1,
-  "time": "7:33 AM"
-}, {
-  "userId": 21,
-  "fullName": "Samantha Dubock",
-  "stdId": "57520-0954",
-  "score": 51,
-  "time": "10:16 PM"
-}, {
-  "userId": 22,
-  "fullName": "Tiebold Segebrecht",
-  "stdId": "42254-073",
-  "score": 50,
-  "time": "4:24 AM"
-}, {
-  "userId": 23,
-  "fullName": "Morna Fairham",
-  "stdId": "60505-0094",
-  "score": 98,
-  "time": "8:46 PM"
-}, {
-  "userId": 24,
-  "fullName": "Anjanette Mandrake",
-  "stdId": "68084-204",
-  "score": 62,
-  "time": "2:03 AM"
-}, {
-  "userId": 25,
-  "fullName": "Hammad Roly",
-  "stdId": "0006-3603",
-  "score": 29,
-  "time": "9:06 AM"
-}, {
-  "userId": 26,
-  "fullName": "Hollis Stryde",
-  "stdId": "57955-6025",
-  "score": 2,
-  "time": "6:53 PM"
-}, {
-  "userId": 27,
-  "fullName": "Rurik Haker",
-  "stdId": "68180-280",
-  "score": 88,
-  "time": "1:42 AM"
-}, {
-  "userId": 28,
-  "fullName": "Christos Wyche",
-  "stdId": "66424-996",
-  "score": 73,
-  "time": "3:24 PM"
-}, {
-  "userId": 29,
-  "fullName": "Arney Dabell",
-  "stdId": "53590-100",
-  "score": 16,
-  "time": "5:54 AM"
-}, {
-  "userId": 30,
-  "fullName": "Analise Curdell",
-  "stdId": "51346-016",
-  "score": 27,
-  "time": "8:51 AM"
-}, {
-  "userId": 31,
-  "fullName": "Edin Ashington",
-  "stdId": "0409-2102",
-  "score": 52,
-  "time": "8:42 PM"
-}, {
-  "userId": 32,
-  "fullName": "Danyelle Harbidge",
-  "stdId": "57237-050",
-  "score": 83,
-  "time": "12:41 PM"
-}, {
-  "userId": 33,
-  "fullName": "Rosamund Reditt",
-  "stdId": "62032-415",
-  "score": 32,
-  "time": "9:38 PM"
-}, {
-  "userId": 34,
-  "fullName": "Julieta Brehaut",
-  "stdId": "68345-721",
-  "score": 79,
-  "time": "6:08 PM"
-}, {
-  "userId": 35,
-  "fullName": "Geralda Locker",
-  "stdId": "37205-577",
-  "score": 30,
-  "time": "9:30 AM"
-}, {
-  "userId": 36,
-  "fullName": "Clerc Feary",
-  "stdId": "49288-0757",
-  "score": 45,
-  "time": "8:44 AM"
-}, {
-  "userId": 37,
-  "fullName": "Elwin Jefferys",
-  "stdId": "24385-146",
-  "score": 79,
-  "time": "3:11 AM"
-}, {
-  "userId": 38,
-  "fullName": "Ring Lanfranconi",
-  "stdId": "55111-368",
-  "score": 22,
-  "time": "9:08 AM"
-}, {
-  "userId": 39,
-  "fullName": "Randolph McLuckie",
-  "stdId": "0056-0174",
-  "score": 56,
-  "time": "11:39 AM"
-}, {
-  "userId": 40,
-  "fullName": "Reinhard Oldknowe",
-  "stdId": "36800-400",
-  "score": 26,
-  "time": "8:25 PM"
-}, {
-  "userId": 41,
-  "fullName": "Falkner Leonarde",
-  "stdId": "0093-1005",
-  "score": 88,
-  "time": "7:50 AM"
-}, {
-  "userId": 42,
-  "fullName": "Nadeen Menlove",
-  "stdId": "63868-208",
-  "score": 16,
-  "time": "2:28 PM"
-}, {
-  "userId": 43,
-  "fullName": "Woodman Marsy",
-  "stdId": "58668-4531",
-  "score": 86,
-  "time": "3:30 PM"
-}, {
-  "userId": 44,
-  "fullName": "Putnam Creek",
-  "stdId": "76384-002",
-  "score": 32,
-  "time": "5:54 AM"
-}, {
-  "userId": 45,
-  "fullName": "Vladimir Durnell",
-  "stdId": "68788-9924",
-  "score": 53,
-  "time": "12:31 AM"
-}, {
-  "userId": 46,
-  "fullName": "Anna-diane Dadds",
-  "stdId": "68788-9012",
-  "score": 68,
-  "time": "10:44 PM"
-}, {
-  "userId": 47,
-  "fullName": "Felizio Charrett",
-  "stdId": "99207-292",
-  "score": 65,
-  "time": "10:00 AM"
-}, {
-  "userId": 48,
-  "fullName": "Lionel Yakushkev",
-  "stdId": "65044-1409",
-  "score": 59,
-  "time": "2:32 AM"
-}, {
-  "userId": 49,
-  "fullName": "Vincents Greason",
-  "stdId": "49884-576",
-  "score": 20,
-  "time": "3:32 PM"
-}, {
-  "userId": 50,
-  "fullName": "Dawna Maffini",
-  "stdId": "42192-108",
-  "score": 33,
-  "time": "11:48 PM"
-}, {
-  "userId": 51,
-  "fullName": "Quintin Cavanaugh",
-  "stdId": "67046-017",
-  "score": 61,
-  "time": "5:45 AM"
-}, {
-  "userId": 52,
-  "fullName": "Alejandro Hammand",
-  "stdId": "14783-444",
-  "score": 69,
-  "time": "5:08 PM"
-}, {
-  "userId": 53,
-  "fullName": "Rhodie Dempsey",
-  "stdId": "48951-1005",
-  "score": 34,
-  "time": "8:31 PM"
-}, {
-  "userId": 54,
-  "fullName": "Emmott Sikora",
-  "stdId": "33342-031",
-  "score": 71,
-  "time": "11:46 PM"
-}, {
-  "userId": 55,
-  "fullName": "Thorvald Mulroy",
-  "stdId": "55566-5040",
-  "score": 63,
-  "time": "12:13 PM"
-}, {
-  "userId": 56,
-  "fullName": "Davie Nurdin",
-  "stdId": "63304-780",
-  "score": 35,
-  "time": "3:08 AM"
-}, {
-  "userId": 57,
-  "fullName": "Phillie Bentson",
-  "stdId": "65923-007",
-  "score": 56,
-  "time": "4:10 PM"
-}, {
-  "userId": 58,
-  "fullName": "Ami Salaman",
-  "stdId": "52584-153",
-  "score": 29,
-  "time": "2:45 AM"
-}, {
-  "userId": 59,
-  "fullName": "Stephi Vieyra",
-  "stdId": "46708-025",
-  "score": 61,
-  "time": "8:02 PM"
-}, {
-  "userId": 60,
-  "fullName": "Hestia Donaldson",
-  "stdId": "63354-230",
-  "score": 98,
-  "time": "2:56 AM"
-}, {
-  "userId": 61,
-  "fullName": "Myriam Fishbie",
-  "stdId": "55301-615",
-  "score": 93,
-  "time": "8:34 AM"
-}, {
-  "userId": 62,
-  "fullName": "Thacher Jest",
-  "stdId": "55714-2276",
-  "score": 73,
-  "time": "8:43 PM"
-}, {
-  "userId": 63,
-  "fullName": "Patricia Gajownik",
-  "stdId": "17312-004",
-  "score": 32,
-  "time": "3:12 PM"
-}, {
-  "userId": 64,
-  "fullName": "Donall Mitrovic",
-  "stdId": "67296-0650",
-  "score": 37,
-  "time": "2:36 PM"
-}, {
-  "userId": 65,
-  "fullName": "Tedman Ambrozewicz",
-  "stdId": "66116-450",
-  "score": 53,
-  "time": "8:42 AM"
-}, {
-  "userId": 66,
-  "fullName": "Prent Beden",
-  "stdId": "75997-018",
-  "score": 46,
-  "time": "6:04 PM"
-}, {
-  "userId": 67,
-  "fullName": "Martica Citrine",
-  "stdId": "36987-1739",
-  "score": 33,
-  "time": "5:11 AM"
-}, {
-  "userId": 68,
-  "fullName": "Gibbie Westmore",
-  "stdId": "64942-1096",
-  "score": 38,
-  "time": "1:36 PM"
-}, {
-  "userId": 69,
-  "fullName": "Valeria Tortis",
-  "stdId": "68382-196",
-  "score": 19,
-  "time": "4:04 AM"
-}, {
-  "userId": 70,
-  "fullName": "Tracie Moreno",
-  "stdId": "42023-130",
-  "score": 32,
-  "time": "5:13 AM"
-}, {
-  "userId": 71,
-  "fullName": "Barrie Axtell",
-  "stdId": "45963-303",
-  "score": 77,
-  "time": "10:26 AM"
-}, {
-  "userId": 72,
-  "fullName": "Nelson McCory",
-  "stdId": "54218-800",
-  "score": 82,
-  "time": "5:08 PM"
-}, {
-  "userId": 73,
-  "fullName": "Ray Rackham",
-  "stdId": "59243-110",
-  "score": 51,
-  "time": "6:33 PM"
-}, {
-  "userId": 74,
-  "fullName": "Ashien Lipscombe",
-  "stdId": "42507-604",
-  "score": 78,
-  "time": "10:30 PM"
-}, {
-  "userId": 75,
-  "fullName": "Viki Shellcross",
-  "stdId": "55154-5086",
-  "score": 82,
-  "time": "6:14 AM"
-}, {
-  "userId": 76,
-  "fullName": "Mikey Throughton",
-  "stdId": "43742-0158",
-  "score": 29,
-  "time": "7:08 PM"
-}, {
-  "userId": 77,
-  "fullName": "Morena Habron",
-  "stdId": "0363-0390",
-  "score": 88,
-  "time": "6:17 AM"
-}, {
-  "userId": 78,
-  "fullName": "Kylila Gritskov",
-  "stdId": "59115-073",
-  "score": 80,
-  "time": "7:31 AM"
-}, {
-  "userId": 79,
-  "fullName": "Harriet Froment",
-  "stdId": "11819-360",
-  "score": 66,
-  "time": "1:28 PM"
-}, {
-  "userId": 80,
-  "fullName": "Corabel Isakov",
-  "stdId": "60505-0097",
-  "score": 28,
-  "time": "8:15 AM"
-}, {
-  "userId": 81,
-  "fullName": "Marisa Duchesne",
-  "stdId": "76214-035",
-  "score": 92,
-  "time": "5:39 AM"
-}, {
-  "userId": 82,
-  "fullName": "Delilah Martinson",
-  "stdId": "47593-385",
-  "score": 78,
-  "time": "5:14 PM"
-}, {
-  "userId": 83,
-  "fullName": "Anallese Mendus",
-  "stdId": "11822-7310",
-  "score": 55,
-  "time": "12:16 PM"
-}, {
-  "userId": 84,
-  "fullName": "Tanya Whichelow",
-  "stdId": "0469-0677",
+  "std_id": "53113-218",
   "score": 44,
-  "time": "8:54 AM"
+  "time": "3:00"
 }, {
-  "userId": 85,
-  "fullName": "Erich Stoker",
-  "stdId": "64735-080",
-  "score": 68,
-  "time": "5:40 PM"
+  "std_id": "59779-308",
+  "score": 37,
+  "time": "21:30"
 }, {
-  "userId": 86,
-  "fullName": "Mozelle Hallifax",
-  "stdId": "0517-4810",
-  "score": 93,
-  "time": "8:57 PM"
-}, {
-  "userId": 87,
-  "fullName": "Colly Cundey",
-  "stdId": "0409-2596",
-  "score": 55,
-  "time": "8:41 AM"
-}, {
-  "userId": 88,
-  "fullName": "Cammy Piddletown",
-  "stdId": "49349-430",
-  "score": 62,
-  "time": "12:09 AM"
-}, {
-  "userId": 89,
-  "fullName": "Kirbie Laffan",
-  "stdId": "68180-588",
-  "score": 33,
-  "time": "4:51 AM"
-}, {
-  "userId": 90,
-  "fullName": "Keri Gori",
-  "stdId": "59460-0001",
-  "score": 62,
-  "time": "10:55 AM"
-}, {
-  "userId": 91,
-  "fullName": "Lydia Reavey",
-  "stdId": "54868-5611",
-  "score": 14,
-  "time": "5:10 PM"
-}, {
-  "userId": 92,
-  "fullName": "Xerxes Bertouloume",
-  "stdId": "55910-179",
-  "score": 82,
-  "time": "9:51 PM"
-}, {
-  "userId": 93,
-  "fullName": "Susan Frisel",
-  "stdId": "50474-597",
-  "score": 38,
-  "time": "10:38 AM"
-}, {
-  "userId": 94,
-  "fullName": "Nathalia Collcott",
-  "stdId": "43857-0243",
-  "score": 87,
-  "time": "7:19 PM"
-}, {
-  "userId": 95,
-  "fullName": "Gretel Wadsworth",
-  "stdId": "10812-416",
+  "std_id": "67544-511",
   "score": 81,
-  "time": "12:57 PM"
+  "time": "5:22"
 }, {
-  "userId": 96,
-  "fullName": "Aleen Owen",
-  "stdId": "49288-0043",
-  "score": 61,
-  "time": "6:13 PM"
+  "std_id": "76335-005",
+  "score": 73,
+  "time": "18:54"
 }, {
-  "userId": 97,
-  "fullName": "Brita Mangenot",
-  "stdId": "52731-7007",
-  "score": 13,
-  "time": "1:33 PM"
+  "std_id": "59779-579",
+  "score": 8,
+  "time": "1:40"
 }, {
-  "userId": 98,
-  "fullName": "Helena Lilleyman",
-  "stdId": "36987-2460",
-  "score": 92,
-  "time": "3:18 PM"
+  "std_id": "0555-0635",
+  "score": 5,
+  "time": "18:43"
 }, {
-  "userId": 99,
-  "fullName": "Warden Maclean",
-  "stdId": "37000-733",
-  "score": 96,
-  "time": "5:28 AM"
+  "std_id": "59351-0305",
+  "score": 98,
+  "time": "5:19"
 }, {
-  "userId": 100,
-  "fullName": "Colas Rysdale",
-  "stdId": "36987-1091",
+  "std_id": "54458-301",
+  "score": 97,
+  "time": "6:28"
+}, {
+  "std_id": "23594-505",
+  "score": 60,
+  "time": "19:21"
+}, {
+  "std_id": "43742-0193",
   "score": 47,
-  "time": "3:00 PM"
+  "time": "2:39"
+}, {
+  "std_id": "55301-253",
+  "score": 84,
+  "time": "9:15"
+}, {
+  "std_id": "49288-0897",
+  "score": 45,
+  "time": "17:42"
+}, {
+  "std_id": "10544-214",
+  "score": 33,
+  "time": "22:55"
+}, {
+  "std_id": "55154-5895",
+  "score": 8,
+  "time": "20:15"
+}, {
+  "std_id": "36987-2737",
+  "score": 65,
+  "time": "6:09"
+}, {
+  "std_id": "49643-342",
+  "score": 97,
+  "time": "2:38"
+}, {
+  "std_id": "0615-2561",
+  "score": 80,
+  "time": "20:25"
+}, {
+  "std_id": "60512-6440",
+  "score": 25,
+  "time": "0:27"
+}, {
+  "std_id": "60505-3620",
+  "score": 60,
+  "time": "4:34"
+}, {
+  "std_id": "48951-3109",
+  "score": 15,
+  "time": "11:07"
+}, {
+  "std_id": "61314-016",
+  "score": 64,
+  "time": "8:39"
+}, {
+  "std_id": "53808-0920",
+  "score": 54,
+  "time": "17:27"
+}, {
+  "std_id": "48951-8133",
+  "score": 53,
+  "time": "15:14"
+}, {
+  "std_id": "63629-1774",
+  "score": 49,
+  "time": "5:37"
+}, {
+  "std_id": "65862-029",
+  "score": 17,
+  "time": "1:55"
+}, {
+  "std_id": "63941-376",
+  "score": 5,
+  "time": "9:01"
+}, {
+  "std_id": "0615-0828",
+  "score": 58,
+  "time": "1:03"
+}, {
+  "std_id": "30142-182",
+  "score": 54,
+  "time": "15:33"
+}, {
+  "std_id": "36987-1400",
+  "score": 18,
+  "time": "14:27"
+}, {
+  "std_id": "63739-291",
+  "score": 55,
+  "time": "15:16"
+}, {
+  "std_id": "11819-363",
+  "score": 19,
+  "time": "3:36"
+}, {
+  "std_id": "54868-6198",
+  "score": 68,
+  "time": "19:38"
+}, {
+  "std_id": "49999-879",
+  "score": 80,
+  "time": "8:10"
+}, {
+  "std_id": "50268-796",
+  "score": 95,
+  "time": "14:36"
+}, {
+  "std_id": "50523-546",
+  "score": 53,
+  "time": "6:14"
+}, {
+  "std_id": "10812-351",
+  "score": 10,
+  "time": "13:53"
+}, {
+  "std_id": "43547-221",
+  "score": 44,
+  "time": "19:02"
+}, {
+  "std_id": "0378-9104",
+  "score": 85,
+  "time": "7:44"
+}, {
+  "std_id": "68016-070",
+  "score": 73,
+  "time": "18:16"
+}, {
+  "std_id": "54340-179",
+  "score": 66,
+  "time": "16:15"
+}, {
+  "std_id": "76000-411",
+  "score": 61,
+  "time": "13:28"
+}, {
+  "std_id": "41520-231",
+  "score": 35,
+  "time": "7:03"
+}, {
+  "std_id": "64205-585",
+  "score": 8,
+  "time": "13:23"
+}, {
+  "std_id": "62003-002",
+  "score": 68,
+  "time": "19:17"
+}, {
+  "std_id": "54868-1157",
+  "score": 46,
+  "time": "9:35"
+}, {
+  "std_id": "0781-5125",
+  "score": 48,
+  "time": "8:27"
+}, {
+  "std_id": "47682-097",
+  "score": 29,
+  "time": "0:17"
+}, {
+  "std_id": "61957-1027",
+  "score": 75,
+  "time": "8:09"
+}, {
+  "std_id": "52125-865",
+  "score": 2,
+  "time": "23:48"
+}, {
+  "std_id": "53045-105",
+  "score": 44,
+  "time": "8:54"
+}, {
+  "std_id": "41520-300",
+  "score": 91,
+  "time": "14:45"
+}, {
+  "std_id": "63824-016",
+  "score": 60,
+  "time": "13:48"
+}, {
+  "std_id": "76328-101",
+  "score": 54,
+  "time": "16:45"
+}, {
+  "std_id": "0173-0676",
+  "score": 63,
+  "time": "0:05"
+}, {
+  "std_id": "11523-7221",
+  "score": 3,
+  "time": "14:28"
+}, {
+  "std_id": "41415-046",
+  "score": 23,
+  "time": "13:31"
+}, {
+  "std_id": "49738-466",
+  "score": 88,
+  "time": "0:34"
+}, {
+  "std_id": "49349-924",
+  "score": 94,
+  "time": "6:41"
+}, {
+  "std_id": "63629-1597",
+  "score": 31,
+  "time": "8:42"
+}, {
+  "std_id": "49781-081",
+  "score": 58,
+  "time": "10:01"
+}, {
+  "std_id": "36987-1223",
+  "score": 87,
+  "time": "11:24"
+}, {
+  "std_id": "68878-130",
+  "score": 91,
+  "time": "4:52"
+}, {
+  "std_id": "66530-253",
+  "score": 17,
+  "time": "22:22"
+}, {
+  "std_id": "54458-990",
+  "score": 1,
+  "time": "22:55"
+}, {
+  "std_id": "53746-102",
+  "score": 15,
+  "time": "3:54"
+}, {
+  "std_id": "52815-121",
+  "score": 66,
+  "time": "20:22"
+}, {
+  "std_id": "16555-006",
+  "score": 32,
+  "time": "15:41"
+}, {
+  "std_id": "61481-3004",
+  "score": 45,
+  "time": "17:35"
+}, {
+  "std_id": "37000-565",
+  "score": 46,
+  "time": "14:34"
+}, {
+  "std_id": "12546-321",
+  "score": 6,
+  "time": "7:13"
+}, {
+  "std_id": "43063-387",
+  "score": 71,
+  "time": "11:08"
+}, {
+  "std_id": "68788-9086",
+  "score": 7,
+  "time": "20:35"
+}, {
+  "std_id": "62756-402",
+  "score": 91,
+  "time": "7:38"
+}, {
+  "std_id": "68151-2103",
+  "score": 74,
+  "time": "0:41"
+}, {
+  "std_id": "0615-7757",
+  "score": 46,
+  "time": "2:25"
+}, {
+  "std_id": "50988-214",
+  "score": 72,
+  "time": "3:41"
+}, {
+  "std_id": "64239-101",
+  "score": 42,
+  "time": "6:55"
+}, {
+  "std_id": "53208-424",
+  "score": 63,
+  "time": "2:25"
+}, {
+  "std_id": "48951-1046",
+  "score": 53,
+  "time": "15:32"
+}, {
+  "std_id": "24338-050",
+  "score": 18,
+  "time": "22:28"
+}, {
+  "std_id": "57337-058",
+  "score": 14,
+  "time": "14:03"
+}, {
+  "std_id": "53346-1366",
+  "score": 3,
+  "time": "11:58"
+}, {
+  "std_id": "55319-081",
+  "score": 62,
+  "time": "7:54"
+}, {
+  "std_id": "43846-0028",
+  "score": 6,
+  "time": "5:53"
+}, {
+  "std_id": "59746-030",
+  "score": 23,
+  "time": "9:58"
+}, {
+  "std_id": "36987-3408",
+  "score": 89,
+  "time": "10:10"
+}, {
+  "std_id": "68479-202",
+  "score": 80,
+  "time": "0:27"
+}, {
+  "std_id": "49035-660",
+  "score": 52,
+  "time": "8:06"
+}, {
+  "std_id": "60429-307",
+  "score": 54,
+  "time": "7:03"
+}, {
+  "std_id": "68084-300",
+  "score": 74,
+  "time": "4:45"
+}, {
+  "std_id": "49349-025",
+  "score": 86,
+  "time": "13:31"
+}, {
+  "std_id": "0440-7183",
+  "score": 56,
+  "time": "7:50"
+}, {
+  "std_id": "23155-291",
+  "score": 31,
+  "time": "23:10"
+}, {
+  "std_id": "0781-9221",
+  "score": 97,
+  "time": "23:44"
+}, {
+  "std_id": "65342-1008",
+  "score": 96,
+  "time": "19:55"
+}, {
+  "std_id": "11822-9019",
+  "score": 74,
+  "time": "7:47"
+}, {
+  "std_id": "17478-933",
+  "score": 12,
+  "time": "8:15"
+}, {
+  "std_id": "52854-036",
+  "score": 36,
+  "time": "11:07"
+}, {
+  "std_id": "68387-521",
+  "score": 45,
+  "time": "13:57"
 }]`
 );
 export default tableData;

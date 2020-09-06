@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// import { correctAnswer } from "./SingleView";
 import { palette } from 'styled-theme';
 import {
   transition,
@@ -6,6 +7,7 @@ import {
   boxShadow,
 } from '@iso/lib/helpers/style_utils';
 import WithDirection from '@iso/lib/helpers/rtl';
+
 const WDContactCardWrapper = styled.div`
   width: 100%;
   height: calc(100% - 145px);
@@ -102,7 +104,7 @@ const WDContactCardWrapper = styled.div`
       .isoInfoLabel {
         font-size: 14px;
         font-weight: 500;
-        color: ${palette('text', 0)};
+        // color: ${palette('text', 0)};
         line-height: 1.5;
         margin: 0;
         margin-right: ${props =>
@@ -128,7 +130,7 @@ const WDContactCardWrapper = styled.div`
         }
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           right: ${props => (props['data-rtl'] === 'rtl' ? 'inherit' : '0')};
           left: ${props => (props['data-rtl'] === 'rtl' ? '0' : 'inherit')};
@@ -138,11 +140,15 @@ const WDContactCardWrapper = styled.div`
       .isoInfoDetails {
         font-size: 14px;
         font-weight: 400;
-        color: ${palette('text', 2)};
+        // color: ${palette('text', 2)};
         line-height: 1.5;
         margin: 0;
         text-align: ${props =>
           props['data-rtl'] === 'rtl' ? 'right' : 'left'};
+      }
+
+      .CorrectAnswer {
+        font-weight:bold;
       }
 
       input {

@@ -41,24 +41,24 @@ export default function({ contact, otherAttributes }) {
         </div>
 
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Đáp án A</p>
-          <p className="isoInfoDetails">{contact.answerA}</p>
+          <p className="isoInfoLabel ">Đáp án A</p>
+          <p className="isoInfoDetails ">{contact.answerA}</p>
         </div>
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Đáp án B</p>
-          <p className="isoInfoDetails">{contact.answerB}</p>
+          <p className="isoInfoLabel ">Đáp án B</p>
+          <p className="isoInfoDetails ">{contact.answerB}</p>
         </div>
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Đáp án C</p>
-          <p className="isoInfoDetails">{contact.answerC}</p>
+          <p className="isoInfoLabel ">Đáp án C</p>
+          <p className="isoInfoDetails ">{contact.answerC}</p>
         </div>
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Đáp án D</p>
-          <p className="isoInfoDetails">{contact.answerD}</p>
+          <p className="isoInfoLabel ">Đáp án D</p>
+          <p className="isoInfoDetails ">{contact.answerD}</p>
         </div>
 
         <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Kết quả </p>
+          <p className="isoInfoLabel ">Kết quả </p>
           <p className="isoInfoDetails Correct">
             {'Đáp án ' +
               contact.result +

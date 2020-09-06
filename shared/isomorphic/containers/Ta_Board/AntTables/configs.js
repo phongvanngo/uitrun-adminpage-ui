@@ -30,17 +30,17 @@ const columnss = [
     render: object => renderCell(object, 'TextCell', 'key'), //(text,record,index)
   },
 
-  {
-    title: <IntlMessages id="antTable.title.fullName" />,
-    key: 'fullName',
-    width: 150,
-    render: object => renderCell(object, 'TextCell', 'fullName'),
-  },
+  // {
+  //   title: <IntlMessages id="antTable.title.fullName" />,
+  //   key: 'fullName',
+  //   width: 150,
+  //   render: object => renderCell(object, 'TextCell', 'fullName'),
+  // },
   {
     title: <IntlMessages id="antTable.title.stdId" />,
     key: 'stdId',
     width: 150,
-    render: object => renderCell(object, 'TextCell', 'stdId'),
+    render: object => renderCell(object, 'TextCell', 'std_id'),
   },
   {
     title: <IntlMessages id="antTable.title.score" />,
@@ -54,12 +54,12 @@ const columnss = [
     width: 150,
     render: object => renderCell(object, 'TextCell', 'time'),
   },
-  {
-    title: <IntlMessages id="antTable.title.id" />,
-    key: 'userId',
-    width: 50,
-    render: object => renderCell(object, 'TextCell', 'userId'), //(text,record,index)
-  },
+  // {
+  //   title: <IntlMessages id="antTable.title.id" />,
+  //   key: 'userId',
+  //   width: 50,
+  //   render: object => renderCell(object, 'TextCell', 'userId'), //(text,record,index)
+  // },
 ];
 
 const columns = [
