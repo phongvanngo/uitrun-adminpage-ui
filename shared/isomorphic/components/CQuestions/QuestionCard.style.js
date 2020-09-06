@@ -189,10 +189,16 @@ const WDContactCardWrapper = styled.div`
 
       .Correct {
         color: red;
+        font-style: italic;
+      }
+
+      .Content {
+        font-weight: bold;
+        color: black;
       }
 
       textarea {
-        font-size: 14px;
+        font-size: 20px;
         font-weight: 400;
         color: ${palette('text', 2)};
         line-height: 24px;
