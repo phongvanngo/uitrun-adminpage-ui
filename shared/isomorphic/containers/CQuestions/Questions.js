@@ -77,23 +77,23 @@ export default function Contacts() {
               </Button>
             </div>
 
-            <Scrollbar
+            {/* <Scrollbar
               className="contactBoxScrollbar"
-              style={{ height: 'calc(100vh - 200px)' }}
-            >
-              {editView ? (
-                <EditContactView
-                  onUpdateQuestion={() => {
-                    dispatch(updateQuestion());
-                  }}
-                />
-              ) : (
-                <SingleContactView
-                  contact={selectedContact}
-                  otherAttributes={otherAttributes}
-                />
-              )}
-            </Scrollbar>
+              style={{ height: "calc(100vh - 200px)" }}
+            > */}
+            {editView ? (
+              <EditContactView
+                onUpdateQuestion={() => {
+                  dispatch(updateQuestion());
+                }}
+              />
+            ) : (
+              <SingleContactView
+                contact={selectedContact}
+                otherAttributes={otherAttributes}
+              />
+            )}
+            {/* </Scrollbar> */}
           </Content>
         ) : (
           <div className="isoContactControl">

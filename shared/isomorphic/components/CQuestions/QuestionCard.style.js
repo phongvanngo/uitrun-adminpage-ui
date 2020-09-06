@@ -187,6 +187,10 @@ const WDContactCardWrapper = styled.div`
         }
       }
 
+      .Correct {
+        color: red;
+      }
+
       textarea {
         font-size: 14px;
         font-weight: 400;

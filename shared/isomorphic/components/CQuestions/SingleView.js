@@ -50,13 +50,89 @@ export default function({ contact, otherAttributes }) {
   });
   return (
     <ContactCardWrapper className="isoContactCard">
-      {/* <div className="isoContactCardHead">
-        <div className="isoPersonImage">
-          {contact.avatar ? <img alt="#" src={contact.avatar} /> : ''}
+      <div className="isoContactInfoWrapper">
+        {/* {extraInfos} */}
+
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel">Câu hỏi</p>
+          <p className="isoInfoDetails">{contact.content}</p>
         </div>
-        <h1 className="isoPersonName">{name}</h1>
-      </div> */}
-      <div className="isoContactInfoWrapper">{extraInfos}</div>
+
+        <div className="isoContactCardInfos">
+          <p
+            className={
+              'isoInfoLabel ' + (contact.result === 'A' ? 'Correct' : '')
+            }
+          >
+            Đáp án A
+          </p>
+          <p
+            className={
+              'isoInfoDetails ' + (contact.result === 'A' ? 'Correct' : '')
+            }
+          >
+            {contact.answerA}
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos">
+          <p
+            className={
+              'isoInfoLabel ' + (contact.result === 'B' ? 'Correct' : '')
+            }
+          >
+            Đáp án B
+          </p>
+          <p
+            className={
+              'isoInfoDetails ' + (contact.result === 'B' ? 'Correct' : '')
+            }
+          >
+            {contact.answerB}
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos">
+          <p
+            className={
+              'isoInfoLabel ' + (contact.result === 'C' ? 'Correct' : '')
+            }
+          >
+            Đáp án C
+          </p>
+          <p
+            className={
+              'isoInfoDetails ' + (contact.result === 'C' ? 'Correct' : '')
+            }
+          >
+            {contact.answerC}
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos ">
+          <p
+            className={
+              'isoInfoLabel ' + (contact.result === 'D' ? 'Correct' : '')
+            }
+          >
+            Đáp án D
+          </p>
+          <p
+            className={
+              'isoInfoDetails ' + (contact.result === 'D' ? 'Correct' : '')
+            }
+          >
+            {contact.answerD}
+          </p>
+        </div>
+
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel">Kết quả </p>
+          <p className="isoInfoDetails Correct">
+            {contact.result + '. ' + contact[`answer${contact.result}`]}
+          </p>
+        </div>
+      </div>
     </ContactCardWrapper>
   );
 }

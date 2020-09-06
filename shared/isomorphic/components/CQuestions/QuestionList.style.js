@@ -84,7 +84,9 @@ const WDContactListWrapper = styled.div`
 
     .contactListScrollbar {
       height: calc(100vh - 200px);
-
+      border-bottom: solid;
+      border-color: #e0e0e0;
+      border-width: 5px;
       @media only screen and (max-width: 767px) {
         max-height: 60vh;
       }

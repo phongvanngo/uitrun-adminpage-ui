@@ -67,7 +67,7 @@ const contactActions = {
       answerD: '',
       result: 'A',
       image: '',
-      description: ' ',
+      description: '',
       isShuffle: 0,
     };
     return async (dispatch, getState) => {

@@ -1,13 +1,13 @@
 export const otherAttributes = [
   // { title: "ID", value: "id", type: "boolean" },
-  { title: 'Content', value: 'content', type: 'boolean' },
-  { title: 'Image', value: 'image', type: 'link' },
+  { title: 'Câu hỏi', value: 'content', type: 'boolean' },
+  { title: 'Đáp án A', value: 'answerA', type: 'string' },
+  { title: 'Đáp án B', value: 'answerB', type: 'string' },
+  { title: 'Đáp án C', value: 'answerC', type: 'boolean' },
+  { title: 'Đáp án D', value: 'answerD', type: 'boolean' },
+  { title: 'Kết quả', value: 'result', type: 'string' },
+  { title: 'Hình ảnh', value: 'image', type: 'link' },
   { title: 'Video', value: 'description', type: 'string' },
-  { title: 'Answer A', value: 'answerA', type: 'string' },
-  { title: 'Answer B', value: 'answerB', type: 'string' },
-  { title: 'Answer C', value: 'answerC', type: 'boolean' },
-  { title: 'Answer D', value: 'answerD', type: 'boolean' },
-  { title: 'Result', value: 'result', type: 'string' },
 ];
 
 const contactList = JSON.parse(

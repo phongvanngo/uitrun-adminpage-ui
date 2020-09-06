@@ -55,16 +55,16 @@ export default function({ onUpdateQuestion }) {
   const correctAnswer = res => {
     switch (res) {
       case 1:
-        return 'A. ' + answerA;
+        return ' A. ' + answerA;
         break;
       case 2:
-        return 'B. ' + answerB;
+        return ' B. ' + answerB;
         break;
       case 3:
-        return 'C. ' + answerC;
+        return ' C. ' + answerC;
         break;
       case 4:
-        return 'D. ' + answerD;
+        return ' D. ' + answerD;
         break;
       default:
         break;
@@ -97,36 +97,6 @@ export default function({ onUpdateQuestion }) {
               dispatch(onEditQuestion('content', event.target.value));
             }}
           />
-        </div>
-
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Hình ảnh</p>
-          <Input
-            placeholder="Link URL"
-            value={image}
-            onChange={event => {
-              dispatch(onEditQuestion('image', event.target.value));
-            }}
-          />
-        </div>
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel"></p>
-          <p className="isoInfoDetails">{renderImage(image)}</p>
-        </div>
-
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel">Video</p>
-          <Input
-            placeholder="Link URL"
-            value={description}
-            onChange={event => {
-              dispatch(onEditQuestion('description', event.target.value));
-            }}
-          />
-        </div>
-        <div className="isoContactCardInfos">
-          <p className="isoInfoLabel"></p>
-          <p className="isoInfoDetails">{renderIframe(description)}</p>
         </div>
 
         <div className="isoContactCardInfos" style={{ marginBottom: '0px' }}>
@@ -198,6 +168,36 @@ export default function({ onUpdateQuestion }) {
           </RadioGroup>
           {/* </ContentHolder> */}
           {/* </p> */}
+        </div>
+
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel">Hình ảnh</p>
+          <Input
+            placeholder="Link URL"
+            value={image}
+            onChange={event => {
+              dispatch(onEditQuestion('image', event.target.value));
+            }}
+          />
+        </div>
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel"></p>
+          <p className="isoInfoDetails">{renderImage(image)}</p>
+        </div>
+
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel">Video</p>
+          <Input
+            placeholder="Link URL"
+            value={description}
+            onChange={event => {
+              dispatch(onEditQuestion('description', event.target.value));
+            }}
+          />
+        </div>
+        <div className="isoContactCardInfos">
+          <p className="isoInfoLabel"></p>
+          <p className="isoInfoDetails">{renderIframe(description)}</p>
         </div>
       </div>
     </ContactCardWrapper>
