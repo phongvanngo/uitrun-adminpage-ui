@@ -98,7 +98,7 @@ export default function Sidebar() {
         trigger={null}
         collapsible={true}
         collapsed={isCollapsed}
-        width={240}
+        width={350}
         className="isomorphicSidebar"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}

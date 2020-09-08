@@ -54,7 +54,10 @@ export default function SignIn() {
         <div className="isoLoginContent">
           <div className="isoLogoWrapper">
             <Link to="/dashboard">
-              <IntlMessages id="page.signInTitle" />
+              <div>
+                <IntlMessages id="page.signInTitle" />
+                {/* <img style={{ width: "100%", height: "100%" }} src={logo}></img> */}
+              </div>
             </Link>
           </div>
           <div className="isoSignInForm">
@@ -103,9 +106,7 @@ export default function SignIn() {
               </Link>
             </div> */}
           </div>
-          <div>
-            <img style={logoStyle} src={logo} alt="" />
-          </div>
+          <div>{/* <img style={logoStyle} src={logo} alt="" /> */}</div>
         </div>
       </div>
     </SignInStyleWrapper>

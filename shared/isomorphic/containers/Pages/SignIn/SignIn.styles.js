@@ -15,7 +15,7 @@ const SignInStyleWrapper = styled.div`
   background-size: cover;
 
   &:before {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     display: flex;
@@ -41,7 +41,7 @@ const SignInStyleWrapper = styled.div`
     flex-direction: column;
     padding: 70px 50px;
     position: relative;
-    background-color: #ffffff;
+    // background-color: ;
 
     @media only screen and (max-width: 767px) {
       width: 100%;
@@ -57,10 +57,11 @@ const SignInStyleWrapper = styled.div`
 
       a {
         font-size: 24px;
-        font-weight: 300;
+        font-weight: bold;
         line-height: 1;
         text-transform: uppercase;
-        color: ${palette('secondary', 2)};
+        // color: ${palette('secondary', 2)};
+        color:white;
       }
     }
 
@@ -110,7 +111,7 @@ const SignInStyleWrapper = styled.div`
         align-items: center;
 
         &:before {
-          content: '*';
+          content: "*";
           color: ${palette('error', 0)};
           padding-right: 3px;
           font-size: 14px;

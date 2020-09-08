@@ -22,7 +22,7 @@ const WDContactsWrapper = styled.div`
     flex-shrink: 0;
     background: #ffffff;
     border: 1px solid ${palette('border', 0)};
-    width: 320px;
+    width: 380px;
     overflow: hidden;
     overflow-y: auto;
 

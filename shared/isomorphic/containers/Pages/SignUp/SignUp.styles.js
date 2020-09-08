@@ -96,6 +96,7 @@ const SignUpStyleWrapper = styled.div`
       }
 
       .isoLeftRightComponent {
+        // color: white;
         input {
           width: calc(100% - 10px);
 

@@ -45,6 +45,7 @@ const SidebarWrapper = styled.div`
           letter-spacing: 3px;
           text-transform: uppercase;
           color: ${palette('grayscale', 6)};
+          // color: white;
           display: block;
           text-decoration: none;
         }
@@ -82,7 +83,7 @@ const SidebarWrapper = styled.div`
         -ms-flex-align: center;
         align-items: center;
         padding: 0 24px;
-        margin: 0;
+        margin: 10px 0px 30px 0px;
       }
 
       .isoMenuHolder {
@@ -107,7 +108,7 @@ const SidebarWrapper = styled.div`
       }
 
       .nav-text {
-        font-size: 14px;
+        font-size: 30px;
         color: inherit;
         font-weight: 400;
         ${transition()};

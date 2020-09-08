@@ -143,7 +143,7 @@ const WDContactListWrapper = styled.div`
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          width: 200px;
+          width: 270px;
         }
       }
 
