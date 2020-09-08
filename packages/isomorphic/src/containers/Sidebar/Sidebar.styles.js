@@ -108,7 +108,7 @@ const SidebarWrapper = styled.div`
       }
 
       .nav-text {
-        font-size: 30px;
+        font-size: 20px;
         color: inherit;
         font-weight: 400;
         ${transition()};
