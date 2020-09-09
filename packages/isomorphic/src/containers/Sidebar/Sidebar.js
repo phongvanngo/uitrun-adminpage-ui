@@ -100,8 +100,8 @@ export default function Sidebar() {
         collapsed={isCollapsed}
         width={350}
         className="isomorphicSidebar"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        // onMouseEnter={onMouseEnter}
+        // onMouseLeave={onMouseLeave}
         style={styling}
       >
         <Logo collapsed={isCollapsed} />
