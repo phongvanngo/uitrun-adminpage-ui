@@ -26,41 +26,41 @@ const actions = {
   // }),
   login: user => {
     return dispatch => {
-      // dispatch({
-      //   type: actions.LOGIN_REQUEST,
-      //   payload: fakeResponse,
-      // });
-      return api
-        .post('auth/login/admin', user)
-        .then(response => {
-          console.log(response);
-          switch (response.status) {
-            case 200:
-              notification('success', 'Đăng nhập thành công');
-              dispatch({
-                type: actions.LOGIN_REQUEST,
-                payload: response.data,
-              });
-              break;
+      dispatch({
+        type: actions.LOGIN_REQUEST,
+        payload: fakeResponse,
+      });
+      // return api
+      //   .post('auth/login/admin', user)
+      //   .then(response => {
+      //     console.log(response);
+      //     switch (response.status) {
+      //       case 200:
+      //         notification('success', 'Đăng nhập thành công');
+      //         dispatch({
+      //           type: actions.LOGIN_REQUEST,
+      //           payload: response.data,
+      //         });
+      //         break;
 
-            case 400:
-              notification('warning', 'Wrong username or password', '');
-              break;
+      //       case 400:
+      //         notification('warning', 'Wrong username or password', '');
+      //         break;
 
-            case 401:
-              notification('warning', 'Wrong username or password', '');
-              break;
+      //       case 401:
+      //         notification('warning', 'Wrong username or password', '');
+      //         break;
 
-            default:
-              notification('warning', 'Tài khoản không tồn tại', '');
-              // window.alert(response.status);
-              break;
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          notification('warning', 'Sai mật khẩu', '');
-        });
+      //       default:
+      //         notification('warning', 'Tài khoản không tồn tại', '');
+      //         // window.alert(response.status);
+      //         break;
+      //     }
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //     notification('warning', 'Sai mật khẩu', '');
+      //   });
     };
   },
 
