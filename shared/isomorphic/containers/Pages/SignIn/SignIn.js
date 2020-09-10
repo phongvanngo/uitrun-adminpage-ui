@@ -35,9 +35,9 @@ export default function SignIn() {
     dispatch(clearMenu());
     history.push('/dashboard/questions');
   }
-  let { from } = location.state || {
-    from: { pathname: '/dashboard/questions' },
-  };
+  let { from } = location.state;
+
+  console.log(from);
 
   if (redirectToReferrer) {
     return <Redirect to={from} />;
