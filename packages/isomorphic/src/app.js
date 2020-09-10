@@ -10,9 +10,8 @@ const App = () => (
   <Provider store={store}>
     <AppProvider>
       <>
-        {/* <GlobalStyles />
-        <Routes /> */}
-        hello
+        <GlobalStyles />
+        <Routes />
       </>
     </AppProvider>
   </Provider>
