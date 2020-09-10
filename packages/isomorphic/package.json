@@ -1,7 +1,7 @@
 {
   "name": "isomorphic",
   "version": "3.0.3",
-  "homepage": "/build/index.html",
+  "homepage": "uitrun-adminpage-ui-git-master.19520834.vercel.app",
   "private": true,
   "dependencies": {
     "@progress/kendo-drawing": "^1.6.0",
