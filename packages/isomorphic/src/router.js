@@ -7,7 +7,6 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Test from './containers/test';
 
 import ErrorBoundary from './ErrorBoundary';
 import { PUBLIC_ROUTE } from './route.constants';
