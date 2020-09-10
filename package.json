@@ -3,6 +3,7 @@
   "description": "",
   "version": "3.0.3",
   "private": true,
+  "homepage": "/packages/isomorphic/build",
   "author": "RedQ, Inc",
   "workspaces": [
     "shared/**/*",
