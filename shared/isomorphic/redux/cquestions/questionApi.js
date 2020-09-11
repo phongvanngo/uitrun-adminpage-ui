@@ -52,7 +52,7 @@ const questionApi = {
             break;
 
           default:
-            console.log(newQuestion);
+            //console.log(newQuestion);
             solveError(response.status, dispatch);
             return null;
             break;

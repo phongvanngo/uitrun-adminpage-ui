@@ -28,7 +28,7 @@ export default function getPaginatedItems(
 }
 
 const filterData = (items, param) => {
-  // console.log('Search & filtering code will be here.');
+  // //console.log('Search & filtering code will be here.');
   const defaultParamLength = 2; // default param object is {page: 1, limit: 10}
   if (Object.keys(param).length !== defaultParamLength) {
     return shuffle(items);

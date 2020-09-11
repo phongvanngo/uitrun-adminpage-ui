@@ -30,7 +30,7 @@ export async function getDocuments(collectionName) {
     );
 }
 export async function getDocumentsByQuery(collectionName, query) {
-  console.log(...query, collectionName, 'test');
+  //console.log(...query, collectionName, 'test');
 
   return await db
     .collection(collectionName)
@@ -51,7 +51,7 @@ export async function deleteDocuments(collectionName) {
     );
 
   return await batch.commit().then(() => {
-    console.log('Batch Deletion successfully committed!');
+    //console.log('Batch Deletion successfully committed!');
   });
 }
 
@@ -66,7 +66,7 @@ export const addCollectionAndDocuments = async (
     batch.set(newDocRef, obj);
   });
   return await batch.commit().then(() => {
-    console.log('Batch Addition successfully committed!');
+    //console.log('Batch Addition successfully committed!');
   });
 };
 // const { title, items } = doc.data();
@@ -77,7 +77,7 @@ export const addCollectionAndDocuments = async (
 //       items,
 //     };
 //   });
-//   console.log(transformedCollection);
+//   //console.log(transformedCollection);
 //   return transformedCollection.reduce((accumulator, collection) => {
 //     accumulator[collection.title.toLowerCase()] = collection;
 //     return accumulator;

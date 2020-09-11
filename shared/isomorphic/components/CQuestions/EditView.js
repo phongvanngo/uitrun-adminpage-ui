@@ -50,7 +50,7 @@ export default function({ onUpdateQuestion }) {
       );
   };
 
-  console.log(editingQuestion);
+  //console.log(editingQuestion);
 
   const correctAnswer = res => {
     switch (res) {

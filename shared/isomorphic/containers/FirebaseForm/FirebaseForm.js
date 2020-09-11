@@ -52,11 +52,11 @@ export default function(props) {
       try {
         await signUpWithEmailAndPassword(email, password).then(authUser => {
           user = authUser.user;
-          console.log(user, 'User');
+          //console.log(user, 'User');
         });
       } catch (error) {
         message = error.message;
-        console.log(error.message, 'Error');
+        //console.log(error.message, 'Error');
       }
     } else {
       try {
@@ -65,7 +65,7 @@ export default function(props) {
         });
       } catch (error) {
         message = error.message;
-        console.log(error.message, 'Error');
+        //console.log(error.message, 'Error');
       }
     }
     if (user) {

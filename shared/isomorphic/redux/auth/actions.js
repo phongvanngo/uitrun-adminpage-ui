@@ -33,7 +33,7 @@ const actions = {
       return api
         .post('auth/login/admin', user)
         .then(response => {
-          console.log(response);
+          //console.log(response);
           switch (response.status) {
             case 200:
               notification('success', 'Đăng nhập thành công');
@@ -58,7 +58,7 @@ const actions = {
           }
         })
         .catch(err => {
-          console.log(err);
+          //console.log(err);
           notification('warning', 'Sai mật khẩu', '');
         });
     };

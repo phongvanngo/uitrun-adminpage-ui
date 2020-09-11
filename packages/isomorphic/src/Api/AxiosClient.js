@@ -15,8 +15,8 @@ const instance = axios.create({
 instance.interceptors.request.use(
   config => {
     const token = localStorage.getItem('id_token');
-    console.log(token);
-    console.log('hello from interceptors');
+    //console.log(token);
+    //console.log('hello from interceptors');
     if (token) {
       // config.headers["Authorization"] = `${token}`;
       config.headers.Authorization = `Bearer ${token}`;
@@ -28,11 +28,11 @@ instance.interceptors.request.use(
 
 const getNewTokenAndReattemptRequest = async (config, refToken) => {
   try {
-    console.log(refToken);
+    //console.log(refToken);
     const getNewToken = await axios.post('127.0.0.1/users/token', {
       refreshtoken: refToken,
     });
-    console.log(getNewToken);
+    //console.log(getNewToken);
     const { token, refreshtoken } = getNewToken.data;
     save('accessToken', token);
     save('refreshToken', refreshtoken);
@@ -55,7 +55,7 @@ instance.interceptors.response.use(
     } = error;
     if (validateStatus()) return error;
     if (status === 401) {
-      console.log('hello from refresh');
+      //console.log('hello from refresh');
       const refreshToken = get('refreshToken');
       if (refreshToken)
         return getNewTokenAndReattemptRequest(config, refreshToken);

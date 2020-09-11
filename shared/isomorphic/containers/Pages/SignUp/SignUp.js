@@ -19,7 +19,7 @@ export default function SignUp() {
   const history = useHistory();
 
   const handleLogin = (token = false) => {
-    console.log(token, 'handlelogin');
+    //console.log(token, 'handlelogin');
     if (token) {
       dispatch(login(token));
     } else {

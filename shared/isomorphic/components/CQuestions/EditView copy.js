@@ -41,7 +41,7 @@ export default function({
   const [resultValue, setresultValue] = useState(TransferResultOption(result));
   const [descriptionValue, setdescriptionValue] = useState(description);
   const [imageValue, setimageValue] = useState(image);
-  console.log(2, contentValue);
+  //console.log(2, contentValue);
 
   let newQuestion = {
     id: contact.id,
@@ -67,8 +67,8 @@ export default function({
       result: resultValue,
       description: descriptionValue,
     };
-    console.log(1, contentValue);
-    console.log(newQuestion);
+    //console.log(1, contentValue);
+    //console.log(newQuestion);
     //changeQuestion(newQuestion);
   };
 

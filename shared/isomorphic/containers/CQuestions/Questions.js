@@ -34,7 +34,7 @@ export default function Contacts() {
   const { contacts, seectedId, editView } = useSelector(
     state => state.Questions
   );
-  // console.log(contacts);
+  // //console.log(contacts);
 
   const selectedContact = seectedId
     ? contacts.filter(contact => contact.id === seectedId)[0]

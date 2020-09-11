@@ -34,7 +34,7 @@ export const ProcessChartData = (dataScope, postStatData) => {
 //     graphData.map(singleGraphPoint => {
 //       data.push(singleGraphPoint);
 //     });
-//   // console.log(data, 'data');
+//   // //console.log(data, 'data');
 
 //   // Graph Drawing start
 
@@ -60,7 +60,7 @@ export const ProcessChartData = (dataScope, postStatData) => {
 //   // .domain([0, d3.max(data)])
 //   .domain(
 //     data.map(s => {
-//       console.log(s);
+//       //console.log(s);
 //       return s.duration;
 //     })
 //   )

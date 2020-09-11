@@ -1,20 +1,17 @@
+import Menu from '@iso/components/uielements/menu';
+import Scrollbars from '@iso/components/utility/customScrollBar';
+import Logo from '@iso/components/utility/logo';
+import appActions from '@iso/redux/app/actions';
+import { Layout } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Layout } from 'antd';
 import options from './options';
-import Scrollbars from '@iso/components/utility/customScrollBar';
-import Menu from '@iso/components/uielements/menu';
-import IntlMessages from '@iso/components/utility/intlMessages';
-import appActions from '@iso/redux/app/actions';
-import Logo from '@iso/components/utility/logo';
 import SidebarWrapper from './Sidebar.styles';
 import SidebarMenu from './SidebarMenu';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 const { Sider } = Layout;
 
 const {
-  toggleOpenDrawer,
+  // toggleOpenDrawer,
   changeOpenKeys,
   changeCurrent,
   toggleCollapsed,
@@ -70,18 +67,18 @@ export default function Sidebar() {
 
   const isCollapsed = collapsed && !openDrawer;
   const mode = isCollapsed === true ? 'vertical' : 'inline';
-  const onMouseEnter = event => {
-    if (collapsed && openDrawer === false) {
-      dispatch(toggleOpenDrawer());
-    }
-    return;
-  };
-  const onMouseLeave = () => {
-    if (collapsed && openDrawer === true) {
-      dispatch(toggleOpenDrawer());
-    }
-    return;
-  };
+  // const onMouseEnter = event => {
+  //   if (collapsed && openDrawer === false) {
+  //     dispatch(toggleOpenDrawer());
+  //   }
+  //   return;
+  // };
+  // const onMouseLeave = () => {
+  //   if (collapsed && openDrawer === true) {
+  //     dispatch(toggleOpenDrawer());
+  //   }
+  //   return;
+  // };
   const styling = {
     backgroundColor: customizedTheme.backgroundColor,
   };

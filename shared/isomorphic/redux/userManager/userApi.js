@@ -38,7 +38,7 @@ const userApi = {
 
   updateUser: async (id, newUserCode, dispatch) => {
     const url = '/user/';
-    console.log(id, newUserCode);
+    //console.log(id, newUserCode);
     const data = await axiosClient
       .patch(url + `${id}`, newUserCode)
       .then(response => {

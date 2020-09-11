@@ -22,7 +22,7 @@ export const signInWithFacebook = () =>
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      console.log(`FB Token: ${token}`, `User: ${user}`);
+      //console.log(`FB Token: ${token}`, `User: ${user}`);
 
       // ...
     })

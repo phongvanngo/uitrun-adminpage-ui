@@ -10,7 +10,7 @@ const fakeApiCall = true; // auth0 or express JWT
 export function* loginRequest() {
   yield takeEvery('LOGIN_REQUEST', function*({ payload }) {
     const { token } = payload;
-    console.log(payload);
+    //console.log(payload);
     if (token) {
       yield put({
         type: actions.LOGIN_SUCCESS,
