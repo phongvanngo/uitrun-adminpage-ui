@@ -79,13 +79,13 @@ export default function questionReducer(state = initState, action) {
         editView: true,
       };
 
-    case contactActions.LOADING:
+    case contactActions.QUESTION_LOADING:
       return {
         ...state,
         loading: true,
       };
 
-    case contactActions.UNLOADING:
+    case contactActions.QUESTION_UNLOADING:
       return {
         ...state,
         loading: false,

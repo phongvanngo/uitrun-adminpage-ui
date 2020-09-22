@@ -8,6 +8,7 @@ import React from 'react';
 import TableWrapper from '../AntTables.styles';
 import { Row, Col } from 'antd';
 import Button from '@iso/components/uielements/button';
+import Loader from '@iso/components/utility/loader';
 
 const { fetchUserList, updateUser } = userAction;
 
@@ -19,6 +20,7 @@ export default function(props) {
   const dispatch = useDispatch();
 
   const { userList } = useSelector(state => state.UserManager);
+
   const columns = createcolumns(clone(props.tableInfo.columns));
 
   const [searchKeyword, setSearchKeyword] = React.useState('');
@@ -58,44 +60,53 @@ export default function(props) {
     dispatch(updateUser(index, columnsKey, value));
   }
 
-  return (
-    //search
-    <React.Fragment>
-      <Row>
-        <Col span={24} style={{ marginBottom: '10px' }}>
-          <div style={{ float: 'left' }}>
-            <InputSearch
-              style={{ width: '50vh' }}
-              placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
-              onChange={e => {
-                setSearchKeyword(e.target.value);
-              }}
-            />
-          </div>
-          <div style={{ float: 'right' }}>
-            <Button
-              type="primary"
-              icon="cloud-download"
-              onClick={() => {
-                dispatch(fetchUserList());
-              }}
-            >
-              Cập nhật
-            </Button>
-          </div>
-        </Col>
-      </Row>
+  const { loading } = useSelector(state => state.UserManager);
 
-      <Row>
-        <Col span={24}>
-          <TableWrapper
-            columns={columns}
-            dataSource={filterData(searchKeyword, userList)}
-            pagination={{ pageSize: 50 }}
-            className="isoEditableTable"
-          />
-        </Col>
-      </Row>
-    </React.Fragment>
-  );
+  if (loading)
+    return (
+      <React.Fragment>
+        <Loader />
+      </React.Fragment>
+    );
+  else
+    return (
+      //search
+      <React.Fragment>
+        <Row>
+          <Col span={24} style={{ marginBottom: '10px' }}>
+            <div style={{ float: 'left' }}>
+              <InputSearch
+                style={{ width: '50vh' }}
+                placeholder="nhập id, tên, mssv, mã dự thi cần tìm kiếm"
+                onChange={e => {
+                  setSearchKeyword(e.target.value);
+                }}
+              />
+            </div>
+            <div style={{ float: 'right' }}>
+              <Button
+                type="primary"
+                icon="cloud-download"
+                onClick={() => {
+                  dispatch(fetchUserList());
+                }}
+              >
+                Cập nhật
+              </Button>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24}>
+            <TableWrapper
+              columns={columns}
+              dataSource={filterData(searchKeyword, userList)}
+              pagination={{ pageSize: 50 }}
+              className="isoEditableTable"
+            />
+          </Col>
+        </Row>
+      </React.Fragment>
+    );
 }

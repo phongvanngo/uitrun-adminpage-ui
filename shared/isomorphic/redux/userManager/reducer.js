@@ -2,13 +2,25 @@ import userAction from './actions';
 
 const initState = {
   userList: [],
+  loading: false,
 };
 
 export default function userReducer(state = initState, action) {
   switch (action.type) {
     case userAction.FETCH_USER_LIST:
       return {
+        loading: false,
         userList: action.userList,
+      };
+    case userAction.USER_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case userAction.USER_UNLOADING:
+      return {
+        ...state,
+        loading: false,
       };
     case userAction.UPDATE_FULLNAME:
       return {

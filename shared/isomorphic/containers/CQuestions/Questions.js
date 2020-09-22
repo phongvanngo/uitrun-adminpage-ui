@@ -21,6 +21,7 @@ const {
   updateQuestion,
   fetchQuestionList,
   onDeleteQuestion,
+  unLoading,
 } = contactActions;
 
 const { Content } = Layout;
@@ -30,7 +31,9 @@ export default function Contacts() {
 
   useEffect(() => {
     dispatch(fetchQuestionList());
-    return () => {};
+    return () => {
+      dispatch(unLoading());
+    };
   }, []);
 
   const { contacts, seectedId, editView, loading } = useSelector(

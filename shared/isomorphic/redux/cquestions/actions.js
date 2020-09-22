@@ -36,8 +36,8 @@ const contactActions = {
   UPDATE_QUESTION: 'UPDATE_QUESTION',
   FETCH_QUESTION: 'FETCH_QUESTION',
   UNVALID_PAYLOAD: 'UNVALID_PAYLOAD',
-  LOADING: 'LOADING',
-  UNLOADING: 'UNLOADING',
+  QUESTION_LOADING: 'QUESTION_LOADING',
+  QUESTION_UNLOADING: ' QUESTION_UNLOADING',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
@@ -48,7 +48,7 @@ const contactActions = {
     //console.log('hell');
     return async dispatch => {
       const params = { pageSize: 500, page: 0 };
-      dispatch({ type: contactActions.LOADING });
+      dispatch({ type: contactActions.QUESTION_LOADING });
       const questionList = await questionApi.getQuestionList(params, dispatch);
       if (questionList.length > 0) {
         dispatch({
@@ -60,6 +60,7 @@ const contactActions = {
     };
   },
 
+  unLoading: () => ({ type: contactActions.QUESTION_UNLOADING }),
   onAddQuestion: () => {
     const newQuestion = {
       content: '',
