@@ -108,34 +108,34 @@ const options = [
     label: 'sidebar.contacts',
     leftIcon: 'ion-android-checkbox-outline',
   },
-  // {
-  //   key: 'shuffle',
-  //   label: 'sidebar.shuffle',
-  //   leftIcon: 'ion-grid',
-  // },
-  // {
-  //   key: 'charts',
-  //   label: 'sidebar.charts',
-  //   leftIcon: 'ion-arrow-graph-up-right',
-  //   children: [
-  //     {
-  //       key: 'googleChart',
-  //       label: 'sidebar.googleCharts',
-  //     },
-  //     {
-  //       key: 'reecharts',
-  //       label: 'sidebar.recharts',
-  //     },
-  //     {
-  //       key: 'reactChart2',
-  //       label: 'sidebar.reactChart2',
-  //     },
-  //     {
-  //       key: 'frappeChart',
-  //       label: 'sidebar.frappeChart',
-  //     },
-  //   ],
-  // },
+  {
+    key: 'shuffle',
+    label: 'sidebar.shuffle',
+    leftIcon: 'ion-grid',
+  },
+  {
+    key: 'charts',
+    label: 'sidebar.charts',
+    leftIcon: 'ion-arrow-graph-up-right',
+    children: [
+      {
+        key: 'googleChart',
+        label: 'sidebar.googleCharts',
+      },
+      {
+        key: 'reecharts',
+        label: 'sidebar.recharts',
+      },
+      {
+        key: 'reactChart2',
+        label: 'sidebar.reactChart2',
+      },
+      {
+        key: 'frappeChart',
+        label: 'sidebar.frappeChart',
+      },
+    ],
+  },
   {
     key: 'Forms',
     label: 'sidebar.forms',
