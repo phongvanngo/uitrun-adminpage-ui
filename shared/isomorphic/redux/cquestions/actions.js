@@ -50,8 +50,6 @@ const contactActions = {
       const params = { pageSize: 500, page: 0 };
       dispatch({ type: contactActions.LOADING });
       const questionList = await questionApi.getQuestionList(params, dispatch);
-      dispatch({ type: contactActions.UNLOADING });
-      console.log('hi');
       if (questionList.length > 0) {
         dispatch({
           type: contactActions.FETCH_QUESTION,

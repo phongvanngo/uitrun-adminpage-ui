@@ -18,6 +18,7 @@ export default function questionReducer(state = initState, action) {
         ...state,
         contacts: action.questions,
         seectedId: action.seectedId,
+        loading: false,
       };
     case contactActions.CHANGE_CONTACT:
       return {

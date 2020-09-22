@@ -11,6 +11,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { otherAttributes } from './data2';
 import { ContactsWrapper } from './Questions.styles';
+// import Spin from "@iso/containers/Feedback/Spin/Spin";
+import Loader from '@iso/components/utility/loader';
 
 const {
   changeContact,
@@ -31,7 +33,7 @@ export default function Contacts() {
     return () => {};
   }, []);
 
-  const { contacts, seectedId, editView } = useSelector(
+  const { contacts, seectedId, editView, loading } = useSelector(
     state => state.Questions
   );
   // //console.log(contacts);
@@ -41,73 +43,81 @@ export default function Contacts() {
     : null;
 
   const onVIewChange = () => dispatch(viewChange(!editView));
-  return (
-    <ContactsWrapper
-      className="isomorphicContacts"
-      style={{ background: 'none' }}
-    >
-      <div className="isoContactListBar">
-        <ContactList
-          contacts={contacts}
-          seectedId={seectedId}
-          changeContact={id => dispatch(changeContact(id))}
-          deleteContact={e => dispatch(onDeleteQuestion(e))}
-        />
-      </div>
-      <Layout className="isoContactBoxWrapper">
-        {/* select contact ------------------------------------------*/}
-        {selectedContact ? (
-          <Content className="isoContactBox">
+
+  function renderQuestion() {
+    if (loading) return <Loader />;
+    // <div></div>)
+    return (
+      <ContactsWrapper
+        className="isomorphicContacts"
+        style={{ background: 'none' }}
+      >
+        <div className="isoContactListBar">
+          <ContactList
+            contacts={contacts}
+            seectedId={seectedId}
+            changeContact={id => dispatch(changeContact(id))}
+            deleteContact={e => dispatch(onDeleteQuestion(e))}
+          />
+        </div>
+        <Layout className="isoContactBoxWrapper">
+          {/* select contact ------------------------------------------*/}
+          {selectedContact ? (
+            <Content className="isoContactBox">
+              <div className="isoContactControl">
+                <Button type="default" onClick={onVIewChange}>
+                  {editView ? <Icon type="check" /> : <Icon type="edit" />}
+                </Button>
+                <DeleteButton
+                  deleteContact={id => dispatch(onDeleteQuestion(id))}
+                  contact={selectedContact}
+                />
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    dispatch(onAddQuestion());
+                  }}
+                  className="isoAddContactBtn"
+                >
+                  <IntlMessages id="questionlist.addNewQuestion" />
+                </Button>
+              </div>
+
+              {/* <Scrollbar
+              className="contactBoxScrollbar"
+              style={{ height: "calc(100vh - 200px)" }}
+            > */}
+              {editView ? (
+                <EditContactView
+                  onUpdateQuestion={() => {
+                    dispatch(updateQuestion());
+                  }}
+                />
+              ) : (
+                <SingleContactView
+                  contact={selectedContact}
+                  otherAttributes={otherAttributes}
+                />
+              )}
+              {/* </Scrollbar> */}
+            </Content>
+          ) : (
             <div className="isoContactControl">
-              <Button type="default" onClick={onVIewChange}>
-                {editView ? <Icon type="check" /> : <Icon type="edit" />}
-              </Button>
-              <DeleteButton
-                deleteContact={id => dispatch(onDeleteQuestion(id))}
-                contact={selectedContact}
-              />
               <Button
                 type="primary"
-                onClick={() => {
-                  dispatch(onAddQuestion());
-                }}
+                onClick={() => dispatch(onAddQuestion())}
                 className="isoAddContactBtn"
               >
                 <IntlMessages id="questionlist.addNewQuestion" />
               </Button>
             </div>
+          )}
+          {/* select contact ------------------------------------------*/}
+        </Layout>
+      </ContactsWrapper>
+    );
+  }
+  console.log(loading);
 
-            {/* <Scrollbar
-              className="contactBoxScrollbar"
-              style={{ height: "calc(100vh - 200px)" }}
-            > */}
-            {editView ? (
-              <EditContactView
-                onUpdateQuestion={() => {
-                  dispatch(updateQuestion());
-                }}
-              />
-            ) : (
-              <SingleContactView
-                contact={selectedContact}
-                otherAttributes={otherAttributes}
-              />
-            )}
-            {/* </Scrollbar> */}
-          </Content>
-        ) : (
-          <div className="isoContactControl">
-            <Button
-              type="primary"
-              onClick={() => dispatch(onAddQuestion())}
-              className="isoAddContactBtn"
-            >
-              <IntlMessages id="questionlist.addNewQuestion" />
-            </Button>
-          </div>
-        )}
-        {/* select contact ------------------------------------------*/}
-      </Layout>
-    </ContactsWrapper>
-  );
+  return <React.Fragment>{renderQuestion()}</React.Fragment>;
 }

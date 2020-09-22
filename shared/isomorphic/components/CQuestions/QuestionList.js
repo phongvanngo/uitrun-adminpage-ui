@@ -6,8 +6,6 @@ import { PropTypes } from 'prop-types';
 import { ContactListWrapper } from './QuestionList.style';
 import Scrollbar from '../utility/customScrollBar';
 import removeAccents from './removeAccents';
-import { useDispatch, useSelector } from 'react-redux';
-import Spin from '@iso/containers/Feedback/Spin/Spin';
 
 function filterContacts(contacts, search) {
   search = search.toUpperCase();
@@ -55,37 +53,31 @@ export default class ContactList extends Component {
   render() {
     const { search } = this.state;
     const contacts = filterContacts(this.props.contacts, search);
-    // const loading  = useSelector(state => state.loading);
-    // console.Console(loading);
-
     return (
-      <React.Fragment>
-        {/* <Spin /> */}
-        <ContactListWrapper className="isoContactListWrapper">
-          <InputSearch
-            placeholder={this.context.intl.formatMessage({
-              id: 'questionlist.searchQuestions',
-            })}
-            value={search}
-            onChange={this.onChange}
-            className="isoSearchBar"
-          />
-          {contacts && contacts.length > 0 ? (
-            <div className="isoContactList">
-              <Scrollbar
-                className="contactListScrollbar"
-                style={{ height: 'calc(100vh - 200px)' }}
-              >
-                {contacts.map(contact => this.singleContact(contact))}
-              </Scrollbar>
-            </div>
-          ) : (
-            <span className="isoNoResultMsg">
-              {<IntlMessages id="Component.questions.noOption" />}
-            </span>
-          )}
-        </ContactListWrapper>
-      </React.Fragment>
+      <ContactListWrapper className="isoContactListWrapper">
+        <InputSearch
+          placeholder={this.context.intl.formatMessage({
+            id: 'questionlist.searchQuestions',
+          })}
+          value={search}
+          onChange={this.onChange}
+          className="isoSearchBar"
+        />
+        {contacts && contacts.length > 0 ? (
+          <div className="isoContactList">
+            <Scrollbar
+              className="contactListScrollbar"
+              style={{ height: 'calc(100vh - 200px)' }}
+            >
+              {contacts.map(contact => this.singleContact(contact))}
+            </Scrollbar>
+          </div>
+        ) : (
+          <span className="isoNoResultMsg">
+            {<IntlMessages id="Component.questions.noOption" />}
+          </span>
+        )}
+      </ContactListWrapper>
     );
   }
 }
