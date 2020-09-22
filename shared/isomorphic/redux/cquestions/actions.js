@@ -36,6 +36,8 @@ const contactActions = {
   UPDATE_QUESTION: 'UPDATE_QUESTION',
   FETCH_QUESTION: 'FETCH_QUESTION',
   UNVALID_PAYLOAD: 'UNVALID_PAYLOAD',
+  LOADING: 'LOADING',
+  UNLOADING: 'UNLOADING',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
@@ -46,7 +48,9 @@ const contactActions = {
     //console.log('hell');
     return async dispatch => {
       const params = { pageSize: 500, page: 0 };
+      dispatch({ type: contactActions.LOADING });
       const questionList = await questionApi.getQuestionList(params, dispatch);
+      dispatch({ type: contactActions.UNLOADING });
       console.log('hi');
       if (questionList.length > 0) {
         dispatch({

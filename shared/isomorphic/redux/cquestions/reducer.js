@@ -8,6 +8,7 @@ const initState = {
   seectedId: null,
   editView: false,
   editingQuestion: {},
+  loading: false,
 };
 
 export default function questionReducer(state = initState, action) {
@@ -75,6 +76,18 @@ export default function questionReducer(state = initState, action) {
       return {
         ...state,
         editView: true,
+      };
+
+    case contactActions.LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case contactActions.UNLOADING:
+      return {
+        ...state,
+        loading: false,
       };
 
     default:
