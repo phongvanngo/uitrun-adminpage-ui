@@ -47,7 +47,7 @@ const contactActions = {
     return async dispatch => {
       const params = { pageSize: 500, page: 0 };
       const questionList = await questionApi.getQuestionList(params, dispatch);
-      //console.log(questionList !== []);
+      console.log('hi');
       if (questionList.length > 0) {
         dispatch({
           type: contactActions.FETCH_QUESTION,
