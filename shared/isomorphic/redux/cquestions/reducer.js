@@ -33,6 +33,7 @@ export default function questionReducer(state = initState, action) {
         seectedId: action.selectedId,
         editingQuestion: action.editQuestion,
         editView: true,
+        loading: false,
       };
     case contactActions.EDIT_CONTACT:
       return {

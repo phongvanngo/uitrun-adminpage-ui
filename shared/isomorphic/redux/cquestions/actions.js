@@ -78,14 +78,19 @@ const contactActions = {
     return async (dispatch, getState) => {
       const validQuestion = makePayloadValid(newQuestion);
       //console.log(validQuestion, newQuestion);
+      dispatch({ type: contactActions.QUESTION_LOADING });
       const newId = await questionApi.addQuestion(validQuestion, dispatch);
-      const newQuestionWithId = { ...newQuestion, id: newId };
-      dispatch({
-        type: contactActions.ADD_QUESTION,
-        contacts: [...getState().Questions.contacts, newQuestionWithId],
-        selectedId: newQuestionWithId.id,
-        editQuestion: newQuestionWithId,
-      });
+      if (newId === null) {
+        dispatch({ type: contactActions.QUESTION_UNLOADING });
+      } else {
+        const newQuestionWithId = { ...newQuestion, id: newId };
+        dispatch({
+          type: contactActions.ADD_QUESTION,
+          contacts: [...getState().Questions.contacts, newQuestionWithId],
+          selectedId: newQuestionWithId.id,
+          editQuestion: newQuestionWithId,
+        });
+      }
     };
   },
 
