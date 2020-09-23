@@ -38,6 +38,7 @@ const contactActions = {
   UNVALID_PAYLOAD: 'UNVALID_PAYLOAD',
   QUESTION_LOADING: 'QUESTION_LOADING',
   QUESTION_UNLOADING: ' QUESTION_UNLOADING',
+  PREVENT_ADD_QUESTION: 'PREVENT_ADD_QUESTION',
 
   changeContact: id => ({
     type: contactActions.CHANGE_CONTACT,
@@ -63,6 +64,20 @@ const contactActions = {
   },
 
   unLoading: () => ({ type: contactActions.QUESTION_UNLOADING }),
+  addQuestion: newQuestion => {
+    return (dispatch, getState) => {
+      dispatch({
+        type: contactActions.ADD_QUESTION,
+        contacts: [...getState().Questions.contacts, newQuestion],
+        selectedId: newQuestion.id,
+        editQuestion: newQuestion,
+      });
+      // dispatch({
+      //   type: contactActions.EDIT_VIEW,
+      //   view: true,
+      // });
+    };
+  },
   onAddQuestion: () => {
     const newQuestion = {
       content: '',
@@ -76,6 +91,13 @@ const contactActions = {
       isShuffle: 0,
     };
     return async (dispatch, getState) => {
+      if (getState().Questions.buttonAddNewQuestion === false) {
+        notification('warning', 'Bạn chưa lưu thay đổi');
+        return;
+      }
+
+      dispatch({ type: contactActions.PREVENT_ADD_QUESTION });
+
       const validQuestion = makePayloadValid(newQuestion);
       //console.log(validQuestion, newQuestion);
       dispatch({ type: contactActions.QUESTION_LOADING });
@@ -115,20 +137,6 @@ const contactActions = {
     };
   },
 
-  addQuestion: newQuestion => {
-    return (dispatch, getState) => {
-      dispatch({
-        type: contactActions.ADD_QUESTION,
-        contacts: [...getState().Questions.contacts, newQuestion],
-        selectedId: newQuestion.id,
-        editQuestion: newQuestion,
-      });
-      // dispatch({
-      //   type: contactActions.EDIT_VIEW,
-      //   view: true,
-      // });
-    };
-  },
   editContact: newContact => {
     return (dispatch, getState) => {
       const contacts = getState().Questions.contacts;
@@ -154,10 +162,14 @@ const contactActions = {
       const newQuestionList = [];
 
       const valid = validQuestion(newQuestion); //questions will change;
+      let havingEditQuestion = false;
+
       if (valid) {
         questions.forEach(async question => {
           if (question.id === newQuestion.id) {
             newQuestionList.push(newQuestion); //--> han che get
+            let havingEditQuestion = true;
+
             const updatedQuestion = await questionApi.editQuestion(
               newQuestion.id,
               newQuestion,
@@ -173,6 +185,10 @@ const contactActions = {
           type: contactActions.UPDATE_QUESTION,
           questions: newQuestionList.sort(ascendingSort),
         });
+
+        if (havingEditQuestion === false) {
+          //add new question
+        }
       } else {
         dispatch(contactActions.unvalidPayload());
         notification(
@@ -180,6 +196,7 @@ const contactActions = {
           `Câu hỏi không hợp lệ`,
           'Kiểm tra lại các trường dữ liệu bắt buộc'
         );
+        return;
       }
     };
   },

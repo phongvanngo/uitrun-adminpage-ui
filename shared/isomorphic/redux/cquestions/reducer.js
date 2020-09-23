@@ -9,6 +9,7 @@ const initState = {
   editView: false,
   editingQuestion: {},
   loading: false,
+  buttonAddNewQuestion: true,
 };
 
 export default function questionReducer(state = initState, action) {
@@ -35,6 +36,11 @@ export default function questionReducer(state = initState, action) {
         editView: true,
         loading: false,
       };
+    case contactActions.PREVENT_ADD_QUESTION:
+      return {
+        ...state,
+        buttonAddNewQuestion: false,
+      };
     case contactActions.EDIT_CONTACT:
       return {
         ...state,
@@ -45,6 +51,7 @@ export default function questionReducer(state = initState, action) {
         ...state,
         contacts: action.contacts,
         seectedId: action.seectedId,
+        buttonAddNewQuestion: true,
       };
     case contactActions.EDIT_VIEW:
       if (action.view === false) {
@@ -71,6 +78,7 @@ export default function questionReducer(state = initState, action) {
     case contactActions.UPDATE_QUESTION:
       return {
         ...state,
+        buttonAddNewQuestion: true,
         contacts: action.questions,
       };
 
