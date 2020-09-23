@@ -120,7 +120,6 @@ export default function Contacts() {
       </ContactsWrapper>
     );
   }
-  console.log(loading);
 
   return <React.Fragment>{renderQuestion()}</React.Fragment>;
 }

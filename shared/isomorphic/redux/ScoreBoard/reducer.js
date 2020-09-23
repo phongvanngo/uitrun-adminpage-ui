@@ -8,7 +8,6 @@ const initState = {
 export default function scoreBoardReducer(state = initState, action) {
   switch (action.type) {
     case scoreBoardAction.FETCH_SCORE_BOARD:
-      console.log('hi');
       return {
         scoreBoard: action.scoreBoard,
         loading: false,

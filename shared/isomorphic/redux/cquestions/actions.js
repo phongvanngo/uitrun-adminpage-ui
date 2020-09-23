@@ -56,6 +56,8 @@ const contactActions = {
           questions: questionList,
           seectedId: questionList[0].id,
         });
+      } else {
+        dispatch({ type: contactActions.QUESTION_UNLOADING });
       }
     };
   },

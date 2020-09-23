@@ -5,7 +5,7 @@ import queryString from 'query-string';
 const instance = axios.create({
   //baseURL: 'http://ttcong2301.southeastasia.cloudapp.azure.com:3000',
   // baseURL: 'http://localhost:3000/api/v1',
-  baseURL: 'https://uitrun-test.herokuapp.com/api/v1',
+  baseURL: 'https://uitrun-test.herokuapp.com/api/v',
   headers: {
     'content-type': 'application/json',
   },
