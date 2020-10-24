@@ -550,12 +550,10 @@
   "antTable.title.street": "Street",
   "antTable.title.email": "Email",
   "antTable.title.dob": "DOB",
-
   "antTable.title.userId": "userId",
   "antTable.title.score": "Điểm",
   "antTable.title.startTime": "Thời gian bắt đầu",
   "antTable.title.finishTime": "Thời gian kết thúc",
-
   "antTable.title.userCode": "Mã dự thi",
   "antTable.title.fullName": "Họ Tên",
   "antTable.title.stdId": "Mã số sinh viên",
@@ -563,7 +561,7 @@
   "antTable.title.NumericalOrder": "STT",
   "antTable.title.timeFinish": "Thời gian hoàn thành",
   "antTable.title.score": "Điểm bài thi",
-
+  "antTable.title.numberPhone": "Số điện thoại",
   "Map.leaflet.basicTitle": "Basic Map",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",
   "Map.leaflet.leafletCustomMarkerTitle": "Basic Map(With Custom Icon Marker)",

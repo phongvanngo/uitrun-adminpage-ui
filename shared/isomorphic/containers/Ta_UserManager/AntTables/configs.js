@@ -39,14 +39,20 @@ const columnss = [
   {
     title: <IntlMessages id="antTable.title.stdId" />,
     key: 'stdId',
-    width: 200,
+    width: 100,
     render: object => renderCell(object, 'TextCell', 'stdId'),
   },
   {
     title: <IntlMessages id="antTable.title.userCode" />,
     key: 'userCode',
-    width: 150,
+    width: 100,
     render: object => renderCell(object, 'TextCell', 'userCode'),
+  },
+  {
+    title: <IntlMessages id="antTable.title.numberPhone" />,
+    key: 'numberPhone',
+    width: 150,
+    render: object => renderCell(object, 'TextCell', 'numberPhone'), //(text,record,index)
   },
   {
     title: <IntlMessages id="antTable.title.id" />,
