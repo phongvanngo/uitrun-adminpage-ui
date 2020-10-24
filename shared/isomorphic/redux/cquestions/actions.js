@@ -48,7 +48,7 @@ const contactActions = {
   fetchQuestionList: () => {
     //console.log('hell');
     return async dispatch => {
-      const params = { pageSize: 500, page: 0 };
+      const params = { pageSize: 1000, page: 0 };
       dispatch({ type: contactActions.QUESTION_LOADING });
       const questionList = await questionApi.getQuestionList(params, dispatch);
       if (questionList.length > 0) {
@@ -80,6 +80,7 @@ const contactActions = {
   },
   onAddQuestion: () => {
     const newQuestion = {
+      id: 'newQuestion',
       content: '',
       answerA: '',
       answerB: '',
@@ -98,21 +99,26 @@ const contactActions = {
 
       dispatch({ type: contactActions.PREVENT_ADD_QUESTION });
 
-      const validQuestion = makePayloadValid(newQuestion);
-      //console.log(validQuestion, newQuestion);
-      dispatch({ type: contactActions.QUESTION_LOADING });
-      const newId = await questionApi.addQuestion(validQuestion, dispatch);
-      if (newId === null) {
-        dispatch({ type: contactActions.QUESTION_UNLOADING });
-      } else {
-        const newQuestionWithId = { ...newQuestion, id: newId };
-        dispatch({
-          type: contactActions.ADD_QUESTION,
-          contacts: [...getState().Questions.contacts, newQuestionWithId],
-          selectedId: newQuestionWithId.id,
-          editQuestion: newQuestionWithId,
-        });
-      }
+      dispatch({
+        type: contactActions.ADD_QUESTION,
+        contacts: newQuestion,
+      });
+
+      // const validQuestion = makePayloadValid(newQuestion);
+      // //console.log(validQuestion, newQuestion);
+      // dispatch({ type: contactActions.QUESTION_LOADING });
+      // const newId = await questionApi.addQuestion(validQuestion, dispatch);
+      // if (newId === null) {
+      //   dispatch({ type: contactActions.QUESTION_UNLOADING });
+      // } else {
+      //   const newQuestionWithId = { ...newQuestion, id: newId };
+      //   dispatch({
+      //     type: contactActions.ADD_QUESTION,
+      //     contacts: [...getState().Questions.contacts, newQuestionWithId],
+      //     selectedId: newQuestionWithId.id,
+      //     editQuestion: newQuestionWithId,
+      //   });
+      // }
     };
   },
 

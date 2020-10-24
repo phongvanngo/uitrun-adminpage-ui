@@ -8,7 +8,7 @@ const userAction = {
 
   fetchScoreBoard: () => {
     return async dispatch => {
-      const params = { pageSize: 500, page: 0 };
+      const params = { pageSize: 1000, page: 0 };
       dispatch({ type: userAction.BOARD_LOADING });
       const scoreBoard = await scoreBoardApi.getScoreBoard(params, dispatch);
       const scoreBoardWithKey = scoreBoard

@@ -54,6 +54,7 @@ export default function(props) {
     };
     columns[1].render = editColumnRender(1);
     columns[2].render = editColumnRender(2);
+    columns[4].render = editColumnRender(4);
     return columns;
   }
   function onCellChange(value, columnsKey, index) {
