@@ -16,6 +16,7 @@ const userApi = {
     const userList = await axiosClient
       .get(url + '?' + params)
       .then(response => {
+        console.log(response);
         switch (response.status) {
           case 200:
             notification('success', 'Get user list successfully');

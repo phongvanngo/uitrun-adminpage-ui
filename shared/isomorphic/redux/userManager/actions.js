@@ -10,7 +10,7 @@ const userAction = {
   USER_UNLOADING: 'USER_UNLOADING',
   fetchUserList: () => {
     return async dispatch => {
-      const params = { pageSize: 500, page: 0 };
+      const params = { pageSize: 1000, page: 0 };
       dispatch({ type: userAction.USER_LOADING });
       const userList = await userApi.getUserList(params, dispatch);
       const userListWithKey = userList

@@ -48,7 +48,7 @@ const contactActions = {
   fetchQuestionList: () => {
     //console.log('hell');
     return async dispatch => {
-      const params = { pageSize: 500, page: 0 };
+      const params = { pageSize: 1000, page: 0 };
       dispatch({ type: contactActions.QUESTION_LOADING });
       const questionList = await questionApi.getQuestionList(params, dispatch);
       if (questionList.length > 0) {
